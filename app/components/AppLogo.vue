@@ -1,0 +1,3 @@
+<template>
+  <svg xmlns="http://www.w3.org/2000/svg" width="50.475" height="12.608" viewBox="0 0 13.355 3.336"><defs><path id="a" d="M153.77 267h271.194v118.822H153.77z"/></defs><text xml:space="preserve" style="font-weight:500;font-size:24px;font-family:&quot;Source Code Pro&quot;;-inkscape-font-specification:&quot;Source Code Pro, Medium&quot;;text-align:start;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#a);fill:navy" transform="matrix(.26458 0 0 .26458 -40.78 -72.938)"><tspan x="153.77" y="288"><tspan style="font-weight:700;font-size:21.3333px;font-family:&quot;Nimbus Mono PS&quot;;-inkscape-font-specification:&quot;Nimbus Mono PS, Bold&quot;;fill:#4d4d4d">YOJO</tspan></tspan></text></svg>
+</template>

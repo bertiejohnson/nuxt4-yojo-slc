@@ -1,44 +1,41 @@
-<template>
-  <div class="relative -mt-4 h-10 flex items-center justify-center overflow-hidden">
-    <Transition>
-      <span :key="keywordPair">{{ keywordPair }}</span>
-    </Transition>
-  </div>
-</template>
-
 <script lang="ts" setup>
+import { experimental_useObject as useObject } from '@ai-sdk/vue'
+import type { string } from 'zod'
+
+const { getKeywordsForPlanetPair } = useKeywords()
+
 const props = defineProps({
   aspect: Object
 })
 
-const planetOneId = props.aspect.planetOne
-const planetTwoId = props.aspect.planetTwo
+const keywordPairs = await getKeywordsForPlanetPair(props.aspect.planetOne, props.aspect.planetTwo)
 
-const keywords = await fetchKeywords()
+const response = await useGenerateObject(keywordPairs)
 
-// extract the keywords for each planet
-const planetOneKeywords = keywords?.filter((p: any) => p.planet_id === planetOneId)
-const planetTwoKeywords = keywords?.filter((p: any) => p.planet_id === planetTwoId)
+keywordPairs.forEach((e,i) => {
+  keywordPairs[i] += `<br/>${response.object.value.object.phrases[i]}`
+})
 
-const keywordsList = []
+console.log('KP', keywordPairs)
 
-for (let i = 0; i < (planetOneKeywords ?? []).length; i++) {
-  const kw = {
-    keywordOne: (planetOneKeywords ?? [])[i]?.keyword,
-    keywordTwo: (planetTwoKeywords ?? [])[i]?.keyword
-  }
-  keywordsList.push(kw)
-}
-
-const keywordPair = ref(`${planetOneKeywords[0]?.keyword} - ${planetTwoKeywords[0]?.keyword}`)
+const displayKeywordPair = ref('Dummy text goes here - will be replaced by planets and aspect and AI generated text coupled with keyword pairs.')
 
 let i = 1
 setInterval(() => {
-  keywordPair.value = `${keywordsList[i]?.keywordOne} - ${keywordsList[i]?.keywordTwo}`
+  displayKeywordPair.value = keywordPairs[i]
   i++
-  if (i >= keywordsList.length) i = 0
-}, 4000)
+  if (i >= keywordPairs.length) i = 0
+}, 6000)
 </script>
+
+<template>
+  <div class="relative -mt-4 h-30 flex items-center justify-center overflow-hidden">
+    <Transition>
+      <span v-html="displayKeywordPair" :key="displayKeywordPair"></span>
+    </Transition>
+  </div>
+</template>
+
 
 <style scoped>
 span {

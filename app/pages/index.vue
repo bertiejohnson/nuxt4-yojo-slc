@@ -41,7 +41,7 @@
         >
           Create Your Chart
         </UButton>
-        </div>
+      </div>
     </UPageSection>
   </div>
 </template>
@@ -52,12 +52,12 @@ const { data, error } = await useFetch('http://127.0.0.1:8181/swetest.php?type=n
 const links = ref([
   {
     label: 'Get started',
-    to: '/docs/getting-started',
+    to: '/',
     icon: 'i-lucide-square-play'
   },
   {
     label: 'Learn more',
-    to: '/docs/getting-started/theme/design-system',
+    to: '/',
     color: 'neutral',
     variant: 'subtle',
     trailingIcon: 'i-lucide-arrow-right'

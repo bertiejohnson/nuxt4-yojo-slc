@@ -1,45 +1,54 @@
 <script lang="ts" setup>
-import { experimental_useObject as useObject } from '@ai-sdk/vue'
-import type { string } from 'zod'
-
 const { getKeywordsForPlanetPair } = useKeywords()
 
 const props = defineProps({
   aspect: Object
 })
 
+const show = ref(false)
+const displayKeywordPair = ref('')
+
+
 const keywordPairs = await getKeywordsForPlanetPair(props.aspect.planetOne, props.aspect.planetTwo)
+const rep = await useGetLandingKeywords(keywordPairs)
 
-const response = await useGenerateObject(keywordPairs)
+console.log('rep', rep)
 
-keywordPairs.forEach((e,i) => {
-  keywordPairs[i] += `<br/>${response.object.value.object.phrases[i]}`
-})
+// const getAIObject = async (keywordPairs) => {
+//   const response = await useGenerateObject(keywordPairs)
+//   if (Array.isArray(response?.object.value.object.phrases)) {
+//     for (let i = 0; i < keywordPairs.length; i++) {
+//       keywordPairs[i] = `${keywordPairs[i]}<br/>${response.object.value.object.phrases[i]}`
+//       // console.log('KWP', i, keywordPairs[i])
+//       if (i == keywordPairs.length - 1) {
+//         displayKeywordPair.value = keywordPairs[0]
+//         startInterval()
+//         show.value = true
+//       }
+//     }
+//   }
+// }
 
-console.log('KP', keywordPairs)
+// getAIObject(keywordPairs)
 
-const displayKeywordPair = ref('Dummy text goes here - will be replaced by planets and aspect and AI generated text coupled with keyword pairs.')
-
-let i = 1
-setInterval(() => {
-  displayKeywordPair.value = keywordPairs[i]
-  i++
-  if (i >= keywordPairs.length) i = 0
-}, 6000)
+function startInterval() {
+  let i = 1
+  setInterval(() => {
+    displayKeywordPair.value = keywordPairs[i]
+    i++
+    if (i == keywordPairs.length - 1) i = 0
+  }, 1000)
+}
 </script>
 
 <template>
-  <div class="relative -mt-4 h-30 flex items-center justify-center overflow-hidden">
-    <Transition>
-      <span v-html="displayKeywordPair" :key="displayKeywordPair"></span>
-    </Transition>
-  </div>
+  <span v-if="!show">Testing</span>
+  <span v-else v-html="displayKeywordPair" :key="displayKeywordPair"></span>
 </template>
-
 
 <style scoped>
 span {
-  display: inline-block;
+  display: block;
   font-size: 1rem;
   font-weight: bold;
   color: #333;

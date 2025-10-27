@@ -4,13 +4,10 @@ export default async function useGenerateObject(keywordPairs) {
   const { submit, object, error, clear } = useObject({
     api: 'api/use-object',
   })
-
-  const getObject = () => submit(keywordPairs)
-  await getObject()
-
-  if (error) {
-    console.log('ERROR in useGenerateObject:', error)
+  try {
+    await submit(keywordPairs)
+  } catch (e) {
+    console.error('ERROR in useGenerateObject:', e)
   }
-
   return { object }
 }

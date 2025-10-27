@@ -1,31 +1,29 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2025-07-15',
-  devtools: { enabled: true },
-
   modules: [
     '@nuxt/ui',
     '@nuxt/test-utils',
     '@nuxt/eslint',
-    '@nuxtjs/supabase'
+    '@nuxtjs/supabase',
+    '@vueuse/nuxt',
+    '@pinia/nuxt',
   ],
+  devtools: { enabled: true },
+
+  css: ['~/assets/css/main.css'],
 
   runtimeConfig: {
-    openaiApiKey: ''
+    openaiApiKey: '',
   },
-  
-  css: ['~/assets/css/main.css'],
-  
+
+  ssr: false,
+ 
   routeRules: {
     '/': { prerender: true }
   },
-  
-  supabase: {
-    redirect: false,
-    url: process.env.SUPABASE_URL || '',
-    key: process.env.SUPABASE_KEY || ''
-  },
-  
+
+  compatibilityDate: '2025-07-15',
+
   eslint: {
     config: {
       stylistic: {
@@ -33,5 +31,11 @@ export default defineNuxtConfig({
         braceStyle: '1tbs'
       }
     }
-  }
+  },
+
+  supabase: {
+    redirect: false,
+    url: process.env.SUPABASE_URL || '',
+    key: process.env.SUPABASE_KEY || ''
+  },
 })

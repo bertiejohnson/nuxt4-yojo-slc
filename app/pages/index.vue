@@ -1,19 +1,31 @@
 <template>
   <div>
     <UPageHero
-      title="The Great Charting Experience"
+      title="A Unique Approach To Your Chart"
       :links="links"
     >
       <template #body>
-        <ChartBuilder 
+        <ChartBuilder
           :chart-data="nowChartData"
         />
-        <LandingKeywords
-          :aspect="aspectProp"
-        />
+        <div class="relative -mt-4 h-30 flex items-center justify-center overflow-hidden">
+          <ClientOnly>
+            <LandingKeywords
+              :aspect="aspectProp"
+            />
+          </ClientOnly>
+        </div>
       </template>
     </UPageHero>
-    <UPageSection class="mt-12">
+    <UPageSection id="birth_data_form" class="mt-12 bg-gray-100">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-4">Create your natal chart</h2>
+        <p class="mb-6">
+          Enter your birth details below to generate your personalized natal chart
+        </p>
+      </div>
+    </UPageSection>
+    <UPageSection id="learn_more" class="mt-12">
       <div class="max-w-4xl mx-auto text-center">
         <h2 class="text-3xl font-bold mb-4">Why Choose Our Charting Service?</h2>
         <p class="mb-6">
@@ -47,25 +59,29 @@
 </template>
 
 <script setup lang="ts">
-const { data, error } = await useFetch('http://127.0.0.1:8181/swetest.php?type=now')
+import { config } from 'zod'
 
+const { data, error } = await useFetch('http://127.0.0.1:8181/swetest.php?type=now')
 const links = ref([
   {
-    label: 'Get started',
-    to: '/',
+    label: 'Get chart',
+    to: '#birth_data_form',
     icon: 'i-lucide-square-play'
   },
   {
     label: 'Learn more',
-    to: '/',
+    to: '#learn_more',
     color: 'neutral',
     variant: 'subtle',
     trailingIcon: 'i-lucide-arrow-right'
   }
 ])
 
+// const config = useRuntimeConfig()
+// console.log(config.public.apiBase)
+
 if (error.value) {
-  console.error('Error fetching chart data:', error.value)
+  console.error('Error fetching chart data in index.vue:', error.value)
 }
 
 const nowChartData = data.value

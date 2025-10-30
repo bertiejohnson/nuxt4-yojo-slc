@@ -13,7 +13,7 @@ export default defineLazyEventHandler(async () => {
 
     const { object } = await generateObject({
       model: openai('gpt-4.1'),
-      prompt: `Generate short phrases of two to three sentences for each of the keyword pairs in: ${context}`,
+      prompt: `Generate short phrases of two to three sentences for each of the keyword pairs in: ${context}. Do not include the keyword pair itself.`,
       schema: z.object({
         phrases: z.array(z.string())
       })

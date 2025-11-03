@@ -13,6 +13,7 @@
   "dependencies": {
     "@ai-sdk/openai": "^2.0.52",
     "@ai-sdk/vue": "^2.0.72",
+    "@mapbox/mapbox-sdk": "^0.16.2",
     "@nuxt/eslint": "^1.9.0",
     "@nuxt/test-utils": "^3.19.2",
     "@nuxt/ui": "^4.0.1",

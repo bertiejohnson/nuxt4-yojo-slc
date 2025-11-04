@@ -14,12 +14,13 @@ const { keywords, keywordsFetched } = storeToRefs(keywordStore)
 
 const displayKeywordPair = ref<string>('')
 
-callOnce(async () => await keywordStore.fetchLandingKeywords(props.keywordPairs))
+if (import.meta.client) {
+  callOnce(async () => await keywordStore.fetchLandingKeywords(props.keywordPairs))
+}
 
 const keywordStrings = ref<string[]>([])
 
 watch(keywordsFetched, () => {
-  console.log('watch KWPS', keywordsFetched.value)
   if (keywordsFetched.value && keywords.value.length > 0) {
     setUpKeywordPhrases()
   }
@@ -27,8 +28,6 @@ watch(keywordsFetched, () => {
 
 onMounted(() => {
   if (keywordsFetched.value && keywords.value.length > 0) {
-    // call function that sets up the keyword phrases
-    console.log('onMounted KWPS', keywordsFetched.value)
     setUpKeywordPhrases()
   }
 })

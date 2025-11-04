@@ -3,13 +3,12 @@ import * as z from 'zod'
 import type { FormSubmitEvent } from '@nuxt/ui'
 import geocodeClient from '@mapbox/mapbox-sdk/services/geocoding'
 
-const emit = defineEmits(['loadChart'])
+const emit = defineEmits(['generateChart'])
 
 // Need to sort format validation on date and time inputs ...
 const schema = z.object({
   placeOfBirth: z.string('Place of birth is required'),
   dateOfBirth: z.string('Date of Birth is required').min(1),
-  timeOfBirth: z.string('Time of Birth is required').min(1),
   timeOfBirth: z.string('Time of Birth is required').min(1)
 })
 
@@ -24,38 +23,32 @@ const state = reactive<Partial<Schema>>({
 const toast = useToast()
 
 async function onSubmit(event: FormSubmitEvent<Schema>) {
-  toast.add({ title: 'Success', description: 'The form has been submitted.', color: 'success' })
-  console.log('Form submitted with values:', event.data, 'LatLng', lat.value, lng.value)
+  // toast.add({ title: 'Success', description: 'The form has been submitted.', color: 'success' })
   // Handle form submission logic here
   emit('generateChart', {
-    city: city.value,
+    city: state.placeOfBirth,
     lng: lng.value,
     lat: lat.value,
     date: state.dateOfBirth,
     time: state.timeOfBirth
   })
-  // use form data to fetch chart
-  const { data, error } = await useFetch('http://127.0.0.1:8181/swetest.php?type=natal&date='
-    + event.data.dateOfBirth + '&time=' + event.data.timeOfBirth
-    + '&lng=' + lng.value + '&lat=' + lat.value)
-  console.log('Fetch result:', data.value, 'Error:', error.value)
+
   // and reset form state once chart is loaded ...
-  state.placeOfBirth = ''
-  state.dateOfBirth = ''
-  state.timeOfBirth = ''
+  // state.placeOfBirth = ''
+  // state.dateOfBirth = ''
+  // state.timeOfBirth = ''
 }
 
 // flag the input state - run getPlace and either produce list or accept entry after hitting 'Enter' on one of the locations in the location drop-down 
 const acceptEntry = ref(true)
 let currentFocus = -1
 
-const city = ref('')
+// const city = ref('')
 const lng = ref(0)
 const lat = ref(0)
 const placesdata = ref(null)
 
 function insertCity(placeAr) {
-  console.log('Insert city called with:', placeAr)
   acceptEntry.value = false // reset flag so getPlace will run
 
   state.placeOfBirth = placeAr.place_name
@@ -65,10 +58,12 @@ function insertCity(placeAr) {
 }
 
 // Mapbox stuff
-const myAccessToken
-  = 'pk.eyJ1IjoiZGFyaW5iZWNrZXR0IiwiYSI6ImNsdDh3bXMzZjB5OTEyaXFydWkyY2txY2MifQ.erv3U5I-UIRdAPD6i_sJNg'
+// const runtimeConfig = useRuntimeConfig()
 
-const geocodeService = geocodeClient({ accessToken: myAccessToken })
+const mapboxAccessToken
+  = useRuntimeConfig().public.mapboxApiKey
+
+const geocodeService = geocodeClient({ accessToken: mapboxAccessToken })
 
 // Error handling here - try/catch on the promise
 const getPlace = async function (e) {
@@ -96,10 +91,6 @@ const getPlace = async function (e) {
     .then((response) => {
       placesdata.value = response.body.features
     })
-
-  placesdata.value.forEach(element => {
-    console.log('Place:', element.place_name)
-  })
 
   function catchError(error) {
     console.log('We have an error', error)
@@ -178,13 +169,14 @@ function removeActive(x) {
         Submit
       </UButton>
     </UForm>
-    <!-- <ChartBuilder
-      :city="state.placeOfBirth"
-      :lng="lng"
-      :lat="lat"
-      :date="state.dateOfBirth"
-      :time="state.timeOfBirth"
-    /> -->
+    <UButton
+      variant="solid"
+      color="success"
+      class="mt-4"
+      @click="$emit('generateChart')"
+    >
+      Generate Chart
+    </UButton>
   </div>
 </template>
 
@@ -195,4 +187,3 @@ function removeActive(x) {
   color: #ffffff;
 }
 </style>
-

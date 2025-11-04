@@ -1,7 +1,8 @@
 <template>
-  <g :style="rotateIt"
-     id="sign-name-group"
-     class="sign-name-group"
+  <g
+    :id="'sign-name-group-' + randomId()"
+    :style="rotateIt"
+    class="sign-name-group"
   >
     <path
       v-for="(path, i) in signPathData"
@@ -15,7 +16,7 @@
 
     <path
       v-for="(path, i) in signNamePathData"
-      :id="'signarc-' + path.sign"
+      :id="'signarc-' + path.sign + '-text-' + pathTextPath"
       :key="'sign-arc-' + i"
       class="name-path-arc"
       fill="none"
@@ -25,12 +26,12 @@
 
     <text
       v-for="(path, i) in signNamePathData"
-      :id="'signarc-' + path.sign"
+      :id="'signarc-' + path.sign + '-text-' + randomId()"
       :key="'sign-text-' + i"
       :dy="setDy(path.sign)"
     >
       <textPath
-        :href="'#signarc-' + path.sign"
+        :href="'#signarc-' + path.sign + '-text-' + pathTextPath"
         startOffset="50%"
         style="text-anchor: middle"
       >
@@ -47,8 +48,13 @@ const props = defineProps({
   chartAsc: Number
 })
 
-// const signPathData = ref([])
-// const signNamePathData = ref([])
+const randomId = (length = 6) => Math.random().toString(36).substring(2, length + 2)
+
+// This provides unique id for the path Id and the corresponding textPath href
+// Without this, multiple charts on the same page would have conflicting IDs and the textPaths are not 'flipped correctly'
+// Will change to something more prosaic and predictable later on when making chart more interactive
+const pathTextPath = randomId()
+
 const rotateIt = { transform: '' }
 const asc = props.chartAsc
 rotateIt.transform = `rotate(${asc - 90}deg)`
@@ -75,29 +81,21 @@ signNamesArr.reverse()
 const signPathData = getPathArcs(getPathsReady(166, 190))
 
 const signNamePathData = getSignNames(getPathArcs(getPathsReady(171, 172)))
-// console.log('signNamePathData', signNamePathData)
-
-// offset for names that need flipping ...
-// myDyArr[] is presently initialised in getHousePathsReady() so this call needs to sit after it
 
 function setDy(sign) {
-  // console.log('setDy called for ', sign, ' myDyArr:', myDyArr, 'textDy:', textDy.includes(sign) ? 10 : 0)
   return myDyArr.includes(sign) ? 10 : 0
 }
 
-function getPathsReady(iR, oR, theArr) {
-  const haveArr = theArr ? true : false // theArr is used for houses
+function getPathsReady(iR, oR) {
   let radianAccumulator = 0
   const radians = 0.5235987755982988 // = 30 degrees - used for signs
 
-  const arr = haveArr ? theArr : [...Array(12).keys()] // create array with a length of 12
+  const arr = [...Array(12).keys()] // create array with a length of 12
 
   for (let i = 0; i < arr.length; i++) {
-    if (!haveArr) arr[i] = {}
+    arr[i] = {}
     arr[i].startAngle = parseFloat(radianAccumulator)
-    radianAccumulator += haveArr
-      ? parseFloat(arr[i].radians)
-      : parseFloat(radians)
+    radianAccumulator += parseFloat(radians)
     arr[i].endAngle = parseFloat(radianAccumulator)
     arr[i].innerRadius = iR
     arr[i].outerRadius = oR
@@ -120,9 +118,6 @@ function getSignNames(arr) {
   const myDesc = asc > 180 ? asc - 180 : asc + 180
   const flipRange1 = myDesc < 180 ? 360 - asc : null
 
-  // needs testing for rotation consistency
-  // rotateIt.transform = `rotate(${asc - 90}deg)`
-
   for (let i = 0; i < arr.length; i++) {
     let flipText = 0
     const startDeg = signNamesArr[i].startDegree
@@ -134,7 +129,6 @@ function getSignNames(arr) {
       }
     } else {
       // handle cases where desc is > 180
-
       if (startDeg > asc && startDeg < myDesc) {
         flipText = 1
       }
@@ -158,7 +152,6 @@ function getSignNames(arr) {
     nameArcArr[i].path = nameArcArr[i].path.replace(/,/g, ' ')
 
     if (nameArcArr[i].fliptext === 1) {
-      if (i === 1) console.log('flipping sign name arc for ', nameArcArr[1])
       const startLoc = /M(.*?)A/ // Everything between the first capital M and first capital A of the path string
       const middleLoc = /A(.*?)0 0 1/ // Everything between the first capital A and 0 0 1 of the path string
       const endLoc = /0 0 1 (.*?)$/ // Everything between the first 0 0 1 and the end of the path string (denoted by $)
@@ -172,10 +165,8 @@ function getSignNames(arr) {
       // Build up the new arc notation, set the sweep-flag to 0
       nameArcArr[i].path
         = 'M' + newStart + 'A' + middleSec + '0 0 0 ' + newEnd
-      // console.log('flipped path:', nameArcArr[i].path)
     }
   }
-  console.log('nameArcArr:', nameArcArr[1])
   return nameArcArr
 }
 </script>

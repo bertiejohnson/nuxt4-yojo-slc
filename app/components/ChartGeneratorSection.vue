@@ -7,7 +7,7 @@ const generateChart = async (birthData) => {
   userNatalChart.value = await $fetch(
     // `http://127.0.0.1:8181/swetest.php?type=natal&date=${birthData.date}&time=${birthData.time}&lng=${birthData.lng}&lat=${birthData.lat}`
     // 'http://127.0.0.1:8181/swetest.php?type=now'
-    'http://127.0.0.1:8181/swetest.php?type=natal&date=2025-10-28&time=10:00&lng=-1.10000&lat=50.54000'
+    'http://127.0.0.1:8181/swetest.php?type=natal&date=2025-10-28&time=16:00&lng=-1.10000&lat=50.54000'
   )
 
   // set cookie so birthdate can be used by signup.vue if required

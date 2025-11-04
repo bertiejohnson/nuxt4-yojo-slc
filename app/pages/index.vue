@@ -5,18 +5,8 @@ const links = ref([
     label: 'Create your chart',
     to: '#birth_data_form',
     icon: 'i-lucide-square-play'
-  },
-  // {
-  //   label: 'Learn more',
-  //   to: '#learn_more',
-  //   color: 'neutral',
-  //   variant: 'subtle',
-  //   trailingIcon: 'i-lucide-arrow-right'
-  // }
+  }
 ])
-
-// const config = useRuntimeConfig()
-// console.log(config.public.apiBase)
 
 if (error.value) {
   console.error('Error fetching chart data in index.vue:', error.value)

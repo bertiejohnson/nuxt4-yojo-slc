@@ -52,7 +52,12 @@ function startInterval() {
 
 <template>
   <transition>
-    <div v-if="keywordsFetched" v-html="displayKeywordPair" :key="displayKeywordPair" class="keywords"></div>
+    <div
+      v-if="keywordsFetched"
+      :key="displayKeywordPair"
+      class="keywords"
+      v-html="displayKeywordPair">
+    </div>
     <div v-else>
       Display keywords so you can explore your chart ...
     </div>

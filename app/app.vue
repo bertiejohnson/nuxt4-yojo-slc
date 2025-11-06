@@ -2,6 +2,8 @@
 import type { NavigationMenuItem } from '@nuxt/ui'
 
 const route = useRoute()
+const user = useSupabaseUser()
+const client = useSupabaseClient()
 
 useHead({
   meta: [
@@ -33,22 +35,15 @@ const items = computed<NavigationMenuItem[]>(() => [{
   to: '/dashboard',
   icon: 'i-lucide-book-open',
   active: route.path.startsWith('/docs/getting-started')
-}, {
-  label: 'Components',
-  to: '/',
-  icon: 'i-lucide-box',
-  active: route.path.startsWith('/docs/components')
-}, {
-  label: 'Figma',
-  icon: 'i-simple-icons-figma',
-  to: 'https://go.nuxt.com/figma-ui',
-  target: '_blank'
-}, {
-  label: 'Releases',
-  icon: 'i-lucide-rocket',
-  to: 'https://github.com/nuxt/ui/releases',
-  target: '_blank'
 }])
+
+const signOut = async () => {
+  const { error } = await client.auth.signOut()
+  if (error) {
+    console.error(error)
+  }
+  await navigateTo('/')
+}
 </script>
 
 <template>
@@ -68,9 +63,23 @@ const items = computed<NavigationMenuItem[]>(() => [{
         <!-- <TemplateMenu /> -->
       </template>
 
-      <!-- <template #right>
-        <UColorModeButton />
-      </template> -->
+      <template #right>
+        <div v-if="user" class="flex items-center">
+          <UIcon
+            name="i-lucide-circle-user-round"
+            class="size-6"
+            @click="signOut"
+          />
+        </div>
+        <div v-else>
+          <NuxtLink
+            to="/login"
+            class="text-gray-700 hover:bg-gray-400 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+          >
+            Sign in
+          </NuxtLink>
+        </div>
+      </template>
 
       <template #body>
         <UNavigationMenu

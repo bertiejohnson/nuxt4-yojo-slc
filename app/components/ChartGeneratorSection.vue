@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+const sessionStore = useSessionStore()
+
 const userNatalChart = ref(null)
 const headingString = ref('test')
 const aspectProp = ref({})
@@ -10,9 +12,9 @@ const generateChart = async (birthData) => {
     'http://127.0.0.1:8181/swetest.php?type=natal&date=2025-10-28&time=16:00&lng=-1.10000&lat=50.54000'
   )
 
-  // set cookie so birthdate can be used by signup.vue if required
-  // const birthDataCookie = useCookie('birthdata')
-  // birthDataCookie.value = birthData
+  const birthDataObj = { city: 'Wickham, Hampshire, England, United Kingdom', lng: -1.187081, lat: 50.90014, date: '2025-11-04', time: '12:59' }
+  sessionStore.setBirthData(birthDataObj)
+
   if (userNatalChart.value) {
     headingString.value = userNatalChart.value.chart.aspects[0].planetpair
       .split('_')
@@ -29,14 +31,19 @@ const generateChart = async (birthData) => {
 </script>
 
 <template>
-  <UPageSection id="birth_data_form" class="mt-12 bg-gray-100 min-h-screen">
+  <UPageSection
+    id="birth_data_form"
+    class="mt-12 bg-gray-100 min-h-screen"
+  >
     <template v-if="!userNatalChart">
       <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-3xl font-bold mb-4">Create your natal chart</h2>
+        <h2 class="text-3xl font-bold mb-4">
+          Create your natal chart
+        </h2>
         <p class="mb-6">
-          Enter your birth details below to generate your personalized natal chart
+          Enter your birth details below to generate your personal natal chart
         </p>
-        <BirthDataForm @generateChart="generateChart" />
+        <BirthDataForm @generate-chart="generateChart" />
       </div>
     </template>
 
@@ -55,6 +62,7 @@ const generateChart = async (birthData) => {
             :aspect="aspectProp"
           />
         </div>
+        <SignUpButton />
       </div>
     </template>
   </UPageSection>

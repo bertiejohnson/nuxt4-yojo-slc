@@ -5,10 +5,8 @@ export const useKeywordsStore = defineStore('keywords', {
     keywordsFetched: false
   }),
   getters: {
-    getKeywords: (state) => {
-      return state.keywords
-    },
-    getLandingKeywordPairs: state => state.landingKeywordPairs
+    getKeywords: (state) => state.keywords,
+    getLandingKeywordPairs: (state) => state.landingKeywordPairs
   },
   actions: {
     async fetchLandingKeywords(keywordPairs) {

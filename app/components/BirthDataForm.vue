@@ -20,10 +20,7 @@ const state = reactive<Partial<Schema>>({
   timeOfBirth: undefined
 })
 
-const toast = useToast()
-
 async function onSubmit(event: FormSubmitEvent<Schema>) {
-  // toast.add({ title: 'Success', description: 'The form has been submitted.', color: 'success' })
   // Handle form submission logic here
   emit('generateChart', {
     city: state.placeOfBirth,
@@ -34,9 +31,9 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
   })
 
   // and reset form state once chart is loaded ...
-  // state.placeOfBirth = ''
-  // state.dateOfBirth = ''
-  // state.timeOfBirth = ''
+  state.placeOfBirth = ''
+  state.dateOfBirth = ''
+  state.timeOfBirth = ''
 }
 
 // flag the input state - run getPlace and either produce list or accept entry after hitting 'Enter' on one of the locations in the location drop-down 
@@ -71,16 +68,16 @@ const getPlace = async function (e) {
     acceptEntry.value = true // reset
     currentFocus = -1 // reset
 
-    //remove listener
+    // remove listener
     if (document.getElementById('placeInput')) {
-      document.getElementById('placeInput').removeEventListener('keydown', handleArrowKeys)
+      document.getElementById('placeInput')?.removeEventListener('keydown', handleArrowKeys)
     }
     return
   }
 
   // add listener for the resulting location drop-down list
   if (document.getElementById('placeInput')) {
-    document.getElementById('placeInput').addEventListener('keydown', handleArrowKeys)
+    document.getElementById('placeInput')?.addEventListener('keydown', handleArrowKeys)
   }
 
   geocodeService.forwardGeocode({
@@ -91,23 +88,15 @@ const getPlace = async function (e) {
     .then((response) => {
       placesdata.value = response.body.features
     })
-
-  function catchError(error) {
-    console.log('We have an error', error)
-    throw createError({
-      statusCode: 401,
-      statusMessage: `Not working: ${error}`,
-      fatal: false
-    })
-  }
 }
 
-// Handle arrow key navigation on the locataion drop-down
+// Handle arrow key navigation on the location drop-down
 function handleArrowKeys(e) {
   let x = document.getElementById('placeList')
   if (x) x = x.getElementsByTagName('li')
 
   if (e.key == 'ArrowDown') {
+    console.log('arrow down')
     currentFocus++
     addActive(x)
   } else if (e.key == 'ArrowUp') {
@@ -121,7 +110,7 @@ function handleArrowKeys(e) {
   }
 }
 
-function addActive (x) {
+function addActive(x) {
   if (!x) return false
   removeActive(x)
   if (currentFocus >= x.length) currentFocus = 0
@@ -137,53 +126,79 @@ function removeActive(x) {
 </script>
 
 <template>
-  <div>
+  <div class="bg-green-50 border border-green-600 rounded-md py-5 px-3 w-full">
     <UForm
       :schema="schema"
       :state="state"
       class="space-y-4"
       @submit="onSubmit"
     >
-      <UFormField label="Place of Birth" name="placeOfBirth">
-        <UInput v-model="state.placeOfBirth" id="placeInput" type="text" @input="getPlace" />
+      <UFormField
+        label="Place of Birth"
+        name="placeOfBirth"
+      >
+        <UInput
+          id="placeInput"
+          v-model="state.placeOfBirth"
+          type="text"
+          class="w-full"
+          @input="getPlace"
+        />
       </UFormField>
 
-      <div>
-        <ul id="placeList" class="mt-1 place-list">
+      <div class="">
+        <ul
+          id="placeList"
+          class="mt-1 place-list"
+        >
           <PlaceButton
-            v-for="place in placesdata"
-            :key="place.id"
-            @insert-city="insertCity"
+            v-for="(place, index) in placesdata"
+            :key="index"
             :place="place"
+            @insert-city="insertCity"
           />
         </ul>
       </div>
 
-      <UFormField label="Data of Birth" name="dateOfBirth">
-        <UInput v-model="state.dateOfBirth" type="date" />
+      <UFormField
+        label="Data of Birth"
+        name="dateOfBirth"
+      >
+        <UInput
+          v-model="state.dateOfBirth"
+          type="date"
+        />
       </UFormField>
-      <UFormField label="Time of Birth" name="timeOfBirth">
-        <UInput v-model="state.timeOfBirth" type="time" />
+
+      <UFormField
+        label="Time of Birth"
+        name="timeOfBirth"
+      >
+        <UInput
+          v-model="state.timeOfBirth"
+          type="time"
+        />
       </UFormField>
+
       <UButton type="submit">
         Submit
       </UButton>
     </UForm>
-    <UButton
+    <!-- <UButton
       variant="solid"
       color="success"
       class="mt-4"
       @click="$emit('generateChart')"
     >
       Generate Chart
-    </UButton>
+    </UButton> -->
   </div>
 </template>
 
 <style>
 .autocomplete-active {
-  /*when navigating through the items using the arrow keys:*/
-  background-color: DodgerBlue !important;
+  background-color: oklch(96.2% 0.044 156.743) !important;
+  border-color: oklch(79.2% 0.209 151.711);
   color: #ffffff;
 }
 </style>

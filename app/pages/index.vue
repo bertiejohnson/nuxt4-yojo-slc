@@ -3,8 +3,12 @@ const { data, error } = await useFetch('http://127.0.0.1:8181/swetest.php?type=n
 const links = ref([
   {
     label: 'Create your chart',
-    to: '#birth_data_form',
+    to: '/create-chart',
     icon: 'i-lucide-square-play'
+  },
+  {
+    label: 'Learn more',
+    to: '#learn_more'
   }
 ])
 
@@ -52,6 +56,14 @@ const aspectProp = {
         </div>
       </template>
     </UPageHero>
-    <ChartGeneratorSection />
+
+    <USeparator />
+
+    <UPageSection
+      id="#learn_more"
+      class="mt-12 bg-gray-100 min-h-screen"
+    >
+      <div>Learn More</div>
+    </UPageSection>
   </div>
 </template>

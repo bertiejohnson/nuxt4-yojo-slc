@@ -35,10 +35,14 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 </script>
 
 <template>
-  <div class="flex items-center w-full">
-    <div class="mx-auto mt-4">
-      <h2>Login Page</h2>
-
+  <div class="flex flex-col items-center w-full">
+    <h2 class="text-3xl font-bold mt-2">
+      Sign in
+    </h2>
+    <p class="my-5 text-center w-44">
+      Enter your details to sign into your account
+    </p>
+    <div class="bg-green-50 border border-green-600 rounded-md py-5 px-3 w-fit">
       <UForm
         :schema="schema"
         :state="state"
@@ -48,8 +52,12 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
         <UFormField
           label="Email"
           name="email"
+          class="m"
         >
-          <UInput v-model="state.email" />
+          <UInput
+            v-model="state.email"
+            type="email"
+          />
         </UFormField>
 
         <UFormField

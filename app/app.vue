@@ -32,7 +32,7 @@ useSeoMeta({
 
 const items = computed<NavigationMenuItem[]>(() => [{
   label: 'Dashboard',
-  to: '/dashboard',
+  to: '/db',
   icon: 'i-lucide-book-open',
   active: route.path.startsWith('/docs/getting-started')
 }])

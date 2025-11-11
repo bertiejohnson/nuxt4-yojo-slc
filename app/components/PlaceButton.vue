@@ -1,31 +1,30 @@
 <script setup>
-
 const props = defineProps({
   place: Object
-});
+})
 
-const emit = defineEmits(['insertCity']);
+const emit = defineEmits(['insertCity'])
 
-  // sort out the naming here - selectCity and insert-city ... why the difference? Is it confusing?
+// sort out the naming here - selectCity and insert-city ... why the difference? Is it confusing?
 const selectCity = (place) => {
-  emit("insertCity", { place_name: place.place_name, lng: place.geometry.coordinates[0], lat: place.geometry.coordinates[1]  } 
-  );
-};
-
-
-
- </script>
+  emit('insertCity', { place_name: place.place_name, lng: place.geometry.coordinates[0], lat: place.geometry.coordinates[1] }
+  )
+}
+</script>
 
 <template>
-  <li 
-    class="w-80 bg-white truncate border border-t-1 border-gray-100 py-1 px-2 text-sm place-list-li" 
+  <li
+    class="w-[310px] bg-white truncate border border-t border-gray-100 py-1 px-2 text-sm place-list-li"
     @click="selectCity(place)"
   >
-    <span class="font-bold text-slate-700">{{ place.text }}</span> <br /> 
-    <span 
-      class="mr-1 text-xs text-slate-500" 
-      v-for="(context, index) in place.context">{{ context.text }}
-    </span> 
+    <span class="font-bold text-slate-700">{{ place.text }}</span><br>
+    <span
+      v-for="(context, index) in place.context"
+      :key="index"
+      class="mr-1 text-xs text-slate-500"
+    >
+      {{ context.text }}
+    </span>
   </li>
 </template>
 

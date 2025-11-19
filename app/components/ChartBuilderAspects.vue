@@ -69,10 +69,10 @@
 	(() => {
 		for (let i = 0; i < aspects.length; i++) {
 			if (
-				aspects[i].planetpair.includes('asc') ||
-				aspects[i].planetpair.includes('mc') ||
-				aspects[i].planetpair.includes('chiron') ||
-				aspects[i].planetpair.includes('true_node')
+				aspects[i].planetPair.includes('asc') ||
+				aspects[i].planetPair.includes('mc') ||
+				aspects[i].planetPair.includes('chiron') ||
+				aspects[i].planetPair.includes('true_node')
 			)
 				continue;
 

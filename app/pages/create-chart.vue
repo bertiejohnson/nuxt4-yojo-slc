@@ -16,13 +16,13 @@ const generateChart = async (birthData) => {
   sessionStore.setBirthData(birthDataObj)
 
   if (userNatalChart.value) {
-    headingString.value = userNatalChart.value.chart.aspects[0].planetpair
+    headingString.value = userNatalChart.value.chart.aspects[0].planetPair
       .split('_')
       .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(` ${userNatalChart.value.chart.aspects[0].name} `)
+      .join(` ${userNatalChart.value.chart.aspects[0].aspectName} `)
 
     aspectProp.value = {
-      aspectType: userNatalChart.value.chart.aspects[0].name,
+      aspectType: userNatalChart.value.chart.aspects[0].aspectName,
       planetOne: userNatalChart.value.chart.aspects[0].planetOne_swisseph_id + 1,
       planetTwo: userNatalChart.value.chart.aspects[0].planetTwo_swisseph_id + 1
     }

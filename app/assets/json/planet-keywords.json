@@ -1,7 +1,7 @@
 [
   {
     "keyword_id": 1,
-    "planet_id": 1,
+    "planet_id": 0,
     "keyword": "Identity",
     "category": "Personality",
     "polarity": "Positive",
@@ -9,7 +9,7 @@
   },
   {
     "keyword_id": 2,
-    "planet_id": 1,
+    "planet_id": 0,
     "keyword": "Ego",
     "category": "Personality",
     "polarity": "Neutral",
@@ -17,7 +17,7 @@
   },
   {
     "keyword_id": 3,
-    "planet_id": 1,
+    "planet_id": 0,
     "keyword": "Vitality",
     "category": "Health",
     "polarity": "Positive",
@@ -25,7 +25,7 @@
   },
   {
     "keyword_id": 4,
-    "planet_id": 1,
+    "planet_id": 0,
     "keyword": "Leadership",
     "category": "Career",
     "polarity": "Positive",
@@ -33,7 +33,7 @@
   },
   {
     "keyword_id": 5,
-    "planet_id": 1,
+    "planet_id": 0,
     "keyword": "Confidence",
     "category": "Personality",
     "polarity": "Positive",
@@ -41,7 +41,7 @@
   },
   {
     "keyword_id": 6,
-    "planet_id": 1,
+    "planet_id": 0,
     "keyword": "Pride",
     "category": "Personality",
     "polarity": "Neutral",
@@ -49,7 +49,7 @@
   },
   {
     "keyword_id": 7,
-    "planet_id": 1,
+    "planet_id": 0,
     "keyword": "Creativity",
     "category": "General",
     "polarity": "Positive",
@@ -57,7 +57,7 @@
   },
   {
     "keyword_id": 8,
-    "planet_id": 1,
+    "planet_id": 0,
     "keyword": "Authority",
     "category": "Career",
     "polarity": "Positive",
@@ -65,7 +65,7 @@
   },
   {
     "keyword_id": 9,
-    "planet_id": 1,
+    "planet_id": 0,
     "keyword": "Father",
     "category": "Relationships",
     "polarity": "Neutral",
@@ -73,7 +73,7 @@
   },
   {
     "keyword_id": 10,
-    "planet_id": 1,
+    "planet_id": 0,
     "keyword": "Heart",
     "category": "Health",
     "polarity": "Neutral",
@@ -81,7 +81,7 @@
   },
   {
     "keyword_id": 11,
-    "planet_id": 1,
+    "planet_id": 0,
     "keyword": "Arrogance",
     "category": "Personality",
     "polarity": "Negative",
@@ -89,7 +89,7 @@
   },
   {
     "keyword_id": 12,
-    "planet_id": 1,
+    "planet_id": 0,
     "keyword": "Self-centeredness",
     "category": "Personality",
     "polarity": "Negative",
@@ -97,7 +97,7 @@
   },
   {
     "keyword_id": 13,
-    "planet_id": 2,
+    "planet_id": 1,
     "keyword": "Emotions",
     "category": "Personality",
     "polarity": "Neutral",
@@ -105,7 +105,7 @@
   },
   {
     "keyword_id": 14,
-    "planet_id": 2,
+    "planet_id": 1,
     "keyword": "Intuition",
     "category": "Personality",
     "polarity": "Positive",
@@ -113,7 +113,7 @@
   },
   {
     "keyword_id": 15,
-    "planet_id": 2,
+    "planet_id": 1,
     "keyword": "Mother",
     "category": "Relationships",
     "polarity": "Neutral",
@@ -121,7 +121,7 @@
   },
   {
     "keyword_id": 16,
-    "planet_id": 2,
+    "planet_id": 1,
     "keyword": "Nurturing",
     "category": "Personality",
     "polarity": "Positive",
@@ -129,7 +129,7 @@
   },
   {
     "keyword_id": 17,
-    "planet_id": 2,
+    "planet_id": 1,
     "keyword": "Memory",
     "category": "Mental",
     "polarity": "Positive",
@@ -137,7 +137,7 @@
   },
   {
     "keyword_id": 18,
-    "planet_id": 2,
+    "planet_id": 1,
     "keyword": "Habits",
     "category": "Personality",
     "polarity": "Neutral",
@@ -145,7 +145,7 @@
   },
   {
     "keyword_id": 19,
-    "planet_id": 2,
+    "planet_id": 1,
     "keyword": "Security",
     "category": "General",
     "polarity": "Positive",
@@ -153,7 +153,7 @@
   },
   {
     "keyword_id": 20,
-    "planet_id": 2,
+    "planet_id": 1,
     "keyword": "Home",
     "category": "General",
     "polarity": "Positive",
@@ -161,7 +161,7 @@
   },
   {
     "keyword_id": 21,
-    "planet_id": 2,
+    "planet_id": 1,
     "keyword": "Moods",
     "category": "Personality",
     "polarity": "Neutral",
@@ -169,7 +169,7 @@
   },
   {
     "keyword_id": 22,
-    "planet_id": 2,
+    "planet_id": 1,
     "keyword": "Stomach",
     "category": "Health",
     "polarity": "Neutral",
@@ -177,7 +177,7 @@
   },
   {
     "keyword_id": 23,
-    "planet_id": 2,
+    "planet_id": 1,
     "keyword": "Oversensitive",
     "category": "Personality",
     "polarity": "Negative",
@@ -185,7 +185,7 @@
   },
   {
     "keyword_id": 24,
-    "planet_id": 2,
+    "planet_id": 1,
     "keyword": "Clingy",
     "category": "Personality",
     "polarity": "Negative",
@@ -193,7 +193,7 @@
   },
   {
     "keyword_id": 25,
-    "planet_id": 3,
+    "planet_id": 2,
     "keyword": "Communication",
     "category": "Mental",
     "polarity": "Positive",
@@ -201,7 +201,7 @@
   },
   {
     "keyword_id": 26,
-    "planet_id": 3,
+    "planet_id": 2,
     "keyword": "Intelligence",
     "category": "Mental",
     "polarity": "Positive",
@@ -209,7 +209,7 @@
   },
   {
     "keyword_id": 27,
-    "planet_id": 3,
+    "planet_id": 2,
     "keyword": "Learning",
     "category": "Mental",
     "polarity": "Positive",
@@ -217,7 +217,7 @@
   },
   {
     "keyword_id": 28,
-    "planet_id": 3,
+    "planet_id": 2,
     "keyword": "Writing",
     "category": "Career",
     "polarity": "Positive",
@@ -225,7 +225,7 @@
   },
   {
     "keyword_id": 29,
-    "planet_id": 3,
+    "planet_id": 2,
     "keyword": "Travel",
     "category": "General",
     "polarity": "Positive",
@@ -233,7 +233,7 @@
   },
   {
     "keyword_id": 30,
-    "planet_id": 3,
+    "planet_id": 2,
     "keyword": "Technology",
     "category": "General",
     "polarity": "Positive",
@@ -241,7 +241,7 @@
   },
   {
     "keyword_id": 31,
-    "planet_id": 3,
+    "planet_id": 2,
     "keyword": "Curiosity",
     "category": "Personality",
     "polarity": "Positive",
@@ -249,7 +249,7 @@
   },
   {
     "keyword_id": 32,
-    "planet_id": 3,
+    "planet_id": 2,
     "keyword": "Adaptability",
     "category": "Personality",
     "polarity": "Positive",
@@ -257,7 +257,7 @@
   },
   {
     "keyword_id": 33,
-    "planet_id": 3,
+    "planet_id": 2,
     "keyword": "Nervous system",
     "category": "Health",
     "polarity": "Neutral",
@@ -265,7 +265,7 @@
   },
   {
     "keyword_id": 34,
-    "planet_id": 3,
+    "planet_id": 2,
     "keyword": "Siblings",
     "category": "Relationships",
     "polarity": "Neutral",
@@ -273,7 +273,7 @@
   },
   {
     "keyword_id": 35,
-    "planet_id": 3,
+    "planet_id": 2,
     "keyword": "Scattered",
     "category": "Personality",
     "polarity": "Negative",
@@ -281,7 +281,7 @@
   },
   {
     "keyword_id": 36,
-    "planet_id": 3,
+    "planet_id": 2,
     "keyword": "Gossipy",
     "category": "Personality",
     "polarity": "Negative",
@@ -289,7 +289,7 @@
   },
   {
     "keyword_id": 37,
-    "planet_id": 4,
+    "planet_id": 3,
     "keyword": "Love",
     "category": "Relationships",
     "polarity": "Positive",
@@ -297,7 +297,7 @@
   },
   {
     "keyword_id": 38,
-    "planet_id": 4,
+    "planet_id": 3,
     "keyword": "Beauty",
     "category": "General",
     "polarity": "Positive",
@@ -305,7 +305,7 @@
   },
   {
     "keyword_id": 39,
-    "planet_id": 4,
+    "planet_id": 3,
     "keyword": "Harmony",
     "category": "Personality",
     "polarity": "Positive",
@@ -313,7 +313,7 @@
   },
   {
     "keyword_id": 40,
-    "planet_id": 4,
+    "planet_id": 3,
     "keyword": "Values",
     "category": "Personality",
     "polarity": "Positive",
@@ -321,7 +321,7 @@
   },
   {
     "keyword_id": 41,
-    "planet_id": 4,
+    "planet_id": 3,
     "keyword": "Money",
     "category": "General",
     "polarity": "Neutral",
@@ -329,7 +329,7 @@
   },
   {
     "keyword_id": 42,
-    "planet_id": 4,
+    "planet_id": 3,
     "keyword": "Art",
     "category": "General",
     "polarity": "Positive",
@@ -337,7 +337,7 @@
   },
   {
     "keyword_id": 43,
-    "planet_id": 4,
+    "planet_id": 3,
     "keyword": "Romance",
     "category": "Relationships",
     "polarity": "Positive",
@@ -345,7 +345,7 @@
   },
   {
     "keyword_id": 44,
-    "planet_id": 4,
+    "planet_id": 3,
     "keyword": "Pleasure",
     "category": "General",
     "polarity": "Positive",
@@ -353,7 +353,7 @@
   },
   {
     "keyword_id": 45,
-    "planet_id": 4,
+    "planet_id": 3,
     "keyword": "Partnership",
     "category": "Relationships",
     "polarity": "Positive",
@@ -361,7 +361,7 @@
   },
   {
     "keyword_id": 46,
-    "planet_id": 4,
+    "planet_id": 3,
     "keyword": "Throat",
     "category": "Health",
     "polarity": "Neutral",
@@ -369,7 +369,7 @@
   },
   {
     "keyword_id": 47,
-    "planet_id": 4,
+    "planet_id": 3,
     "keyword": "Vanity",
     "category": "Personality",
     "polarity": "Negative",
@@ -377,7 +377,7 @@
   },
   {
     "keyword_id": 48,
-    "planet_id": 4,
+    "planet_id": 3,
     "keyword": "Laziness",
     "category": "Personality",
     "polarity": "Negative",
@@ -385,7 +385,7 @@
   },
   {
     "keyword_id": 49,
-    "planet_id": 5,
+    "planet_id": 4,
     "keyword": "Energy",
     "category": "Personality",
     "polarity": "Positive",
@@ -393,7 +393,7 @@
   },
   {
     "keyword_id": 50,
-    "planet_id": 5,
+    "planet_id": 4,
     "keyword": "Action",
     "category": "Personality",
     "polarity": "Positive",
@@ -401,7 +401,7 @@
   },
   {
     "keyword_id": 51,
-    "planet_id": 5,
+    "planet_id": 4,
     "keyword": "Courage",
     "category": "Personality",
     "polarity": "Positive",
@@ -409,7 +409,7 @@
   },
   {
     "keyword_id": 52,
-    "planet_id": 5,
+    "planet_id": 4,
     "keyword": "Competition",
     "category": "General",
     "polarity": "Neutral",
@@ -417,7 +417,7 @@
   },
   {
     "keyword_id": 53,
-    "planet_id": 5,
+    "planet_id": 4,
     "keyword": "Passion",
     "category": "Personality",
     "polarity": "Positive",
@@ -425,7 +425,7 @@
   },
   {
     "keyword_id": 54,
-    "planet_id": 5,
+    "planet_id": 4,
     "keyword": "Aggression",
     "category": "Personality",
     "polarity": "Negative",
@@ -433,7 +433,7 @@
   },
   {
     "keyword_id": 55,
-    "planet_id": 5,
+    "planet_id": 4,
     "keyword": "Independence",
     "category": "Personality",
     "polarity": "Positive",
@@ -441,7 +441,7 @@
   },
   {
     "keyword_id": 56,
-    "planet_id": 5,
+    "planet_id": 4,
     "keyword": "Sports",
     "category": "General",
     "polarity": "Positive",
@@ -449,7 +449,7 @@
   },
   {
     "keyword_id": 57,
-    "planet_id": 5,
+    "planet_id": 4,
     "keyword": "Muscles",
     "category": "Health",
     "polarity": "Neutral",
@@ -457,7 +457,7 @@
   },
   {
     "keyword_id": 58,
-    "planet_id": 5,
+    "planet_id": 4,
     "keyword": "War",
     "category": "General",
     "polarity": "Negative",
@@ -465,7 +465,7 @@
   },
   {
     "keyword_id": 59,
-    "planet_id": 5,
+    "planet_id": 4,
     "keyword": "Anger",
     "category": "Personality",
     "polarity": "Negative",
@@ -473,7 +473,7 @@
   },
   {
     "keyword_id": 60,
-    "planet_id": 5,
+    "planet_id": 4,
     "keyword": "Impulsive",
     "category": "Personality",
     "polarity": "Negative",
@@ -481,7 +481,7 @@
   },
   {
     "keyword_id": 61,
-    "planet_id": 6,
+    "planet_id": 5,
     "keyword": "Expansion",
     "category": "General",
     "polarity": "Positive",
@@ -489,7 +489,7 @@
   },
   {
     "keyword_id": 62,
-    "planet_id": 6,
+    "planet_id": 5,
     "keyword": "Wisdom",
     "category": "Mental",
     "polarity": "Positive",
@@ -497,7 +497,7 @@
   },
   {
     "keyword_id": 63,
-    "planet_id": 6,
+    "planet_id": 5,
     "keyword": "Optimism",
     "category": "Personality",
     "polarity": "Positive",
@@ -505,7 +505,7 @@
   },
   {
     "keyword_id": 64,
-    "planet_id": 6,
+    "planet_id": 5,
     "keyword": "Philosophy",
     "category": "Mental",
     "polarity": "Positive",
@@ -513,7 +513,7 @@
   },
   {
     "keyword_id": 65,
-    "planet_id": 6,
+    "planet_id": 5,
     "keyword": "Higher learning",
     "category": "Mental",
     "polarity": "Positive",
@@ -521,7 +521,7 @@
   },
   {
     "keyword_id": 66,
-    "planet_id": 6,
+    "planet_id": 5,
     "keyword": "Luck",
     "category": "General",
     "polarity": "Positive",
@@ -529,7 +529,7 @@
   },
   {
     "keyword_id": 67,
-    "planet_id": 6,
+    "planet_id": 5,
     "keyword": "Religion",
     "category": "General",
     "polarity": "Neutral",
@@ -537,7 +537,7 @@
   },
   {
     "keyword_id": 68,
-    "planet_id": 6,
+    "planet_id": 5,
     "keyword": "Justice",
     "category": "General",
     "polarity": "Positive",
@@ -545,7 +545,7 @@
   },
   {
     "keyword_id": 69,
-    "planet_id": 6,
+    "planet_id": 5,
     "keyword": "Travel",
     "category": "General",
     "polarity": "Positive",
@@ -553,7 +553,7 @@
   },
   {
     "keyword_id": 70,
-    "planet_id": 6,
+    "planet_id": 5,
     "keyword": "Liver",
     "category": "Health",
     "polarity": "Neutral",
@@ -561,7 +561,7 @@
   },
   {
     "keyword_id": 71,
-    "planet_id": 6,
+    "planet_id": 5,
     "keyword": "Overindulgence",
     "category": "Personality",
     "polarity": "Negative",
@@ -569,7 +569,7 @@
   },
   {
     "keyword_id": 72,
-    "planet_id": 6,
+    "planet_id": 5,
     "keyword": "Dogmatic",
     "category": "Personality",
     "polarity": "Negative",
@@ -577,7 +577,7 @@
   },
   {
     "keyword_id": 73,
-    "planet_id": 7,
+    "planet_id": 6,
     "keyword": "Discipline",
     "category": "Personality",
     "polarity": "Positive",
@@ -585,7 +585,7 @@
   },
   {
     "keyword_id": 74,
-    "planet_id": 7,
+    "planet_id": 6,
     "keyword": "Restriction",
     "category": "Personality",
     "polarity": "Negative",
@@ -593,7 +593,7 @@
   },
   {
     "keyword_id": 75,
-    "planet_id": 7,
+    "planet_id": 6,
     "keyword": "Responsibility",
     "category": "Personality",
     "polarity": "Positive",
@@ -601,7 +601,7 @@
   },
   {
     "keyword_id": 76,
-    "planet_id": 7,
+    "planet_id": 6,
     "keyword": "Structure",
     "category": "General",
     "polarity": "Positive",
@@ -609,7 +609,7 @@
   },
   {
     "keyword_id": 77,
-    "planet_id": 7,
+    "planet_id": 6,
     "keyword": "Time",
     "category": "General",
     "polarity": "Neutral",
@@ -617,7 +617,7 @@
   },
   {
     "keyword_id": 78,
-    "planet_id": 7,
+    "planet_id": 6,
     "keyword": "Authority",
     "category": "Career",
     "polarity": "Positive",
@@ -625,7 +625,7 @@
   },
   {
     "keyword_id": 79,
-    "planet_id": 7,
+    "planet_id": 6,
     "keyword": "Limitations",
     "category": "General",
     "polarity": "Negative",
@@ -633,7 +633,7 @@
   },
   {
     "keyword_id": 80,
-    "planet_id": 7,
+    "planet_id": 6,
     "keyword": "Patience",
     "category": "Personality",
     "polarity": "Positive",
@@ -641,7 +641,7 @@
   },
   {
     "keyword_id": 81,
-    "planet_id": 7,
+    "planet_id": 6,
     "keyword": "Bones",
     "category": "Health",
     "polarity": "Neutral",
@@ -649,7 +649,7 @@
   },
   {
     "keyword_id": 82,
-    "planet_id": 7,
+    "planet_id": 6,
     "keyword": "Career",
     "category": "General",
     "polarity": "Positive",
@@ -657,7 +657,7 @@
   },
   {
     "keyword_id": 83,
-    "planet_id": 7,
+    "planet_id": 6,
     "keyword": "Depression",
     "category": "Health",
     "polarity": "Negative",
@@ -665,7 +665,7 @@
   },
   {
     "keyword_id": 84,
-    "planet_id": 7,
+    "planet_id": 6,
     "keyword": "Pessimism",
     "category": "Personality",
     "polarity": "Negative",
@@ -673,7 +673,7 @@
   },
   {
     "keyword_id": 85,
-    "planet_id": 8,
+    "planet_id": 7,
     "keyword": "Innovation",
     "category": "Mental",
     "polarity": "Positive",
@@ -681,7 +681,7 @@
   },
   {
     "keyword_id": 86,
-    "planet_id": 8,
+    "planet_id": 7,
     "keyword": "Revolution",
     "category": "General",
     "polarity": "Neutral",
@@ -689,7 +689,7 @@
   },
   {
     "keyword_id": 87,
-    "planet_id": 8,
+    "planet_id": 7,
     "keyword": "Independence",
     "category": "Personality",
     "polarity": "Positive",
@@ -697,7 +697,7 @@
   },
   {
     "keyword_id": 88,
-    "planet_id": 8,
+    "planet_id": 7,
     "keyword": "Technology",
     "category": "General",
     "polarity": "Positive",
@@ -705,7 +705,7 @@
   },
   {
     "keyword_id": 89,
-    "planet_id": 8,
+    "planet_id": 7,
     "keyword": "Originality",
     "category": "Personality",
     "polarity": "Positive",
@@ -713,7 +713,7 @@
   },
   {
     "keyword_id": 90,
-    "planet_id": 8,
+    "planet_id": 7,
     "keyword": "Freedom",
     "category": "General",
     "polarity": "Positive",
@@ -721,7 +721,7 @@
   },
   {
     "keyword_id": 91,
-    "planet_id": 8,
+    "planet_id": 7,
     "keyword": "Rebellion",
     "category": "Personality",
     "polarity": "Neutral",
@@ -729,7 +729,7 @@
   },
   {
     "keyword_id": 92,
-    "planet_id": 8,
+    "planet_id": 7,
     "keyword": "Sudden change",
     "category": "General",
     "polarity": "Neutral",
@@ -737,7 +737,7 @@
   },
   {
     "keyword_id": 93,
-    "planet_id": 8,
+    "planet_id": 7,
     "keyword": "Electricity",
     "category": "General",
     "polarity": "Neutral",
@@ -745,7 +745,7 @@
   },
   {
     "keyword_id": 94,
-    "planet_id": 8,
+    "planet_id": 7,
     "keyword": "Nervous system",
     "category": "Health",
     "polarity": "Neutral",
@@ -753,7 +753,7 @@
   },
   {
     "keyword_id": 95,
-    "planet_id": 8,
+    "planet_id": 7,
     "keyword": "Erratic",
     "category": "Personality",
     "polarity": "Negative",
@@ -761,7 +761,7 @@
   },
   {
     "keyword_id": 96,
-    "planet_id": 8,
+    "planet_id": 7,
     "keyword": "Unpredictable",
     "category": "Personality",
     "polarity": "Negative",
@@ -769,7 +769,7 @@
   },
   {
     "keyword_id": 97,
-    "planet_id": 9,
+    "planet_id": 8,
     "keyword": "Spirituality",
     "category": "General",
     "polarity": "Positive",
@@ -777,7 +777,7 @@
   },
   {
     "keyword_id": 98,
-    "planet_id": 9,
+    "planet_id": 8,
     "keyword": "Imagination",
     "category": "Mental",
     "polarity": "Positive",
@@ -785,7 +785,7 @@
   },
   {
     "keyword_id": 99,
-    "planet_id": 9,
+    "planet_id": 8,
     "keyword": "Compassion",
     "category": "Personality",
     "polarity": "Positive",
@@ -793,7 +793,7 @@
   },
   {
     "keyword_id": 100,
-    "planet_id": 9,
+    "planet_id": 8,
     "keyword": "Dreams",
     "category": "Mental",
     "polarity": "Positive",

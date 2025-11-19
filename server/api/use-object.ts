@@ -10,10 +10,11 @@ export default defineLazyEventHandler(async () => {
 
   return defineEventHandler(async (event) => {
     const context = await readBody(event)
+    const prompt = context.prompt ? context.prompt : `Generate short phrases of two to three sentences for each of the keyword pairs in: ${context.request}. Do not include the keyword pair itself.`
 
     const { object } = await generateObject({
       model: openai('gpt-4.1'),
-      prompt: `Generate short phrases of two to three sentences for each of the keyword pairs in: ${context}. Do not include the keyword pair itself.`,
+      prompt,
       schema: z.object({
         phrases: z.array(z.string())
       })

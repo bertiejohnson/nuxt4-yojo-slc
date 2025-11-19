@@ -18,18 +18,20 @@ if (error.value) {
 
 const nowChartData = data.value
 
-const headingString = nowChartData.chart.aspects[0].planetpair
+console.log('Chart again:', data.value)
+
+const headingString = nowChartData.chart.aspects[0].planetPair
   .split('_')
   .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-  .join(` ${nowChartData.chart.aspects[0].name} `)
+  .join(` ${nowChartData.chart.aspects[0].aspectName} `)
 
 // Adding 1 to match the planet IDs in the keywords JSON
 // because swisseph_id starts from 0
 // This is a temporary fix until the backend is updated
 const aspectProp = {
-  aspectType: nowChartData.chart.aspects[0].name,
-  planetOne: nowChartData.chart.aspects[0].planetOne_swisseph_id + 1,
-  planetTwo: nowChartData.chart.aspects[0].planetTwo_swisseph_id + 1
+  aspectType: nowChartData.chart.aspects[0].aspectName,
+  planetOne: nowChartData.chart.aspects[0].planetOne_swisseph_id,
+  planetTwo: nowChartData.chart.aspects[0].planetTwo_swisseph_id
 }
 </script>
 

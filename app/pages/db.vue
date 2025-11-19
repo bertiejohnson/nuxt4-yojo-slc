@@ -3,38 +3,27 @@ import { openDB } from 'idb'
 
 const items = [
   {
-    label: 'Active',
-    slot: 'active'
+    label: 'Planet Aspects',
+    slot: 'planets'
   },
   {
     label: 'Upcoming',
     slot: 'upcoming'
-  },
-  {
-    label: 'Planets',
-    slot: 'planets'
   }
 ]
 
 let chartData = null
 const aspectProp = ref({})
+let aspects = null
 
 // now run indexedDB functions
 if (import.meta.client) {
   const storeName = 'chartStore2'
-
   const db = await openDB('ReddogDB')
   chartData = await db.get(storeName, 1)
-  if (chartData) setProps(chartData)
-}
-
-function setProps(chartData) {
-  aspectProp.value = {
-    aspectType: chartData.chart.aspects[0].name,
-    planetOne: chartData.chart.aspects[0].planetOne_swisseph_id + 1,
-    planetTwo: chartData.chart.aspects[0].planetTwo_swisseph_id + 1
+  if (chartData) {
+    aspects = ref(chartData.chart.aspects)
   }
-  console.log(aspectProp.value)
 }
 </script>
 
@@ -52,19 +41,14 @@ function setProps(chartData) {
         :items="items"
         :ui="{ trigger: 'grow' }"
       >
-        <template #active>
+        <template #planets>
           <div class="px-1">
-            Active
+            <PlanetAspectList :chart-aspects="aspects" />
           </div>
         </template>
         <template #upcoming>
           <div class="px-1">
             Upcoming
-          </div>
-        </template>
-        <template #planets>
-          <div class="px-1">
-            Planet
           </div>
         </template>
       </UTabs>

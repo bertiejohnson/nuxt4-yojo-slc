@@ -1,14 +1,20 @@
 <!-- Handles the email/password signup callback from Supabase -->
 <script setup>
-import { openDB, deleteDB, wrap, unwrap } from 'idb'
+import { openDB } from 'idb'
 
 const user = useSupabaseUser()
 const client = useSupabaseClient()
 
 const userIsAuthenticated = async (userBirthData) => {
-  const chartData = await $fetch(
-    `http://127.0.0.1:8181/swetest.php?type=natal&date=${userBirthData.date}&time=${userBirthData.time}&lng=${userBirthData.lng}&lat=${userBirthData.lat}`
-  )
+  const chartData = await $fetch('/api/generate-chart', {
+    query: {
+      type: 'natal',
+      date: userBirthData.date,
+      time: userBirthData.time,
+      lng: userBirthData.lng,
+      long: userBirthData.lat
+    }
+  })
 
   const chartToStore = { chart: chartData } // this data gets inserted into indexedDB storage
   const chartJSON = JSON.stringify(chartData) // this data goes into supabase db chart table - insertChart()
@@ -64,7 +70,7 @@ async function runIndexedDB(chartToStore) {
 
   // create DB and store
   const db = await openDB(dbName, version, {
-    upgrade(db, oldVersion, newVersion, transaction) {
+    upgrade(db) {
       const store = db.createObjectStore(storeName, {
         autoIncrement: true
       })

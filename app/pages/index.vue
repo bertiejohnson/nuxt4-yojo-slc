@@ -1,5 +1,10 @@
 <script setup lang="ts">
-const { data, error } = await useFetch('http://127.0.0.1:8181/swetest.php?type=now')
+const { data, error } = await useFetch('/api/generate-chart', {
+  query: {
+    type: 'now'
+  }
+})
+
 const links = ref([
   {
     label: 'Create your chart',

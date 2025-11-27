@@ -4,7 +4,7 @@ import { z } from 'zod'
 // import { notificationSchema } from '~/shared/notification-schema'
 
 export default defineLazyEventHandler(async () => {
-  const apiKey = useRuntimeConfig().public.openaiApiKey
+  const apiKey = useRuntimeConfig().openaiApiKey
   if (!apiKey) throw new Error('Missing OpenAI API key')
   const openai = createOpenAI({ apiKey })
 

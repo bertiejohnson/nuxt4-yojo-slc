@@ -41,4 +41,18 @@ export default defineNuxtConfig({
     url: process.env.SUPABASE_URL || '',
     key: process.env.SUPABASE_KEY || ''
   },
+
+  vite: {
+    server: {
+      allowedHosts: ["yojoastro.com"] 
+    },
+    optimizeDeps: {
+      include: ['@supabase/postgrest-js', '@supabase/supabase-js']
+    }
+  },
+  nitro: {
+    externals: {
+      inline: ['@supabase/supabase-js']
+    }
+  },
 })

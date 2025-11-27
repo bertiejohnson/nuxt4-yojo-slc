@@ -23,7 +23,7 @@ if (error.value) {
 
 const nowChartData = data.value
 
-console.log('Chart again:', data.value)
+console.log('Chart again:', data.value.chart)
 
 const headingString = nowChartData.chart.aspects[0].planetPair
   .split('_')
@@ -38,6 +38,7 @@ const aspectProp = {
   planetOne: nowChartData.chart.aspects[0].planetOne_swisseph_id,
   planetTwo: nowChartData.chart.aspects[0].planetTwo_swisseph_id
 }
+
 </script>
 
 <template>

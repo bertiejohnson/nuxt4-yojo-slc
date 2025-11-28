@@ -29,9 +29,6 @@ if (import.meta.client) {
 
 <template>
   <div class="flex flex-col items-center w-full">
-    <div class="mx-auto mt-4">
-      <h2>Dashboard</h2>
-    </div>
     <div class="w-full -mt-8">
       <chart-builder :chart-data="chartData" />
     </div>

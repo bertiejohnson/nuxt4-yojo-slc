@@ -23,7 +23,7 @@ if (error.value) {
 
 const nowChartData = data.value
 
-console.log('Chart again:', data.value)
+// console.log('Chart again:', data.value)
 
 const headingString = nowChartData.chart.aspects[0].planetPair
   .split('_')

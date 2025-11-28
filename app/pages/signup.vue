@@ -42,37 +42,42 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 </script>
 
 <template>
-  <div class="max-w-md mx-auto mt-8">
-    <h2 class="text-2xl font-bold mb-6 text-center">
+  <div class="flex flex-col items-center w-full">
+    <h2 class="text-3xl font-bold mt-2">
       Sign Up
     </h2>
-    <UForm
-      :schema="schema"
-      :state="state"
-      class="space-y-4"
-      @submit="onSubmit"
-    >
-      <UFormField
-        label="Email"
-        name="email"
+    <p class="my-5 text-center w-44">
+      Enter your details to create your account
+    </p>
+    <div class="bg-green-50 border border-green-600 rounded-md py-5 px-3 w-fit">
+      <UForm
+        :schema="schema"
+        :state="state"
+        class="space-y-4"
+        @submit="onSubmit"
       >
-        <UInput v-model="state.email" />
-      </UFormField>
+        <UFormField
+          label="Email"
+          name="email"
+        >
+          <UInput v-model="state.email" />
+        </UFormField>
 
-      <UFormField
-        label="Password"
-        name="password"
-      >
-        <UInput
-          v-model="state.password"
-          type="password"
-        />
-      </UFormField>
+        <UFormField
+          label="Password"
+          name="password"
+        >
+          <UInput
+            v-model="state.password"
+            type="password"
+          />
+        </UFormField>
 
-      <UButton type="submit">
-        Submit
-      </UButton>
-    </UForm>
+        <UButton type="submit">
+          Submit
+        </UButton>
+      </UForm>
+    </div>
   </div>
 </template>
 

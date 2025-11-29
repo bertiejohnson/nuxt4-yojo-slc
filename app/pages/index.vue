@@ -23,8 +23,6 @@ if (error.value) {
 
 const nowChartData = data.value
 
-console.log('Chart again:', data.value.chart)
-
 const headingString = nowChartData.chart.aspects[0].planetPair
   .split('_')
   .map((word) => word.charAt(0).toUpperCase() + word.slice(1))

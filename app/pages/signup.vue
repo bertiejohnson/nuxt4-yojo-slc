@@ -27,7 +27,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
       email: state.email,
       password: state.password,
       options: {
-        emailRedirectTo: 'http://localhost:3000/confirm',
+        emailRedirectTo: 'https://yojoastro.com/confirm',
         data: {
           user_birth_data: birthData
         }

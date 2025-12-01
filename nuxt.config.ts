@@ -13,14 +13,12 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
 
   runtimeConfig: {
-    openaiApiKey: '',
+    openaiApiKey: process.env.OPENAI_API_KEY || '',
     public: {
       mapboxApiKey: ''
     }
   },
 
-  ssr: false,
- 
   routeRules: {
     '/': { prerender: true }
   },

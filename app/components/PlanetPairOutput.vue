@@ -3,6 +3,9 @@ const props = defineProps({
   aspect: Object
 })
 
+const { partialObject, isStreaming, isComplete, error, stream }
+  = usePartialObjectStream()
+
 const { getKeywordsForPlanetPair } = useKeywords()
 
 const keywords = ref([])
@@ -10,36 +13,25 @@ keywords.value = await getKeywordsForPlanetPair(props.aspect?.planetOneId, props
 
 const showSection = ref('keywords')
 
-const phrases = ref([])
+// const phrases = ref([])
 const elaboration = ref([])
 const loadingPhrases = ref(true)
 const loadingElaboration = ref(true)
 
+const phrases = computed(() => partialObject.value.phrases)
+
 async function getPhrases(pair) {
   let prompt = `Generate several short phrases of two to three sentences for the astrological keyword pair ${pair}. Do not include the keyword pair itself.`
-  const response = await $fetch('/api/use-object', {
-    method: 'POST',
-    body: JSON.stringify({ request: 'mars uranus', prompt })
-  })
 
-  if (Array.isArray(response?.object.phrases)) {
-    phrases.value = response?.object.phrases
-    loadingPhrases.value = false
-  }
+  stream(prompt)
+
+  loadingPhrases.value = false
 }
 
 async function elaboratePhrase(phrase: string) {
-  console.log('elaboration phrase', phrase)
   let prompt = `Elaborate and expand on the following phrase - ${phrase}. Use 50 to 75 words over 2 to 3 paragraphs. Keep in mind the keyword pair energy - innovation.`
-  const response = await $fetch('/api/use-object', {
-    method: 'POST',
-    body: JSON.stringify({ request: 'mars uranus', prompt })
-  })
-
-  if (Array.isArray(response?.object.phrases)) {
-    elaboration.value = response?.object.phrases
-    loadingElaboration.value = false
-  }
+  stream(prompt)
+  loadingElaboration.value = false
 }
 </script>
 
@@ -78,19 +70,22 @@ async function elaboratePhrase(phrase: string) {
       </div>
     </div>
     <div v-else>
-      <div
-        v-for="(phrase, i) in phrases"
-        :key="i"
-      >
-        <p class="my-3">
-          {{ phrase }}
-          <UButton
-            label="Elaborate"
-            variant="soft"
-            size="xs"
-            @click="elaboratePhrase(phrases[i]); showSection = 'elaboration'"
-          />
-        </p>
+      <div v-if="phrases">
+        <ul>
+          <li
+            v-for="(phrase, i) in phrases"
+            :key="i"
+            class="mb-4"
+          >
+            <span>{{ phrase }}</span>
+            <UButton
+              label="Elaborate"
+              variant="soft"
+              size="xs"
+              @click="elaboratePhrase(phrases[i]); showSection = 'elaboration'"
+            />
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -106,7 +101,7 @@ async function elaboratePhrase(phrase: string) {
     </div>
     <div>
       <div>
-        {{ elaboration[0] }}
+        {{ phrases ? phrases[0] : '' }}
       </div>
     </div>
   </div>

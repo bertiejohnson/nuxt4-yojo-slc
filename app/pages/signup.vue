@@ -19,6 +19,8 @@ const state = reactive<Partial<Schema>>({
   password: undefined
 })
 
+const verified = ref(false)
+
 const toast = useToast()
 async function onSubmit(event: FormSubmitEvent<Schema>) {
   toast.add({ title: 'Success', description: 'The form has been submitted.', color: 'success' })
@@ -35,7 +37,10 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
     })
     state.email = ''
     state.password = ''
-} catch (error) {
+    if (data.user.aud === 'authenticated') {
+      verified.value = true
+    }
+  } catch (error) {
     console.log('Error!!', error.value)
   }
 }
@@ -46,37 +51,44 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
     <h2 class="text-3xl font-bold mt-2">
       Sign Up
     </h2>
-    <p class="my-5 text-center w-44">
-      Enter your details to create your account
-    </p>
-    <div class="bg-green-50 border border-green-600 rounded-md py-5 px-3 w-fit">
-      <UForm
-        :schema="schema"
-        :state="state"
-        class="space-y-4"
-        @submit="onSubmit"
-      >
-        <UFormField
-          label="Email"
-          name="email"
+    <div v-if="!verified">
+      <p class="my-5 text-center w-44">
+        Enter your details to create your account
+      </p>
+      <div class="bg-green-50 border border-green-600 rounded-md py-5 px-3 w-fit">
+        <UForm
+          :schema="schema"
+          :state="state"
+          class="space-y-4"
+          @submit="onSubmit"
         >
-          <UInput v-model="state.email" />
-        </UFormField>
+          <UFormField
+            label="Email"
+            name="email"
+          >
+            <UInput v-model="state.email" />
+          </UFormField>
 
-        <UFormField
-          label="Password"
-          name="password"
-        >
-          <UInput
-            v-model="state.password"
-            type="password"
-          />
-        </UFormField>
+          <UFormField
+            label="Password"
+            name="password"
+          >
+            <UInput
+              v-model="state.password"
+              type="password"
+            />
+          </UFormField>
 
-        <UButton type="submit">
-          Submit
-        </UButton>
-      </UForm>
+          <UButton type="submit">
+            Submit
+          </UButton>
+        </UForm>
+      </div>
+    </div>
+    <div v-else>
+      <p class="my-5 text-center w-44">
+        Please check your email to verify your account.
+      </p>
     </div>
   </div>
 </template>

@@ -7,8 +7,8 @@ const items = [
     slot: 'planets'
   },
   {
-    label: 'Upcoming',
-    slot: 'upcoming'
+    label: 'Transits',
+    slot: 'transits'
   }
 ]
 
@@ -30,7 +30,10 @@ if (import.meta.client) {
 <template>
   <div class="flex flex-col items-center w-full">
     <div class="w-full -mt-8">
-      <chart-builder :chart-data="chartData" />
+      <chart-builder
+        v-if="chartData"
+        :chart-data="chartData"
+      />
     </div>
     <div class="w-full px-4">
       <UTabs
@@ -39,13 +42,13 @@ if (import.meta.client) {
         :ui="{ trigger: 'grow' }"
       >
         <template #planets>
-          <div class="px-1">
+          <div v-if="aspects" class="px-1">
             <PlanetAspectList :chart-aspects="aspects" />
           </div>
         </template>
-        <template #upcoming>
+        <template #transits>
           <div class="px-1">
-            Upcoming
+            Transits
           </div>
         </template>
       </UTabs>

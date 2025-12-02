@@ -10,7 +10,6 @@ export default defineLazyEventHandler(async () => {
 
   return defineEventHandler(async (event) => {
     const context = await readBody(event)
-     // console.log('use-object.ts', context.request)
     const prompt = context.prompt ? context.prompt : `Generate short phrases of two to three sentences for each of the keyword pairs in: ${context.request ? context.request : context}. Do not include the keyword pair itself.`
 
     const { object } = await generateObject({

@@ -55,8 +55,6 @@ function insertCity(placeAr) {
 }
 
 // Mapbox stuff
-// const runtimeConfig = useRuntimeConfig()
-
 const mapboxAccessToken
   = useRuntimeConfig().public.mapboxApiKey
 

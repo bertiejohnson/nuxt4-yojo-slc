@@ -11,10 +11,10 @@ const generateChart = async (birthData = null) => {
   const birthDataObj = null
   if (birthData) {
     birthDataObj = birthData
-    url = `http://127.0.0.1:8181/swetest.php?type=natal&date=${birthData.date}&time=${birthData.time}&lng=${birthData.lng}&lat=${birthData.lat}`
+    url = `http://127.0.0.1:8280/swetest.php?type=natal&date=${birthData.date}&time=${birthData.time}&lng=${birthData.lng}&lat=${birthData.lat}`
   } else {
     birthDataObj = { city: 'Wickham, Hampshire, England, United Kingdom', lng: -1.187081, lat: 50.90014, date: '2025-11-04', time: '12:59' }
-    url = 'http://127.0.0.1:8181/swetest.php?type=natal&date=2025-10-28&time=16:00&lng=-1.10000&lat=50.54000'
+    url = 'http://127.0.0.1:8280/swetest.php?type=natal&date=2025-10-28&time=16:00&lng=-1.10000&lat=50.54000'
   }
 
   userNatalChart.value = await $fetch(

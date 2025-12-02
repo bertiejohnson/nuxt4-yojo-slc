@@ -1,4 +1,3 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: [
     '@nuxt/ui',
@@ -6,8 +5,9 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxtjs/supabase',
     '@vueuse/nuxt',
-    '@pinia/nuxt',
+    '@pinia/nuxt'
   ],
+
   devtools: { enabled: true },
 
   css: ['~/assets/css/main.css'],
@@ -15,12 +15,11 @@ export default defineNuxtConfig({
   runtimeConfig: {
     openaiApiKey: '',
     public: {
-      mapboxApiKey: ''
+      mapboxApiKey: process.env.NUXT_PUBLIC_MAPBOX_API_KEY || '',
+      supaEmailRedirectToUrl: process.env.NUXT_PUBLIC_SUPA_EMAIL_REDIRECT_TO_URL || ''
     }
   },
 
-  ssr: false,
- 
   routeRules: {
     '/': { prerender: true }
   },
@@ -40,5 +39,5 @@ export default defineNuxtConfig({
     redirect: false,
     url: process.env.SUPABASE_URL || '',
     key: process.env.SUPABASE_KEY || ''
-  },
+  }
 })

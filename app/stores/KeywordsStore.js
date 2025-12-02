@@ -11,6 +11,7 @@ export const useKeywordsStore = defineStore('keywords', {
   actions: {
     async fetchLandingKeywords(keywordPairs) {
       this.landingKeywordPairs = keywordPairs
+      if (this.keywordsFetched) return //
       const response = await useGenerateObject(keywordPairs)
       if (Array.isArray(response?.object.value.object.phrases)) {
         this.keywords = response.object.value.object.phrases

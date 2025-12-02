@@ -11,7 +11,7 @@ export function usePartialObjectStream<T = any>() {
     partialObject.value = {}
 
     try {
-      const response = await fetch('/api/use-object', { // /api/generate
+      const response = await fetch('/api/stream-object', { // /api/generate
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt })

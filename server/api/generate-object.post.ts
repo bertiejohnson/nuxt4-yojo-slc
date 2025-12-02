@@ -1,5 +1,5 @@
 import { createOpenAI } from '@ai-sdk/openai'
-import { generateObject, streamObject } from 'ai'
+import { generateObject } from 'ai'
 import { z } from 'zod'
 // import { notificationSchema } from '~/shared/notification-schema'
 

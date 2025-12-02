@@ -6,8 +6,8 @@ const headingString = ref('test')
 const aspectProp = ref({})
 
 const generateChart = async (birthData) => {
-  userNatalChart.value = await $fetch(
-    'http://127.0.0.1:8181/swetest.php?type=natal&date=2025-10-28&time=16:00&lng=-1.10000&lat=50.54000', {
+  userNatalChart.value = await $fetch('/api/generate-chart',
+    {
       query: {
         type: 'natal',
         date: birthData.date,
@@ -18,7 +18,14 @@ const generateChart = async (birthData) => {
     }
   )
 
-  const birthDataObj = { city: 'Wickham, Hampshire, England, United Kingdom', lng: -1.187081, lat: 50.90014, date: '2025-11-04', time: '12:59' }
+  const birthDataObj = {
+    city: birthData.city,
+    lng: birthData.lng,
+    lat: birthData.lat,
+    date: birthData.date,
+    time: birthData.time
+  }
+
   sessionStore.setBirthData(birthDataObj)
 
   if (userNatalChart.value) {

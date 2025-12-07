@@ -1,107 +1,60 @@
 <script lang="ts" setup>
-const props = defineProps({
-  aspect: Object
+import { experimental_useObject as useObject } from '@ai-sdk/vue'
+import { phrasesSchema } from '#shared/zod-schemas'
+
+const { submit, isLoading, object, stop, error, clear } = useObject({
+  api: '/api/use-object',
+  schema: phrasesSchema
 })
-
-const { partialObject, isStreaming, isComplete, error, stream }
-  = usePartialObjectStream()
-
-const { getKeywordsForPlanetPair } = useKeywords()
-
-const keywords = ref([])
-keywords.value = await getKeywordsForPlanetPair(props.aspect?.planetOneId, props.aspect?.planetTwoId)
-
-const showSection = ref('keywords')
-
-// const phrases = ref([])
-const elaboration = ref([])
-const loadingPhrases = ref(true)
-const loadingElaboration = ref(true)
-
-const phrases = computed(() => partialObject.value.phrases)
-
-async function getPhrases(pair) {
-  let prompt = `Generate several short phrases of two to three sentences for the astrological keyword pair ${pair}. Do not include the keyword pair itself.`
-
-  stream(prompt)
-
-  loadingPhrases.value = false
-}
-
-async function elaboratePhrase(phrase: string) {
-  let prompt = `Elaborate and expand on the following phrase - ${phrase}. Use 50 to 75 words over 2 to 3 paragraphs. Keep in mind the keyword pair energy - innovation.`
-  stream(prompt)
-  loadingElaboration.value = false
-}
 </script>
 
 <template>
-  <div v-if="showSection === 'keywords'">
-    <div
-      v-for="(pair, i) in keywords"
-      :key="i"
-      class="mb-2"
+  <div class="flex flex-col w items-center min-h-screen p-4 m-4">
+    <button
+      class="px-4 py-2 mt-4 text-white bg-blue-500 rounded-md disabled:bg-blue-200"
+      @click="() => submit({ pair: 'love and relationships', schema: phrasesSchema})"
+      :disabled="isLoading"
     >
-      <span class="font-bold mr-2">{{ pair }}</span>
-      <UButton
-        label="Expand"
-        variant="soft"
-        size="xs"
-        class="rounded-full"
-        @click="getPhrases(pair); showSection = 'phrases'"
-      />
+      Generate Phrases
+    </button>
+
+    <div v-if="error" class="mt-4 text-red-500">
+      An error occurred. {{ error.message }}
     </div>
-  </div>
-  <div v-else-if="showSection === 'phrases'">
-    <div v-if="loadingPhrases">
-      <div class="flex items-center gap-4 mb-4">
-        <USkeleton class="h-12 w-12 rounded-full" />
-        <div class="grid gap-2">
-          <USkeleton class="h-4 w-[250px]" />
-          <USkeleton class="h-4 w-[200px]" />
+
+    <div v-if="isLoading" class="mt-4 text-gray-500">
+      <div>Loading...</div>
+      <button
+        type="button"
+        class="px-4 py-2 mt-4 text-blue-500 border border-blue-500 rounded-md"
+        @click="stop"
+      >
+        STOP
+      </button>
+    </div>
+
+    <div class="mt-4 text-gray-500">
+      <button
+        type="button"
+        @click="clear"
+        class="px-4 py-2 mt-4 text-blue-500 border border-blue-500 rounded-md"
+      >
+        Clear
+      </button>
+    </div>
+    <div class="flex flex-col gap-4 mt-4">
+      <div
+        v-for="(phrase, index) in (object?.phrases || [])"
+        :key="index"
+        class="flex items-start gap-4 p-4 bg-gray-100 rounded-md dark:bg-gray-800"
+      >
+        <div class="flex-1 space-y-1">
+          <div class="flex items-center justify-between">
+            <p class="font-medium dark:text-white">
+              {{ phrase?.phrase }}
+            </p>
+          </div>
         </div>
-      </div>
-      <div class="flex items-center gap-4 mb-4">
-        <USkeleton class="h-12 w-12 rounded-full" />
-        <div class="grid gap-2">
-          <USkeleton class="h-4 w-[250px]" />
-          <USkeleton class="h-4 w-[200px]" />
-        </div>
-      </div>
-    </div>
-    <div v-else>
-      <div v-if="phrases">
-        <ul>
-          <li
-            v-for="(phrase, i) in phrases"
-            :key="i"
-            class="mb-4"
-          >
-            <span>{{ phrase }}</span>
-            <UButton
-              label="Elaborate"
-              variant="soft"
-              size="xs"
-              @click="elaboratePhrase(phrases[i]); showSection = 'elaboration'"
-            />
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div v-else-if="showSection === 'elaboration'">
-    <div v-if="loadingElaboration">
-      <div class="flex items-center gap-4 mb-4">
-        <USkeleton class="h-12 w-12 rounded-full" />
-        <div class="grid gap-2">
-          <USkeleton class="h-4 w-[250px]" />
-          <USkeleton class="h-4 w-[200px]" />
-        </div>
-      </div>
-    </div>
-    <div>
-      <div>
-        {{ phrases ? phrases[0] : '' }}
       </div>
     </div>
   </div>

@@ -19,26 +19,6 @@ export default defineLazyEventHandler(async () => {
       })
     })
 
-    // Create a custom stream that sends partial objects
-    const stream = new ReadableStream({
-      async start(controller) {
-        const encoder = new TextEncoder()
-
-        for await (const partialObject of result.partialObjectStream) {
-          const data = JSON.stringify(partialObject) + '\n'
-          controller.enqueue(encoder.encode(data))
-        }
-
-        controller.close()
-      }
-    })
-
-    return new Response(stream, {
-      headers: {
-        'Content-Type': 'text/event-stream',
-        'Cache-Control': 'no-cache',
-        'Connection': 'keep-alive'
-      }
-    })
+    return result.toTextStreamResponse()
   })
 })

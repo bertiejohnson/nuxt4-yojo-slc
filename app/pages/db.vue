@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { openDB } from 'idb'
-
 const items = [
   {
     label: 'Planet Aspects',
@@ -11,20 +9,18 @@ const items = [
     slot: 'transits'
   }
 ]
-
-let chartData = null
-const aspectProp = ref({})
-let aspects = null
+const chartData = ref(null)
+const aspects = ref(null)
+const mounted = ref(false)
 
 // now run indexedDB functions
-if (import.meta.client) {
-  const storeName = 'chartStore2'
-  const db = await openDB('ReddogDB')
-  chartData = await db.get(storeName, 1)
-  if (chartData) {
-    aspects = ref(chartData.chart.aspects)
+onMounted(async () => {
+  chartData.value = await fetchChartFromIDB()
+  if (chartData.value) {
+    aspects.value = chartData.value.chart.aspects
+    mounted.value = true
   }
-}
+})
 </script>
 
 <template>
@@ -42,8 +38,11 @@ if (import.meta.client) {
         :ui="{ trigger: 'grow' }"
       >
         <template #planets>
-          <div v-if="aspects" class="px-1">
+          <div v-if="mounted">
             <PlanetAspectList :chart-aspects="aspects" />
+          </div>
+          <div v-else>
+            Loading aspects...
           </div>
         </template>
         <template #transits>

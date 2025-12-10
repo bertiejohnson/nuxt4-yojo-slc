@@ -25,3 +25,5 @@ logs
 
 # Local files
 testing-partial-object-stream.vue
+app/test-app.vue
+app/pages/test

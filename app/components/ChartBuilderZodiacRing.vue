@@ -1,6 +1,6 @@
 <template>
   <g
-    :id="'sign-name-group-' + randomId()"
+    :id="'sign-name-group-' + ringId"
     :style="rotateIt"
     class="sign-name-group"
   >
@@ -16,7 +16,7 @@
 
     <path
       v-for="(path, i) in signNamePathData"
-      :id="'signarc-' + path.sign + '-text-' + pathTextPath"
+      :id="'signarc-' + path.sign + '-text-' + ringId"
       :key="'sign-arc-' + i"
       class="name-path-arc"
       fill="none"
@@ -26,12 +26,12 @@
 
     <text
       v-for="(path, i) in signNamePathData"
-      :id="'signarc-' + path.sign + '-text-' + randomId()"
+      :id="'signarc-' + path.sign + '-text-' + ringId"
       :key="'sign-text-' + i"
       :dy="setDy(path.sign)"
     >
       <textPath
-        :href="'#signarc-' + path.sign + '-text-' + pathTextPath"
+        :href="'#signarc-' + path.sign + '-text-' + ringId"
         startOffset="50%"
         style="text-anchor: middle"
       >
@@ -45,15 +45,17 @@
 import { arc } from 'd3-shape'
 
 const props = defineProps({
-  chartAsc: Number
+  chartAsc: Number,
+  chartId: String
 })
 
-const randomId = (length = 6) => Math.random().toString(36).substring(2, length + 2)
+const ringId = props.chartId
+// const ringId = useState(() => Math.random().toString(36).substring(2, 8))
 
 // This provides unique id for the path Id and the corresponding textPath href
 // Without this, multiple charts on the same page would have conflicting IDs and the textPaths are not 'flipped correctly'
 // Will change to something more prosaic and predictable later on when making chart more interactive
-const pathTextPath = randomId()
+// const pathTextPath = randomId()
 
 const rotateIt = { transform: '' }
 const asc = props.chartAsc

@@ -5,6 +5,8 @@ const route = useRoute()
 const user = useSupabaseUser()
 const client = useSupabaseClient()
 
+const copyDate = useState('copyDate', () => new Date().getFullYear())
+
 useHead({
   meta: [
     { name: 'viewport', content: 'width=device-width, initial-scale=1' }
@@ -34,7 +36,7 @@ const items = computed<NavigationMenuItem[]>(() => [{
   label: 'Dashboard',
   to: '/db',
   icon: 'i-lucide-book-open',
-  active: route.path.startsWith('/docs/getting-started')
+  active: route.path.startsWith('/db')
 }])
 
 const signOut = async () => {
@@ -99,7 +101,7 @@ const signOut = async () => {
     <UFooter>
       <template #left>
         <p class="text-sm text-muted">
-          Built with Nuxt UI • © {{ new Date().getFullYear() }}
+          Built with Nuxt UI • © {{ copyDate }}
         </p>
       </template>
 

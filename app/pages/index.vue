@@ -5,20 +5,12 @@ const { data, error } = await useFetch('/api/generate-chart', {
   }
 })
 
-const links = ref([
-  {
-    label: 'Create your chart',
-    to: '/create-chart',
-    icon: 'i-lucide-square-play'
-  },
-  {
-    label: 'Learn more',
-    to: '#learn_more'
-  }
-])
+const chartFetchError = ref(null)
 
 if (error.value) {
-  console.error('Error fetching chart data in index.vue:', error.value)
+  chartFetchError.value = 'Oops! There was an error fetching your chart data :('
+  console.error('Oops! There was an error fetching chart data :(', error.value)
+  // log the error - date/time, error message, stack trace etc. Or use a logging service like Sentry
 }
 
 const nowChartData = data.value
@@ -36,6 +28,18 @@ const aspectProp = {
   planetOne: nowChartData.chart.aspects[0].planetOne_swisseph_id,
   planetTwo: nowChartData.chart.aspects[0].planetTwo_swisseph_id
 }
+
+const links = ref([
+  {
+    label: 'Create your chart',
+    to: '/create-chart',
+    icon: 'i-lucide-square-play'
+  },
+  {
+    label: 'Learn more',
+    to: '#learn_more'
+  }
+])
 </script>
 
 <template>
@@ -46,9 +50,16 @@ const aspectProp = {
       class=" min-h-screen"
     >
       <template #body>
-        <ChartBuilder
-          :chart-data="nowChartData"
-        />
+        <div v-if="chartFetchError" class="mb-4 max-w-2xl">
+          <p>
+            {{ chartFetchError }}
+          </p>
+        </div>
+        <div v-else>
+          <ChartBuilder
+            :chart-data="nowChartData"
+          />
+        </div>
         <div>
           <div class="text-lg font-bold mb-1 -mt-3">
             {{ headingString }}

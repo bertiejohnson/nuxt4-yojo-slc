@@ -6,9 +6,6 @@
 .cache
 dist
 
-# Keep nuxt.config.ts local
-nuxt.config.ts
-
 # Node dependencies
 node_modules
 
@@ -21,12 +18,13 @@ logs
 .fleet
 .idea
 
-# Local env files
+# Env files
 .env
 .env.*
 !.env.example
 
-# Local scripts etc
+# Run production with PM2
+# contains .env vars
 ecosystem.config.cjs
 
 # Local files

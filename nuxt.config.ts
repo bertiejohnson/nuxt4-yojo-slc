@@ -55,5 +55,4 @@ export default defineNuxtConfig({
       inline: ['@supabase/supabase-js']
     }
   },
-  }
 })

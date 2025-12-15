@@ -14,6 +14,7 @@ const aspects = ref(null)
 const mounted = ref(false)
 
 // now run indexedDB functions
+// If the user is authenicated but on a different device, we need to fetch from Supabase instead
 onMounted(async () => {
   chartData.value = await fetchChartFromIDB()
   if (chartData.value) {

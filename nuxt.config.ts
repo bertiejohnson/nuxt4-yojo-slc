@@ -16,7 +16,7 @@ export default defineNuxtConfig({
     openaiApiKey: process.env.OPENAI_API_KEY || '',
     public: {
       mapboxApiKey: process.env.NUXT_PUBLIC_MAPBOX_API_KEY || '',
-      supaEmailRedirectToUrl: process.env.NUXT_PUBLIC_SUPA_EMAIL_REDIRECT_TO_URL || ''
+      baseUrl: process.env.NUXT_PUBLIC_BASE_URL || ''
     }
   },
 

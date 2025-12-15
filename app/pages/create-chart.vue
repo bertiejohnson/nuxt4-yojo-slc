@@ -7,14 +7,14 @@ const aspectProp = ref({})
 
 const generateChart = async (birthData) => {
   userNatalChart.value = await $fetch('/api/generate-chart', {
-      query: {
-        type: 'natal',
-        date: birthData.date,
-        time: birthData.time,
-        lng: birthData.lng,
-        lat: birthData.lat
-      }
-   })
+    query: {
+      type: 'natal',
+      date: birthData.date,
+      time: birthData.time,
+      lng: birthData.lng,
+      lat: birthData.lat
+    }
+  })
 
   const birthDataObj = {
     city: birthData.city,

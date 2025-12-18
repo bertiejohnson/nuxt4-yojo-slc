@@ -17,6 +17,7 @@ logs
 .DS_Store
 .fleet
 .idea
+.vscode
 
 # Env files
 .env
@@ -31,3 +32,4 @@ ecosystem.config.cjs
 testing-partial-object-stream.vue
 app/test-app.vue
 app/pages/test
+# nuxt.config.ts

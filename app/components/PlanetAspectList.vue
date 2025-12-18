@@ -1,49 +1,49 @@
 <script lang="ts" setup>
+import { experimental_useObject as useObject } from '@ai-sdk/vue'
+
+const { submit, isLoading, object, stop, error, clear } = useObject({ api:'/api/use-stream-object' })
+
 const props = defineProps({
   chartAspects: Array
 })
 
-// const aspects = props.chartAspects
-const theAspectsToFilter = ['conjunction', 'square', 'opposition', 'sextile', 'trine']
-const thePlanetsToFilter = [0, 1, 2, 3, 4]
-const ascMcNodeFilter = [10, 12, 13]
-const showAspectContent = ref(false)
-const aspectToDisplay = ref({})
-
-function filterAspects(arr) {
-  const newArr = arr.filter((e) => {
-    if (thePlanetsToFilter.includes(e.planetOneId)) return true
-  }).filter((e) => {
-    if (ascMcNodeFilter.includes(e.planetTwoId)) {
-      return false
-    } else {
-      return true
-    }
-  }).filter((e) => {
-    if (theAspectsToFilter.includes(e.aspectName)) return true
-  }).toSorted((a, b) => a.fromExact - b.fromExact)
-
-  return newArr
-}
-
 const filteredAspects = filterAspects(props.chartAspects)
+
+const showAspectContent = ref(false)
+const getPhrasesForAspect = ref({})
+const aspectTitle = ref('')
+
+const phrasesContent = async (aspect) => {
+  aspectTitle.value = `${aspect.planetOneName} ${aspect.aspectName} ${aspect.planetTwoName}`
+
+  getPhrasesForAspect.value = {
+    planetOne: aspect.planetOneName,
+    planetTwo: aspect.planetTwoName,
+    aspectName: aspect.aspectName
+  }
+
+  const prompt = `Generate five short phrases of two to three sentences each for the following astrological aspect: ${aspect.planetOneName} ${aspect.aspectName} ${aspect.planetTwoName}. Do not include the keyword pair itself.`
+
+  submit({ prompt, schema: 'phrasesSchema' })
+
+  showAspectContent.value = true
+}
 </script>
 
 <template>
   <div v-if="showAspectContent">
     <div class="flex justify-center mb-2">
       <h2 class="font-bold">
-        {{ `${aspectToDisplay.planetOneName} ${aspectToDisplay.aspectName} ${aspectToDisplay.planetTwoName}` }}
+        {{ aspectTitle }}
       </h2>
     </div>
     <div>
-      <PlanetPairOutput :aspect="aspectToDisplay" />
+      <PhrasesContent
+        :planets="getPhrasesForAspect"
+        :object="object"
+        :is-loading="isLoading"
+      />
     </div>
-    <UButton
-      label="Back to list"
-      @click="showAspectContent = !showAspectContent"
-      class="mt-4"
-    />
   </div>
   <div v-else>
     <div
@@ -54,9 +54,16 @@ const filteredAspects = filterAspects(props.chartAspects)
       <UButton
         :label="`${aspect.planetOneName} ${aspect.aspectName} ${aspect.planetTwoName}`"
         variant="subtle"
-        @click="aspectToDisplay=aspect; showAspectContent = !showAspectContent"
+        @click="phrasesContent(aspect)"
       />
     </div>
+  </div>
+  <div>
+    <UButton
+      label="Back to list"
+      class="mt-4"
+      @click="showAspectContent = !showAspectContent"
+    />
   </div>
 </template>
 

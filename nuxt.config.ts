@@ -8,13 +8,14 @@ export default defineNuxtConfig({
     '@pinia/nuxt'
   ],
 
-  devtools: { enabled: true },
+  devtools: { enabled: false },
 
   css: ['~/assets/css/main.css'],
 
   runtimeConfig: {
     openaiApiKey: process.env.OPENAI_API_KEY || '',
     public: {
+      // Needs to be private really ...
       mapboxApiKey: process.env.NUXT_PUBLIC_MAPBOX_API_KEY || '',
       baseUrl: process.env.NUXT_PUBLIC_BASE_URL || ''
     }
@@ -40,19 +41,21 @@ export default defineNuxtConfig({
     url: process.env.SUPABASE_URL || '',
     key: process.env.SUPABASE_KEY || ''
   },
-  
+
   // Production only ...
-  vite: {
-    server: {
-      allowedHosts: ["yojoastro.com"] 
+  $production: {
+    vite: {
+      server: {
+        allowedHosts: ["yojoastro.com"]
+      },
+      optimizeDeps: {
+        include: ['@supabase/postgrest-js', '@supabase/supabase-js']
+      }
     },
-    optimizeDeps: {
-      include: ['@supabase/postgrest-js', '@supabase/supabase-js']
+    nitro: {
+      externals: {
+        inline: ['@supabase/supabase-js']
+      }
     }
-  },
-  nitro: {
-    externals: {
-      inline: ['@supabase/supabase-js']
-    }
-  },
+  }
 })

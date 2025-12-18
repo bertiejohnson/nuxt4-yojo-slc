@@ -1,24 +1,38 @@
 import { createOpenAI } from '@ai-sdk/openai'
-import { generateObject } from 'ai'
-import { z } from 'zod'
-// import { notificationSchema } from '~/shared/notification-schema'
+import { streamObject } from 'ai'
+import { phrasesSchema, expandedPhraseSchema } from '#shared/zod-schemas'
 
 export default defineLazyEventHandler(async () => {
   const apiKey = useRuntimeConfig().openaiApiKey
   if (!apiKey) throw new Error('Missing OpenAI API key')
   const openai = createOpenAI({ apiKey })
 
-  return defineEventHandler(async (event) => {
+  return defineEventHandler(async (event: any) => {
     const context = await readBody(event)
-    const prompt = context.prompt ? context.prompt : `Generate short phrases of two to three sentences for each of the keyword pairs in: ${context.request ? context.request : context}. Do not include the keyword pair itself.`
+    console.log('Context received in use-stream-object:', context)
+    const prompt = context.prompt ? context.prompt : 'sun - moon aspects in a natal chart'
+    const schemaMap: Record<string, any> = {
+      'phrasesSchema': phrasesSchema,
+      'expandedPhraseSchema': expandedPhraseSchema
+    }
 
-    const { object } = await generateObject({
+    // Validate schema
+    if (!context.schema || !schemaMap[context.schema]) {
+      throw new Error('Invalid or missing schema in context')
+    }
+    const schema = schemaMap[context.schema]
+
+    // Stream generated notifications as objects
+    const result = streamObject({
       model: openai('gpt-4.1'),
       prompt,
-      schema: z.object({
-        phrases: z.array(z.string())
-      })
+      schema: schema
     })
-    return { object }
+
+    return result.toTextStreamResponse({
+      headers: {
+        'Content-Type': 'text/event-stream'
+      }
+    })
   })
 })

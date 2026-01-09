@@ -1,10 +1,11 @@
 <script lang="ts" setup>
 import { experimental_useObject as useObject } from '@ai-sdk/vue'
+import { unknown } from 'zod'
 
 const { submit, isLoading, object, stop, error, clear } = useObject({ api:'/api/use-stream-object' })
 
 const props = defineProps({
-  chartAspects: Array
+  chartAspects: Array as () => unknown[]
 })
 
 const filteredAspects = filterAspects(props.chartAspects)
@@ -13,7 +14,7 @@ const showAspectContent = ref(false)
 const getPhrasesForAspect = ref({})
 const aspectTitle = ref('')
 
-const phrasesContent = async (aspect) => {
+const phrasesContent = async (aspect: object) => {
   aspectTitle.value = `${aspect.planetOneName} ${aspect.aspectName} ${aspect.planetTwoName}`
 
   getPhrasesForAspect.value = {

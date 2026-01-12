@@ -1,24 +1,9 @@
 import { Dexie, type EntityTable } from 'dexie'
-
-interface ChartData { // What columns do I want here? Think about encryption
-  id: number
-  chart: object
-  supabaseId?: string
-  name?: string
-  birthdate?: string
-  birthtime?: string
-  birthplace?: string
-}
-
-interface Transits {
-  id: number
-  chartId: number
-  transitData: string
-}
+import type { ChartRow, Transits } from '~~/shared/types'
 
 const db = new Dexie('YojoDatabase') as Dexie & {
   charts: EntityTable<
-    ChartData,
+    ChartRow,
     'id'
   >
   transits: EntityTable<
@@ -28,9 +13,8 @@ const db = new Dexie('YojoDatabase') as Dexie & {
 }
 
 db.version(1).stores({
-  charts: '++id, chart, supabaseId, name, birthdate, birthtime, birthplace', // Define indexes here i.e. anything that will be used in a where clause
+  charts: '++id, chartrow, supabaseId, name, birthdate, birthtime, birthplace', // Define indexes here i.e. anything that will be used in a where clause
   transits: '++id, chartId, transitData'
 })
 
-export type { ChartData, Transits }
 export { db }

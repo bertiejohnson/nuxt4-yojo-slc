@@ -17,8 +17,8 @@ const userIsAuthenticated = async (userBirthData) => {
   const chartToStore = chartData // this data gets inserted into indexedDB storage
   const chartJSON = JSON.stringify(chartData) // this data goes into supabase db chart table - insertChart()
 
-console.log('Generated chart data:', chartData)
-console.log('Chart to store in IndexedDB:', chartToStore)
+  console.log('Generated chart data:', chartData)
+  console.log('Chart to store in IndexedDB:', chartToStore)
 
   const profileData = await updateProfile(
     userBirthData,
@@ -33,7 +33,7 @@ console.log('Chart to store in IndexedDB:', chartToStore)
     await runIndexedDB(chartToStore)
   }
 
-  await navigateTo('/db')
+  await navigateTo('/dash')
 }
 
 // So, now update profile and chart tables

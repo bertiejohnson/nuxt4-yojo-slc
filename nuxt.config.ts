@@ -17,7 +17,9 @@ export default defineNuxtConfig({
     public: {
       // Needs to be private really ...
       mapboxApiKey: process.env.NUXT_PUBLIC_MAPBOX_API_KEY || '',
-      baseUrl: process.env.NUXT_PUBLIC_BASE_URL || ''
+      baseUrl: process.env.NUXT_PUBLIC_BASE_URL || '',
+      supabaseUrl: process.env.NUXT_PUBLIC_SUPABASE_URL || '',
+      supabasePublishableKey: process.env.NUXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || '',
     }
   },
 

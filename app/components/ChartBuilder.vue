@@ -12,7 +12,7 @@ const chartPlanets = props.chartData.chart.planets
 </script>
 
 <template>
-  <div class="p-4 w-full md:w-3/5">
+  <div class="px-4 -mt-6 w-full md:w-3/5">
     <svg
       :id="'chart-svg-' + chartId"
       viewBox="-225 -225 450 450"

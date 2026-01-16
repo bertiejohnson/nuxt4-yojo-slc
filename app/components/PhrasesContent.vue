@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { experimental_useObject as useObject} from '@ai-sdk/vue'
 
-const { submit: newSubmit, isLoading: newIsLoading, object: newObject, stop, error, clear } = useObject({ api:'/api/use-stream-object' })
+const { submit: newSubmit, isLoading: newIsLoading, object: newObject, stop, error, clear } = useObject({ api:'/api/ai/use-stream-object' })
 
 const props = defineProps({
   planets: Object,

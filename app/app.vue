@@ -34,9 +34,9 @@ useSeoMeta({
 
 const items = computed<NavigationMenuItem[]>(() => [{
   label: 'Dashboard',
-  to: '/db',
+  to: '/dash',
   icon: 'i-lucide-book-open',
-  active: route.path.startsWith('/db')
+  active: route.path.startsWith('/dash')
 }])
 
 const signOut = async () => {

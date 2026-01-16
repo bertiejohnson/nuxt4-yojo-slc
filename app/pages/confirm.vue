@@ -1,7 +1,5 @@
 <!-- Handles the email/password signup callback from Supabase -->
 <script setup>
-import { openDB } from 'idb'
-
 const user = useSupabaseUser()
 const client = useSupabaseClient()
 
@@ -16,8 +14,11 @@ const userIsAuthenticated = async (userBirthData) => {
     }
   })
 
-  const chartToStore = { chart: chartData } // this data gets inserted into indexedDB storage
+  const chartToStore = chartData // this data gets inserted into indexedDB storage
   const chartJSON = JSON.stringify(chartData) // this data goes into supabase db chart table - insertChart()
+
+  console.log('Generated chart data:', chartData)
+  console.log('Chart to store in IndexedDB:', chartToStore)
 
   const profileData = await updateProfile(
     userBirthData,
@@ -32,7 +33,7 @@ const userIsAuthenticated = async (userBirthData) => {
     await runIndexedDB(chartToStore)
   }
 
-  await navigateTo('/db')
+  await navigateTo('/dash')
 }
 
 // So, now update profile and chart tables
@@ -62,21 +63,23 @@ async function insertChart(id, chart) {
   return { data, status, statusText, error }
 }
 
-async function runIndexedDB(chartToStore) {
-  console.log('CHART TO STORE', chartToStore)
-  const dbName = 'ReddogDB'
-  const version = 2
-  const storeName = 'chartStore2'
+async function runIndexedDB(chartData) {
+  let status = ''
+  try {
+    const retval = await db.charts.add({
+      chart: chartData.chart
+    })
+    const test = await db.transits.add({
+      chartId: retval,
+      transitData: 'Sample transit data'
+    })
 
-  // create DB and store
-  const db = await openDB(dbName, version, {
-    upgrade(db) {
-      const store = db.createObjectStore(storeName, {
-        autoIncrement: true
-      })
-    }
-  })
-  await db.add(storeName, chartToStore.chart)
+    status = `Chart successfully added to IndexedDB with id ${retval} and transit id ${test}`
+  } catch (error) {
+    status = `Failed to add chart to IndexedDB: ${error}`
+  }
+
+  console.log(status)
 }
 
 watch(

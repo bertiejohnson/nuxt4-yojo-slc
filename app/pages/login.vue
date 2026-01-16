@@ -23,7 +23,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
       password: state.password
     })
 
-    await navigateTo('/db')
+    await navigateTo('/dash')
     // verifying.value = true;
     // if (data?.user?.identities?.length === 0) {
     //   return { data, error: "Please sign in with your existing account" };

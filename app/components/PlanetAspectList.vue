@@ -2,7 +2,7 @@
 import { experimental_useObject as useObject } from '@ai-sdk/vue'
 import { unknown } from 'zod'
 
-const { submit, isLoading, object, stop, error, clear } = useObject({ api:'/api/use-stream-object' })
+const { submit, isLoading, object, stop, error, clear } = useObject({ api:'/api/ai/use-stream-object' })
 
 const props = defineProps({
   chartAspects: Array as () => unknown[]

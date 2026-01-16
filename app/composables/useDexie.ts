@@ -3,33 +3,28 @@ import type { Chart } from '~~/shared/types'
 
 export const useDexie = () => {
   //
-  async function addChart(chartData: Chart) {
-    let status = ''
+  async function addDexieChart(chartData: Chart, supabaseId: string) {
+    console.log('Adding chart to IndexedDB via Dexie:', chartData)
     try {
       const retval = await db.charts.add({
-        supabaseId: 'local-user',
-        chartrow: chartData,
-        name: 'Local Chart',
-        birthdate: '2000-01-01',
-        birthtime: '12:00',
-        birthplace: 'Localtown'
+        supabaseId: supabaseId,
+        chart: chartData,
+        name: '',
+        birthdate: '',
+        birthtime: '',
+        birthplace: ''
       })
 
       if (retval === undefined) throw new Error('db.charts.add returned undefined')
 
-      const test = await db.transits.add({
-        chartId: retval,
-        transitData: { test: 'Sample transit data' }
-      })
-
-      if (test === undefined) throw new Error('db.transits.add returned undefined')
-
-      status = `Chart successfully added to IndexedDB with id ${retval} and transit id ${test}`
+      console.log(`Chart successfully added to IndexedDB with id ${retval}`)
     } catch (error) {
-      status = `Failed to add chart to IndexedDB: ${error}`
+      console.log(`Failed to add chart to IndexedDB: ${error}`)
     }
-
-    console.log(status)
   }
-  return { addChart }
+
+  async function getDexieChart() {
+    return await db.charts.toArray()
+  }
+  return { addDexieChart, getDexieChart }
 }

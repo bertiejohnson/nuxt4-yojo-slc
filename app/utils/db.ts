@@ -6,15 +6,15 @@ const db = new Dexie('YojoDatabase') as Dexie & {
     ChartRow,
     'id'
   >
-  transits: EntityTable<
-    Transits,
-    'id'
-  > // Define tables here
+  // transits: EntityTable<
+  //   Transits,
+  //   'id'
+  // > // Define tables here
 }
 
 db.version(1).stores({
-  charts: '++id, chartrow, supabaseId, name, birthdate, birthtime, birthplace', // Define indexes here i.e. anything that will be used in a where clause
-  transits: '++id, chartId, transitData'
+  charts: '++id, chart, supabaseId, name, birthdate, birthtime, birthplace', // Define indexes here i.e. anything that will be used in a where clause
+  // transits: '++id, chartId, transitData'
 })
 
 export { db }

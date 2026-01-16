@@ -11,7 +11,7 @@ export interface ChartObject {
 export interface ChartRow {
   id?: number
   supabaseId?: string
-  chartrow: Chart
+  chart: Chart
   name: string
   birthdate: string
   birthtime: string

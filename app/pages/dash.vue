@@ -1,9 +1,5 @@
 <script lang="ts" setup>
-import type { Chart } from '@/../shared/types'
-
-const user = useSupabaseUser()
-const { getChartFromId } = useSupabaseAPI()
-const { addChart } = useDexie()
+import type { Chart, ChartRow } from '@/../shared/types'
 
 // tab titles
 const items = [
@@ -17,59 +13,72 @@ const items = [
   }
 ]
 
+const user = useSupabaseUser()
+const { getChartFromId } = useSupabaseAPI()
+const { addDexieChart, getDexieChart } = useDexie()
+
 const aspects = ref<object[] | undefined>(undefined)
 const mounted = ref(false)
 const chartData = ref<Chart | null>(null)
 
-// now run indexedDB functions
-// If the user is authenicated but on a different device, we need to fetch from Supabase instead
-// and sync to indexedDB
 onMounted(async () => {
-  let dexieChart = await db.charts.toArray()
+  let dexieChart: ChartRow[] | undefined = undefined
 
-  if (!dexieChart || dexieChart.length === 0) {
-    // sync with Supabase here if needed
-    if (user.value?.sub) {
-      const { data, error } = await getChartFromId(user.value.sub)
+  try {
+    dexieChart = await getDexieChart()
 
-      if (error) {
-        console.error('Error fetching chart from Supabase:', error)
+    if (!dexieChart || dexieChart.length === 0) {
+      if (user.value?.sub) {
+        const result = await getChartFromId(user.value.sub)
+
+        if (!result) {
+          console.error('No result returned from getChartFromId')
+        }
+
+        const { data, error } = result as { data: Chart[] | null, error: string | null }
+
+        if (error) {
+          console.error('Error fetching chart from Supabase:', error)
+        }
+
+        let parsed: Chart | null = null
+
+        const raw = data?.[0]?.chart
+
+        if (raw && typeof raw === 'string') {
+          try {
+            parsed = JSON.parse(raw)
+          } catch (parseError) {
+            console.error('Error parsing chart JSON from Supabase:', parseError)
+          }
+        }
+
+        chartData.value = parsed
+
+        if (chartData.value) {
+          await addDexieChart(chartData.value, user.value.sub) // insert into IndexedDB via Dexie
+          aspects.value = chartData.value.chart.aspects
+          mounted.value = true
+        } else {
+          console.log('No chart data retrieved from Supabase.')
+        }
       }
-
-      const chart = { chart: JSON.parse(data?.[0]?.chart_data) ?? null }
-      await addChart(chart.chart)
-      dexieChart = await db.charts.toArray()
-
-      if (dexieChart[0] === undefined) throw new Error('db.charts.add returned undefined')
-
-      console.log('Dexie charts after sync:', dexieChart[0].chartrow.chart.aspects)
-
-      chartData.value = dexieChart[0].chartrow
-
-      // console.log('Dexie newly inserted chart:', chartData.value)
-      if (chartData.value) {
-        console.log('Chart data from Supabase synced to IndexedDB.', chartData.value)
-        aspects.value = dexieChart[0].chartrow.chart.aspects ?? undefined
-        mounted.value = true
-      }
-    }
-  } else {
-    console.log(`Found ${dexieChart.length} chart(s) in indexedDB.`)
-
-    chartData.value = dexieChart[0] ?? null
-
-    console.log('Dexie stored Chart:', dexieChart[0])
-    if (chartData.value) {
-      aspects.value = chartData.value.chart.aspects ?? undefined
+    } else if (dexieChart[0] && dexieChart.length > 0) {
+      aspects.value = dexieChart[0].chart.chart.aspects
+      chartData.value = dexieChart[0].chart
       mounted.value = true
+    } else {
+      console.log('No aspects!!')
     }
+  } catch (error) {
+    console.error('Error accessing IndexedDB:', error)
   }
 })
 </script>
 
 <template>
   <div class="flex flex-col items-center w-full">
-    <div class="w-full -mt-8">
+    <div class="w-full mt-8">
       <chart-builder
         v-if="chartData"
         :chart-data="chartData"
@@ -83,7 +92,7 @@ onMounted(async () => {
       >
         <template #planets>
           <div v-if="mounted">
-            <!-- <PlanetAspectList :chart-aspects="aspects" /> -->
+            <PlanetAspectList :chart-aspects="aspects" />
           </div>
           <div v-else>
             Loading aspects...

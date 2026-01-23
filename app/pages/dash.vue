@@ -92,7 +92,7 @@ onMounted(async () => {
       >
         <template #planets>
           <div v-if="mounted">
-            <PlanetAspectList :chart-aspects="aspects" />
+            <PlanetList :chart-aspects="aspects" />
           </div>
           <div v-else>
             Loading aspects...

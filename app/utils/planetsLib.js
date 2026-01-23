@@ -89,5 +89,4 @@ const planetListStandard = [
     {name: 'chiron'},
 ];
 
-
-export { planetSvgs, planetListStandard };
+export { planetSvgs, planetListStandard }

@@ -49,12 +49,7 @@ const links = ref([
       class="min-h-screen"
     >
       <template #body>
-        <div v-if="chartFetchError" class="mb-0 max-w-2xl">
-          <p>
-            {{ chartFetchError }}
-          </p>
-        </div>
-        <div v-else>
+        <div class="mb-4">
           <ChartBuilder
             :chart-data="nowChartData"
           />

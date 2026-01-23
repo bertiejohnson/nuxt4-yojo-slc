@@ -1,70 +1,38 @@
 <script lang="ts" setup>
-import { experimental_useObject as useObject } from '@ai-sdk/vue'
-import { unknown } from 'zod'
-
-const { submit, isLoading, object, stop, error, clear } = useObject({ api:'/api/ai/use-stream-object' })
-
-const props = defineProps({
-  chartAspects: Array as () => unknown[]
-})
-
-const filteredAspects = filterAspects(props.chartAspects)
-
-const showAspectContent = ref(false)
-const getPhrasesForAspect = ref({})
-const aspectTitle = ref('')
-
-const phrasesContent = async (aspect: object) => {
-  aspectTitle.value = `${aspect.planetOneName} ${aspect.aspectName} ${aspect.planetTwoName}`
-
-  getPhrasesForAspect.value = {
-    planetOne: aspect.planetOneName,
-    planetTwo: aspect.planetTwoName,
-    aspectName: aspect.aspectName
-  }
-
-  const prompt = `Generate five short phrases of two to three sentences each for the following astrological aspect: ${aspect.planetOneName} ${aspect.aspectName} ${aspect.planetTwoName}. Do not include the keyword pair itself.`
-
-  submit({ prompt, schema: 'phrasesSchema' })
-
-  showAspectContent.value = true
+interface PlanetAspect {
+  aspectName: string
+  colour: string
+  fromExact: number
+  planetOneId: number
+  planetOneName: string
+  planetOne_swisseph_id: number
+  planetPair: string
+  planetTwoId: number
+  planetTwoName: string
+  planetTwo_swisseph_id: number
+  x1: string
+  x2: string
+  y1: string
+  y2: string
 }
+const props = defineProps<{
+  planetAspects: PlanetAspect[]
+}>()
+
+const planetsKeywords = planetKeywordsStore
+const keywords = ref<string[]>([])
+const theAspects = ref<PlanetAspect[]>(props.planetAspects || [])
+
+console.log('PlanetAspectList planetAspects:', props.planetAspects, theAspects.value[0]?.planetOneName)
 </script>
 
 <template>
-  <div v-if="showAspectContent">
-    <div class="flex justify-center mb-2">
-      <h2 class="font-bold">
-        {{ aspectTitle }}
-      </h2>
-    </div>
-    <div>
-      <PhrasesContent
-        :planets="getPhrasesForAspect"
-        :object="object"
-        :is-loading="isLoading"
-      />
-    </div>
-  </div>
-  <div v-else>
-    <div
-      v-for="(aspect, i) in filteredAspects"
-      :key="i"
-      class="my-1"
-    >
-      <UButton
-        :label="`${aspect.planetOneName} ${aspect.aspectName} ${aspect.planetTwoName}`"
-        variant="subtle"
-        @click="phrasesContent(aspect)"
-      />
-    </div>
-  </div>
   <div>
-    <UButton
-      label="Back to list"
-      class="mt-4"
-      @click="showAspectContent = !showAspectContent"
+    <div
+      v-for="(aspect, index) in theAspects"
+      :key="index"
     />
+    {{ aspect.planetOneName }} {{ aspect.aspectName }} {{ aspect.planetTwoName }}
   </div>
 </template>
 

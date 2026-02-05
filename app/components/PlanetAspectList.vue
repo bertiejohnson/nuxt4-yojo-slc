@@ -1,38 +1,30 @@
 <script lang="ts" setup>
-interface PlanetAspect {
-  aspectName: string
-  colour: string
-  fromExact: number
-  planetOneId: number
+interface AspectData {
   planetOneName: string
-  planetOne_swisseph_id: number
-  planetPair: string
-  planetTwoId: number
+  aspectName: string
   planetTwoName: string
-  planetTwo_swisseph_id: number
-  x1: string
-  x2: string
-  y1: string
-  y2: string
 }
+
 const props = defineProps<{
-  planetAspects: PlanetAspect[]
+  aspectData: AspectData[]
 }>()
 
-const planetsKeywords = planetKeywordsStore
-const keywords = ref<string[]>([])
-const theAspects = ref<PlanetAspect[]>(props.planetAspects || [])
-
-console.log('PlanetAspectList planetAspects:', props.planetAspects, theAspects.value[0]?.planetOneName)
+const emit = defineEmits(['getKeywords'])
 </script>
 
 <template>
   <div>
     <div
-      v-for="(aspect, index) in theAspects"
+      v-for="(aspect, index) in props.aspectData"
       :key="index"
-    />
-    {{ aspect.planetOneName }} {{ aspect.aspectName }} {{ aspect.planetTwoName }}
+    >
+      <div
+        class="underline"
+        @click="emit('getKeywords', aspect.planetOneName, aspect.planetTwoName)"
+      >
+        {{ aspect.planetOneName }} {{ aspect.aspectName }} {{ aspect.planetTwoName }}
+      </div>
+    </div>
   </div>
 </template>
 

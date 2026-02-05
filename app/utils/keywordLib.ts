@@ -1,15 +1,5 @@
 interface PlanetKeywordsStore {
-  sun: string[]
-  moon: string[]
-  mercury: string[]
-  venus: string[]
-  mars: string[]
-  jupiter: string[]
-  saturn: string[]
-  chiron: string[]
-  uranus: string[]
-  neptune: string[]
-  pluto: string[]
+  [key: string]: string[]
 }
 
 const planetKeywordsStore: PlanetKeywordsStore = {

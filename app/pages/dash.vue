@@ -24,21 +24,22 @@ function isChartAspectArray(data: unknown): data is ChartAspect[] {
   )
 }
 
-function showAspects(planetName: string) {
+function showAspects(planetName: string, fromKeywords = false) {
   if (!aspects.value) return
   planetAspects.value = aspects.value.filter((aspect) => {
     return aspect.planetOneName === planetName
   })
   showAspectList.value = true
+  if (fromKeywords) {
+    showPlanetButtons.value = true
+    showChart.value = true
+  }
 }
 
 function showKeywords(planetOne: string, planetTwo: string) {
-  // Implement the logic to show keywords for the given planets
   colOnePlanet.value = planetOne
   colTwoPlanet.value = planetTwo
 
-  // showAspectBlurb.value = true
-  // aspectBlurb.value = `Keywords for the aspect between ${planetOne} and ${planetTwo}.`
   showAspectList.value = false
   showPlanetButtons.value = false
   showChart.value = false
@@ -125,12 +126,13 @@ onMounted(async () => {
     <PlanetAspectList
       v-if="showAspectList"
       :aspect-data="planetAspects"
-      @get-keywords="showKeywords"
+      @show-keywords="showKeywords"
     />
     <PlanetsAspectKeywords
       v-if="!showPlanetButtons && !showAspectList"
       :planet-one="colOnePlanet || ''"
       :planet-two="colTwoPlanet || ''"
+      @show-aspects="showAspects"
     />
   </div>
 </template>

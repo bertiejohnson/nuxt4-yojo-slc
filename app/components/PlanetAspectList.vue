@@ -9,7 +9,7 @@ const props = defineProps<{
   aspectData: AspectData[]
 }>()
 
-const emit = defineEmits(['getKeywords'])
+const emit = defineEmits(['showKeywords'])
 </script>
 
 <template>
@@ -20,7 +20,7 @@ const emit = defineEmits(['getKeywords'])
     >
       <div
         class="underline"
-        @click="emit('getKeywords', aspect.planetOneName, aspect.planetTwoName)"
+        @click="emit('showKeywords', aspect.planetOneName, aspect.planetTwoName)"
       >
         {{ aspect.planetOneName }} {{ aspect.aspectName }} {{ aspect.planetTwoName }}
       </div>

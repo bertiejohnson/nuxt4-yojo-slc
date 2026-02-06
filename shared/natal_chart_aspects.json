@@ -1,0 +1,410 @@
+{
+  "metadata": {
+    "description": "Natal chart aspect interpretations for astrology app MVP",
+    "total_planetary_pairs": 55,
+    "total_interpretations": 275,
+    "planets": ["Sun", "Moon", "Mercury", "Venus", "Mars", "Jupiter", "Saturn", "Chiron", "Uranus", "Neptune", "Pluto"],
+    "aspects": ["conjunction", "sextile", "square", "trine", "opposition"],
+    "keywords_per_planet": 10
+  },
+  "planet_keywords": {
+    "Sun": ["identity", "vitality", "purpose", "ego", "creativity", "willpower", "consciousness", "authority", "expression", "core-self"],
+    "Moon": ["emotions", "instinct", "nurturing", "security", "habits", "subconscious", "receptivity", "needs", "comfort", "memory"],
+    "Mercury": ["communication", "intellect", "reasoning", "curiosity", "learning", "perception", "adaptability", "analysis", "exchange", "information"],
+    "Venus": ["love", "values", "harmony", "beauty", "attraction", "pleasure", "relationships", "worth", "aesthetics", "connection"],
+    "Mars": ["action", "desire", "assertion", "energy", "courage", "passion", "drive", "conflict", "independence", "initiative"],
+    "Jupiter": ["expansion", "growth", "optimism", "wisdom", "belief", "abundance", "opportunity", "philosophy", "meaning", "generosity"],
+    "Saturn": ["structure", "discipline", "responsibility", "limitation", "maturity", "authority", "time", "mastery", "boundaries", "commitment"],
+    "Chiron": ["wound", "healing", "teaching", "vulnerability", "wisdom-through-pain", "integration", "compassion", "inadequacy", "gift", "mentorship"],
+    "Uranus": ["innovation", "rebellion", "freedom", "awakening", "disruption", "individuality", "breakthrough", "unconventional", "liberation", "change"],
+    "Neptune": ["imagination", "spirituality", "dissolution", "dreams", "compassion", "illusion", "transcendence", "sensitivity", "unity", "mysticism"],
+    "Pluto": ["transformation", "power", "depth", "regeneration", "control", "intensity", "catharsis", "obsession", "rebirth", "shadow"]
+  },
+  "aspects": {
+    "Sun-Moon": {
+      "conjunction": "Your conscious identity and emotional nature are fused into a unified expression. What you feel and who you are exist as one, creating an authenticity that others immediately sense. This alignment brings emotional clarity to your life purpose, though you may struggle to separate objective goals from subjective feelings.",
+      "sextile": "Your life purpose and emotional needs support each other through gentle cooperation. You find opportunities to fulfill your deeper needs while pursuing your goals, creating a natural ease in self-expression that integrates feeling and doing without internal conflict.",
+      "square": "Your willpower and need for security exist in creative tension, often pulling you in different directions. What you want to become may threaten your comfort zones, demanding you develop both strength and sensitivity while learning to honor security without sacrificing authentic growth.",
+      "trine": "Your vital life force flows effortlessly with your nurturing instincts, creating natural capacity for self-care and supporting others. Energy and emotion work together harmoniously, allowing you to maintain enthusiasm while staying grounded in genuine feeling.",
+      "opposition": "Your conscious awareness and subconscious patterns face each other across an internal axis, creating ongoing dialogue between reason and instinct. Fulfillment comes through acknowledging both sides rather than choosing one over the other."
+    },
+    "Sun-Mercury": {
+      "conjunction": "Your sense of self and communicative expression are inseparable, making you a natural spokesperson for your own truth. You think and speak from your core with authentic power, though objectivity about your own ideas may prove challenging.",
+      "sextile": "Your creative expression benefits from intellectual curiosity, opening channels between imagination and articulation. You find opportunities to explore ideas that enhance self-expression, naturally translating inspiration into communicable form.",
+      "square": "Your ego and analytical mind create friction, as critical thinking may undermine confidence or pride may resist objective assessment. This tension can produce sharp mental awareness if you harness the productive discomfort.",
+      "trine": "Your life purpose flows naturally through learning and mental development, creating ease in acquiring knowledge that serves your path. Your mind effortlessly supports your goals, making you an effective teacher of what you embody.",
+      "opposition": "Your will and perception exist in dynamic tension, sometimes creating paralysis between doing and thinking. Integration comes when you honor both directed energy and open-minded observation."
+    },
+    "Sun-Venus": {
+      "conjunction": "Your core identity is inseparable from your value system, making you naturally attractive to those who resonate with what you stand for. You embody your preferences and aesthetics, radiating what you love.",
+      "sextile": "Your self-expression and desire for harmony work cooperatively, creating opportunities for graceful presentation and diplomatic assertion. Your presence tends to smooth rather than disrupt social situations.",
+      "square": "Your life purpose and attraction to pleasure create friction, often forcing choices between what matters most and what feels immediately gratifying. This challenge teaches integration of beauty and accomplishment rather than sacrificing one for the other.",
+      "trine": "Your creative vitality flows effortlessly toward beautiful expression, giving you natural artistic sensibility and aesthetic grace. What you create reflects genuine beauty, attracting appreciation without struggle.",
+      "opposition": "Your core self and relational nature stand in polarity, creating awareness of yourself through others' reflections. Balance comes through relationships that honor both autonomy and connection."
+    },
+    "Sun-Mars": {
+      "conjunction": "Your life force and action drive merge into powerful, concentrated expression. You possess abundant physical energy and directness of will, moving through life with confidence and courage that can manifest as either boldness or aggression.",
+      "sextile": "Your sense of purpose works cooperatively with your capacity for initiative, creating natural opportunities to act on your goals. You find moments when assertion serves your larger direction without forcing.",
+      "square": "Your ego and relationship to conflict create intense friction, often manifesting as struggles with anger or competition. You may battle with yourself as much as others, learning to transform combative energy into productive drive.",
+      "trine": "Your willpower and courage flow together naturally, giving you confident ability to pursue what you want. Action feels authentic and aligned with your deeper self, creating effectiveness without internal resistance.",
+      "opposition": "Your sense of identity and assertive impulses face each other in dynamic tension, often creating awareness through confrontation or competition. Integration comes through owning your warrior nature while maintaining centered self-awareness."
+    },
+    "Sun-Jupiter": {
+      "conjunction": "Your core identity carries expansive energy, making you naturally optimistic, generous, and oriented toward growth. You think big and embody possibility, though you may struggle with excess or overconfidence.",
+      "sextile": "Your life purpose works cooperatively with incoming opportunities, creating fortunate timing and helpful connections. Your optimism attracts beneficial circumstances through alignment between intention and possibility.",
+      "square": "Your ego and belief system create friction through overconfidence, dogmatism, or unrealistic self-assessment. This challenging aspect teaches you to temper enthusiasm with realism while maintaining faith and developing genuine wisdom.",
+      "trine": "Your vital energy flows naturally with optimistic outlook, creating abundant enthusiasm and resilience. You bounce back easily and maintain faith in positive outcomes, attracting good fortune through genuine confidence.",
+      "opposition": "Your core self and search for meaning exist in polarity, creating tension between personal identity and transcendent philosophy. Balance comes through purposeful expansion that includes rather than denies individuality."
+    },
+    "Sun-Saturn": {
+      "conjunction": "Your core identity is shaped by discipline, responsibility, and relationship to authority. You may carry seriousness as part of who you are, learning to embody mature capability through sustained effort and commitment.",
+      "sextile": "Your life purpose works cooperatively with your capacity for mastery, creating opportunities to develop expertise and authority. Structure supports rather than limits your goals, serving your growth through patient commitment.",
+      "square": "Your vital energy meets restrictive forces, creating friction through obstacles, delays, or self-doubt. This challenging aspect demands you develop resilience, learning to shine despite resistance and transform limitation into definition.",
+      "trine": "Your natural authority flows harmoniously with your sense of responsibility, creating reliable leadership and earned respect. You build structures that reflect authentic capability, gaining recognition through demonstrated competence.",
+      "opposition": "Your self-expression and relationship to boundaries stand in dynamic tension, often manifesting through authority figures or situations that test your limits. Integration comes through respecting structure while claiming your right to exist authentically."
+    },
+    "Sun-Chiron": {
+      "conjunction": "Your core identity carries a wound around being seen or valued. What should feel natural—existing fully as yourself—may trigger shame or inadequacy, offering profound healing as you learn to teach others authentic self-acceptance through your own journey.",
+      "sextile": "Your life purpose works cooperatively with your healing journey, creating opportunities to grow through addressing your vulnerabilities. Your path naturally involves integration of wounded places into purposeful service.",
+      "square": "Your ego and feelings of inadequacy create painful friction, manifesting as chronic self-doubt or compensatory inflation. This challenging aspect demands you face the gap between who you are and who you think you should be.",
+      "trine": "Your vital energy flows naturally through the wisdom gained from your wounds, allowing you to shine authentically because of your vulnerabilities. Your pain has refined you, creating natural healing presence for others.",
+      "opposition": "Your core self and vulnerability face each other in polarity, often experienced through relationships that expose your tender places. Wholeness comes through accepting that your wounded parts are integral to who you are."
+    },
+    "Sun-Uranus": {
+      "conjunction": "Your core identity is electric, unconventional, and oriented toward authentic uniqueness. You cannot conform without betraying yourself, making you naturally rebellious or innovative, though stability may feel suffocating.",
+      "sextile": "Your creative expression works cooperatively with innovative impulses, creating opportunities for original self-expression and experimental approaches that enhance rather than destabilize your path.",
+      "square": "Your life purpose meets disruptive forces, creating friction through sudden changes or restlessness. This challenging aspect demands you channel revolutionary energy constructively rather than letting it fragment your path.",
+      "trine": "Your self-expression flows naturally toward freedom and authenticity, allowing you to be genuinely yourself without internal conflict. Innovation feels easy, and you attract liberating circumstances that support your uniqueness.",
+      "opposition": "Your will and awakening impulses face each other in dynamic tension, creating sudden awareness through shocking events or people who catalyze change. Integration comes through conscious evolution that honors both focus and breakthrough."
+    },
+    "Sun-Neptune": {
+      "conjunction": "Your sense of self carries permeability, making boundaries between you and the world feel fluid. You may struggle to know who you are separate from others' projections, though this offers spiritual sensitivity and creative imagination.",
+      "sextile": "Your creative expression works cooperatively with imagination, opening channels to inspired vision and artistic sensitivity. Intuition supports your self-expression in ways that enhance both beauty and compassion.",
+      "square": "Your ego and relationship to truth create friction through self-deception or unrealistic self-concepts. This challenging aspect demands you develop discernment, distinguishing genuine spiritual sensitivity from escapist dissolution.",
+      "trine": "Your life force flows naturally toward spiritual connection and transcendent experience, creating ease in accessing higher consciousness. You radiate subtle beauty and compassion with a naturally healing quality.",
+      "opposition": "Your conscious awareness and dream world face each other in polarity, creating oscillation between clarity and confusion. Integration comes through honoring both rational mind and mystical vision."
+    },
+    "Sun-Pluto": {
+      "conjunction": "Your core identity is forged through intense transformation, making death-and-rebirth cycles central to self-understanding. You possess powerful presence and depth, capable of profound regeneration and influence over hidden dimensions.",
+      "sextile": "Your life purpose works cooperatively with depth perception, creating opportunities to engage meaningfully with power and transformation. Your path naturally involves working with shadow material productively.",
+      "square": "Your will and control dynamics create intense friction, manifesting as power struggles or obsessive tendencies. This challenging aspect demands you surrender to necessary deaths while developing authentic rather than compensatory strength.",
+      "trine": "Your life force flows naturally through cycles of death and rebirth, giving you remarkable resilience and capacity for renewal. You transform obstacles into fuel for growth with enduring power.",
+      "opposition": "Your conscious self and shadow material face each other in polarity, often manifesting through intense relationships that reveal what you've denied. Integration requires owning your full power, including the parts you've feared."
+    },
+    "Moon-Mercury": {
+      "conjunction": "Your emotional nature and communicative expression are fused, making you naturally articulate about feelings. You think with emotions and feel through thoughts, creating intuitive intelligence but potential difficulty separating sentiment from reason.",
+      "sextile": "Your instincts work cooperatively with your perception, creating opportunities to trust gut feelings while maintaining mental clarity. Your mind naturally serves your emotional intelligence.",
+      "square": "Your emotional needs and analytical mind create friction through overthinking feelings or emotional reactions disrupting clear thought. This challenging aspect demands you develop both emotional literacy and mental objectivity.",
+      "trine": "Your nurturing capacity flows naturally with your love of learning, creating ease in teaching or processing experience through conversation. You absorb information emotionally and communicate with caring attention.",
+      "opposition": "Your subconscious patterns and rational mind face each other in dynamic tension, creating awareness of the gap between feeling and thinking. Balance comes through honoring both irrational truth and logical understanding."
+    },
+    "Moon-Venus": {
+      "conjunction": "Your emotional nature and capacity for love merge into gentle, affectionate expression. You need beauty and harmony to feel secure, naturally creating warmth though you may avoid necessary conflict.",
+      "sextile": "Your need for comfort works cooperatively with your appreciation of pleasure, creating natural moments of grace and satisfaction. Self-care feels instinctive, enhancing your capacity for both receiving and creating sweetness.",
+      "square": "Your emotional security and value system create friction, often forcing choices between what feels safe and what you truly want. This challenging aspect teaches integration of genuine preference with emotional grounding.",
+      "trine": "Your nurturing instincts flow naturally toward creating harmony and beauty, making you gracious and kind. Care and creativity merge effortlessly, bringing peace to your environment.",
+      "opposition": "Your personal needs and relational desires face each other in polarity, creating awareness of yourself through partnership dynamics. Integration comes through relationships that honor both emotional security and genuine connection."
+    },
+    "Moon-Mars": {
+      "conjunction": "Your emotional nature and action impulses are fused, making you reactive and passionate. You act on feelings immediately, creating authentic spontaneity but potential volatility and defensive reactions.",
+      "sextile": "Your instincts work cooperatively with your capacity for initiative, creating opportunities to act on gut feelings productively. Courage supports self-protection and emotional assertion.",
+      "square": "Your need for security and relationship to conflict create friction through defensiveness or domestic tension. This challenging aspect demands you develop healthy aggression while maintaining emotional groundedness.",
+      "trine": "Your nurturing capacity flows naturally with courage, allowing you to protect what you care about. You defend others and yourself with instinctive strength, being both tender and fierce.",
+      "opposition": "Your receptive nature and assertive impulses face each other in polarity, creating tension between softness and strength. Balance comes through honoring both yin and yang energies in relationships."
+    },
+    "Moon-Jupiter": {
+      "conjunction": "Your emotional nature carries expansive, optimistic quality making you generous and enthusiastic. You feel abundantly and seek meaning through experience, though you may overextend yourself emotionally.",
+      "sextile": "Your nurturing capacity works cooperatively with generous impulses, creating opportunities to give abundantly. Your care naturally expands beyond immediate circles, supported by optimism.",
+      "square": "Your emotional needs and tendency toward excess create friction through overindulgence or inability to set limits. This challenging aspect teaches fulfillment without excess, developing healthy boundaries around emotional appetite.",
+      "trine": "Your instincts flow naturally toward wisdom and understanding, giving you intuitive grasp of life's larger patterns. Your emotional intelligence carries philosophical depth and natural faith.",
+      "opposition": "Your need for security and desire for freedom face each other in polarity, creating tension between staying safe and exploring. Balance comes through finding security in expansion itself."
+    },
+    "Moon-Saturn": {
+      "conjunction": "Your emotional nature carries restriction or guardedness, potentially from early experiences of deprivation. You feel deeply but may struggle to express or trust feelings, developing emotional maturity through self-reliance.",
+      "sextile": "Your nurturing capacity works cooperatively with sense of responsibility, creating opportunities for mature caregiving. Structure supports emotional expression, building lasting security.",
+      "square": "Your emotional needs and disciplined self-control create friction through denial of feelings or harsh self-judgment. This challenging aspect demands self-compassion, learning that discipline serves rather than punishes emotional truth.",
+      "trine": "Your need for security flows naturally through building reliable structures. You find emotional stability through commitment and consistency, creating deep foundations that withstand difficulty.",
+      "opposition": "Your desire for comfort and relationship to authority face each other in polarity, creating tension between vulnerability and control. Integration comes through accepting that structure can serve care."
+    },
+    "Moon-Chiron": {
+      "conjunction": "Your emotional nature carries a primal wound around being cared for or feeling safe. What should come naturally—receiving nurturing—may trigger shame, offering deep healing as you learn to mother yourself and others.",
+      "sextile": "Your capacity to nurture works cooperatively with your healing journey, creating opportunities to care for others through understanding your own wounds. Vulnerability becomes medicine.",
+      "square": "Your emotional needs and feelings of inadequacy create painful friction, manifesting as chronic sense of being too much or not enough. This challenging aspect demands self-acceptance beyond perfect care.",
+      "trine": "Your instincts flow naturally through wisdom gained from emotional wounds, allowing you to feel authentically because of your pain. Your suffering has deepened your capacity for intuitive healing presence.",
+      "opposition": "Your need for security and core vulnerability face each other in polarity through relationships that expose tender places. True security comes through including rather than denying wounded parts."
+    },
+    "Moon-Uranus": {
+      "conjunction": "Your emotional nature is unpredictable and resistant to conventional security. You need freedom as much as comfort, creating tension between stability and autonomy with sudden shifts of feeling.",
+      "sextile": "Your instincts work cooperatively with innovative impulses, creating opportunities for fresh emotional approaches. Breaking from habit serves your wellbeing, keeping emotional life dynamic and authentic.",
+      "square": "Your need for security and desire for freedom create friction through restlessness or sudden disruptions to stability. This challenging aspect demands you find security in change itself.",
+      "trine": "Your nurturing capacity flows naturally with respect for individuality, allowing you to care while honoring uniqueness. You create safe space for authentic expression through progressive approaches to belonging.",
+      "opposition": "Your emotional needs and awakening impulses face each other in polarity, creating sudden awareness of needs through shocking changes. Integration comes through conscious evolution honoring both attachment and autonomy."
+    },
+    "Moon-Neptune": {
+      "conjunction": "Your emotional nature is permeable and easily overwhelmed by others' feelings. You possess profound empathy but must develop boundaries to avoid emotional dissolution or escaping into fantasy.",
+      "sextile": "Your capacity to nurture works cooperatively with compassionate understanding, creating opportunities for grace in caregiving. Your empathy enhances connection without consuming you.",
+      "square": "Your emotional needs and relationship to truth create friction through self-deception or unclear boundaries. This challenging aspect demands clarity about what you actually need versus what you imagine needing.",
+      "trine": "Your instincts flow naturally toward spiritual connection and transcendent experience, creating ease in accessing mystical states. Your emotional intelligence carries divine quality, trusting feelings to guide toward unity.",
+      "opposition": "Your need for security and forces of dissolution face each other in polarity, creating tension between solid ground and merger. Integration comes through safe surrender that doesn't require losing yourself."
+    },
+    "Moon-Pluto": {
+      "conjunction": "Your emotional nature is volcanic and oriented toward extremes. You feel everything intensely, possessing powerful intuition and capacity for transformation though potentially struggling with emotional control.",
+      "sextile": "Your instincts work cooperatively with depth perception, creating opportunities to access hidden emotional truths productively. Your gut leads you beneath surfaces with penetrating insight.",
+      "square": "Your need for security and control dynamics create intense friction through attempts to control emotions or power struggles around safety. This challenging aspect demands surrender to emotional truth while developing authentic strength.",
+      "trine": "Your capacity to nurture flows naturally through transformative processes, allowing you to care for others through darkest moments. You access deep reserves and help others regenerate through crisis.",
+      "opposition": "Your emotional needs and power dynamics face each other in polarity through intense relationships revealing manipulation or dependency. Integration requires owning your full emotional power."
+    },
+    "Mercury-Venus": {
+      "conjunction": "Your communication style and desire for harmony are fused, making you naturally diplomatic and skilled at pleasant exchange. You speak with grace and tact, though may avoid necessary directness.",
+      "sextile": "Your intellectual processes work cooperatively with your value system, creating opportunities to think clearly about what matters and articulate preferences gracefully.",
+      "square": "Your analytical mind and appreciation of pleasure create friction, as critical thinking may undermine enjoyment. This challenging aspect teaches integration of discernment with appreciation.",
+      "trine": "Your love of learning flows naturally toward appreciation of beauty, creating ease in artistic study and aesthetic understanding. Knowledge and pleasure merge effortlessly in elegant communication.",
+      "opposition": "Your perceptive capacity and relational desires face each other in polarity, creating awareness through dialogue with others. Integration comes through relationships that include both clear seeing and genuine affection."
+    },
+    "Mercury-Mars": {
+      "conjunction": "Your communication and assertive energy are fused, making you direct and quick-witted. You think fast and speak boldly with mental energy that can manifest as sharp debate or argumentativeness.",
+      "sextile": "Your reasoning ability works cooperatively with your capacity for initiative, creating opportunities to act on ideas quickly and speak decisively when assertion serves clear thinking.",
+      "square": "Your intellectual processes and relationship to conflict create friction through argumentativeness or mental aggression. This demanding aspect teaches sharp thinking without destructive combativeness.",
+      "trine": "Your curiosity flows naturally with courage, allowing you to pursue ideas fearlessly and speak truth boldly. Mental exploration feels exciting, making you an adventurous thinker and confident communicator.",
+      "opposition": "Your analytical capacity and action impulses face each other in polarity, creating tension between thinking and doing. Integration comes through projects demanding both careful consideration and decisive movement."
+    },
+    "Mercury-Jupiter": {
+      "conjunction": "Your intellectual nature carries expansive quality, making you optimistic in thinking and interested in big ideas. You communicate enthusiastically though may struggle with details or overstating claims.",
+      "sextile": "Your love of learning works cooperatively with quest for wisdom, creating opportunities to acquire knowledge that serves understanding. Curiosity leads to meaningful insight with fortunate timing.",
+      "square": "Your communication style and tendency toward excess create friction through overpromising or exaggeration. This challenging aspect teaches tempering enthusiasm with accuracy while maintaining expansive thinking.",
+      "trine": "Your curiosity flows naturally toward opportunities for growth and adventure, creating ease in learning. Knowledge opens doors effortlessly, giving you natural teaching ability and intellectual luck.",
+      "opposition": "Your capacity for objective perception and your belief system face each other in polarity, creating tension between observation and interpretation. Integration honors both empirical data and meaningful understanding."
+    },
+    "Mercury-Saturn": {
+      "conjunction": "Your intellectual processes are structured and serious, oriented toward mastery through sustained effort. You think carefully and communicate with authority, developing wisdom through patient application.",
+      "sextile": "Your love of learning works cooperatively with drive toward mastery, creating opportunities to develop expertise through committed study. Structure supports intellectual growth with disciplined application.",
+      "square": "Your communication and restrictive forces create friction through difficulty expressing yourself or fear of speaking. This challenging aspect demands both discipline and self-compassion in intellectual expression.",
+      "trine": "Your reasoning ability flows naturally through structured thinking and systematic approaches, creating ease in organizing information. Your mind works like an architect, building reliable mental constructs.",
+      "opposition": "Your curiosity and relationship to boundaries face each other in polarity, creating tension between open exploration and necessary limits. Integration comes through structure that serves rather than restricts freedom."
+    },
+    "Mercury-Chiron": {
+      "conjunction": "Your communication carries a wound around being heard or understood. Speaking may trigger shame, yet this vulnerability becomes your teaching as you help others find their voice through your own journey.",
+      "sextile": "Your learning process works cooperatively with your healing journey, creating opportunities to understand wounds intellectually. Knowledge serves integration, and study enhances self-awareness.",
+      "square": "Your intellectual capacity and feelings of inadequacy create painful friction through imposter syndrome or fear of not being smart enough. This challenging aspect demands accepting limitations while honoring genuine insight.",
+      "trine": "Your perceptive capacity flows naturally through wisdom gained from wounds, allowing you to see clearly because of your pain. Suffering has sharpened understanding, creating insightful communication.",
+      "opposition": "Your communication and core vulnerability face each other in polarity through feedback exposing tender places. True communication includes rather than defends against wounded truth."
+    },
+    "Mercury-Uranus": {
+      "conjunction": "Your intellectual nature is electric and original, oriented toward breakthrough thinking. You grasp concepts intuitively and communicate unconventionally, often ahead of your time.",
+      "sextile": "Your curiosity works cooperatively with innovative impulses, creating opportunities for original insights and sudden understanding. Unconventional thinking serves learning, keeping your mind fresh.",
+      "square": "Your communication and disruptive forces create friction through erratic expression or intellectual restlessness. This challenging aspect demands channeling revolutionary thinking constructively rather than fragmenting your message.",
+      "trine": "Your reasoning ability flows naturally toward liberation and authenticity, creating ease in thinking independently. Innovation feels intellectually natural with progressive mind aligned to genuine insight.",
+      "opposition": "Your analytical capacity and awakening impulses face each other in polarity, creating sudden awareness through shocking information. Integration comes through conscious evolution of perspective."
+    },
+    "Mercury-Neptune": {
+      "conjunction": "Your intellectual nature is permeable and poetic, oriented toward symbolic or mystical thinking. You grasp through intuition more than logic, creating artistic sensibility though struggling with concrete facts.",
+      "sextile": "Your communication works cooperatively with compassionate understanding, creating opportunities for sensitive expression and empathetic listening. Language serves subtle connection and healing dialogue.",
+      "square": "Your perception and relationship to truth create friction through confusion or difficulty distinguishing fact from fantasy. This challenging aspect demands developing discernment while honoring intuitive knowing.",
+      "trine": "Your learning capacity flows naturally toward spiritual understanding and mystical insight, creating ease in grasping transcendent concepts. Your mind works through symbol and metaphor with poetic sensitivity.",
+      "opposition": "Your rational capacity and dream world face each other in polarity, creating tension between logic and imagination. Integration honors both empirical truth and poetic meaning."
+    },
+    "Mercury-Pluto": {
+      "conjunction": "Your intellectual nature is penetrating and intense, oriented toward hidden truths. You think obsessively about interests and communicate with psychological insight, seeing beneath surfaces.",
+      "sextile": "Your perceptive capacity works cooperatively with transformative forces, creating opportunities to see deeply and understand what's hidden. Insight catalyzes change meaningfully.",
+      "square": "Your communication and control dynamics create friction through manipulative speech or obsessive thinking. This challenging aspect demands awareness of how you wield intellectual power.",
+      "trine": "Your analytical capacity flows naturally through regenerative processes, allowing deep thinking about transformation. Your mind excavates buried truth like a psychological investigator.",
+      "opposition": "Your curiosity and obsessive tendencies face each other in polarity, creating awareness of mental intensity through encounters revealing fixation. Integration accepts that depth serves rather than dominates understanding."
+    },
+    "Venus-Mars": {
+      "conjunction": "Your capacity for love and sexual desire are fused, making you passionate and magnetic. What you want and value merge into integrated attraction with authentic chemistry.",
+      "sextile": "Your desire for harmony works cooperatively with capacity for initiative, creating opportunities to pursue wants gracefully. You balance receptivity with pursuit in relationships naturally.",
+      "square": "Your value system and relationship to conflict create friction, forcing choices between peace and authentic desire. This challenging aspect teaches integrating diplomacy with healthy assertion.",
+      "trine": "Your capacity for attraction flows naturally with passionate expression, creating ease in romantic pursuit. Desire and appreciation work together harmoniously with magnetic appeal.",
+      "opposition": "Your relational nature and need for independence face each other in polarity, creating tension between togetherness and autonomy. Balance comes through partnerships honoring both connection and agency."
+    },
+    "Venus-Jupiter": {
+      "conjunction": "Your capacity for love carries generous, optimistic quality making you warm and abundant. You love expansively though may struggle with excess or unrealistic relationship expectations.",
+      "sextile": "Your appreciation of pleasure works cooperatively with incoming opportunities, creating fortunate timing in love and art. Your values attract beneficial circumstances through natural grace.",
+      "square": "Your value system and tendency toward excess create friction through overindulgence or unrealistic standards. This challenging aspect teaches finding satisfaction without excess.",
+      "trine": "Your sense of beauty flows naturally toward abundance and generosity, creating ease in appreciating life's richness. Love and growth merge effortlessly with social popularity.",
+      "opposition": "Your sense of worth and search for meaning face each other in polarity, creating tension between personal value and philosophical ideals. Integration finds meaning in beauty itself."
+    },
+    "Venus-Saturn": {
+      "conjunction": "Your capacity for love carries restriction or caution, often from early experiences of rejection. You love seriously but may struggle to receive affection, developing relational maturity through commitment.",
+      "sextile": "Your value system works cooperatively with capacity for commitment, creating opportunities to build lasting relationships. Structure supports appreciation, creating stable beauty.",
+      "square": "Your appreciation of pleasure and self-discipline create friction through denial of enjoyment or guilt around beauty. This challenging aspect demands developing self-worth beyond deprivation.",
+      "trine": "Your desire for harmony flows naturally through building reliable structures. You find beauty in commitment, creating lasting aesthetic achievement through patient craftsmanship.",
+      "opposition": "Your relational desires and relationship to boundaries face each other in polarity through partnerships testing limits. Integration comes through structure serving rather than preventing intimacy."
+    },
+    "Venus-Chiron": {
+      "conjunction": "Your capacity for love carries a wound around being lovable or worthy of beauty. Receiving affection may trigger shame, yet this becomes your gift in healing relational pain.",
+      "sextile": "Your desire for harmony works cooperatively with healing journey, creating opportunities to find peace through addressing relational wounds. Beauty serves integration naturally.",
+      "square": "Your sense of worth and feelings of inadequacy create painful friction, manifesting as chronic feeling of being unlovable. This challenging aspect demands facing the gap between inherent value and wounded self-concept.",
+      "trine": "Your sense of beauty flows naturally through wisdom gained from relational wounds, allowing authentic appreciation because of your pain. Suffering has deepened your capacity for love.",
+      "opposition": "Your relational desires and core vulnerability face each other in polarity through partnerships exposing tender places around love. Intimacy requires including wounded parts."
+    },
+    "Venus-Uranus": {
+      "conjunction": "Your capacity for love is electric and unconventional, oriented toward authentic connection without possession. You need freedom in relationships though connections may be unstable.",
+      "sextile": "Your capacity for attraction works cooperatively with innovative impulses, creating opportunities for original connection. Experimentation enhances pleasure, keeping romance fresh.",
+      "square": "Your relational desires and disruptive forces create friction through sudden changes or restlessness in partnership. This challenging aspect demands finding freedom within rather than through disruption.",
+      "trine": "Your value system flows naturally with respect for individuality, creating ease in appreciating uniqueness and loving without possession. You attract liberating relationships.",
+      "opposition": "Your desire for harmony and awakening impulses face each other in polarity, creating sudden awareness through people catalyzing liberation. Integration comes through disrupting false harmony."
+    },
+    "Venus-Neptune": {
+      "conjunction": "Your capacity for love is mystical and idealistic, oriented toward transcendent union. You long for divine connection though may struggle finding it in human relationships.",
+      "sextile": "Your sense of beauty works cooperatively with imagination, creating opportunities to appreciate transcendent art. Aesthetic expression serves spiritual vision naturally.",
+      "square": "Your value system and relationship to truth create friction through idealizing love or confusing fantasy with reality. This challenging aspect demands clarity about what you actually value.",
+      "trine": "Your desire for harmony flows naturally toward compassionate connection and spiritual love, creating ease in accessing unconditional appreciation. You radiate gentle grace.",
+      "opposition": "Your relational desires and forces of dissolution face each other in polarity, creating tension between connection and losing boundaries. Integration comes through love honoring both limits and spiritual possibility."
+    },
+    "Venus-Pluto": {
+      "conjunction": "Your capacity for love is volcanic and consuming, oriented toward total transformation. You love obsessively and desire complete merging with magnetic but potentially controlling attraction.",
+      "sextile": "Your capacity for attraction works cooperatively with depth perception, creating opportunities for meaningful connection. Intensity serves love, leading beneath surfaces.",
+      "square": "Your relational desires and control dynamics create intense friction through power struggles or jealousy. This challenging aspect demands awareness of using relationship as power.",
+      "trine": "Your value system flows naturally through transformative processes, allowing appreciation of depth. You access powerful aesthetic instincts and love through renewal.",
+      "opposition": "Your sense of worth and power dynamics face each other in polarity through intense relationships revealing manipulation. Integration requires owning your full relational power."
+    },
+    "Mars-Jupiter": {
+      "conjunction": "Your action drive carries expansive quality, making you enthusiastic and adventurous. You act big and take chances though may struggle with overextension.",
+      "sextile": "Your energy works cooperatively with incoming opportunities, creating fortunate timing for action. Initiative opens doors, and enthusiasm attracts support naturally.",
+      "square": "Your assertive energy and tendency toward excess create friction through overconfidence or recklessness. This challenging aspect teaches tempering enthusiasm with strategy.",
+      "trine": "Your courage flows naturally with optimistic outlook, creating ease in taking risks. Action feels aligned with possibility, approaching challenges with faith rather than fear.",
+      "opposition": "Your personal desires and search for meaning face each other in polarity, creating tension between individual want and larger purpose. Integration honors both agency and transcendent values."
+    },
+    "Mars-Saturn": {
+      "conjunction": "Your action drive is controlled and strategic, oriented toward sustained effort rather than spontaneous expression. You possess tremendous endurance developing strength through patient persistence.",
+      "sextile": "Your energy works cooperatively with drive toward mastery, creating opportunities to channel action productively. Structure supports initiatives, and patience enhances effectiveness.",
+      "square": "Your desires meet restrictive forces, creating friction through obstacles or fear blocking action. This challenging aspect demands resilience, learning to pursue despite restrictions.",
+      "trine": "Your capacity for assertion flows naturally with sense of responsibility, creating reliable leadership and mature power use. You assert with authority and act with accountability.",
+      "opposition": "Your passionate nature and relationship to boundaries face each other in polarity, creating tension between spontaneous desire and necessary limits. Integration comes through structure serving drive."
+    },
+    "Mars-Chiron": {
+      "conjunction": "Your action drive carries a wound around assertion or anger. Taking action may trigger shame, yet this vulnerability becomes your teaching in helping others claim warrior nature.",
+      "sextile": "Your courage works cooperatively with healing journey, creating opportunities to act bravely in service of integration. Assertion serves wholeness naturally.",
+      "square": "Your desires and feelings of inadequacy create painful friction, manifesting as chronic sense that wants don't matter. This challenging aspect demands facing the gap between legitimate desire and wounded deserving.",
+      "trine": "Your vital energy flows naturally through wisdom gained from wounds around action, allowing powerful assertion because of vulnerabilities. Pain has refined your courage.",
+      "opposition": "Your assertive capacity and core vulnerability face each other in polarity through conflicts exposing tender places around strength. Wholeness includes both power and pain."
+    },
+    "Mars-Uranus": {
+      "conjunction": "Your action drive is electric and unpredictable, oriented toward breaking free. You act suddenly and rebel against limitation with exciting but potentially chaotic expression.",
+      "sextile": "Your capacity for initiative works cooperatively with innovative impulses, creating opportunities for original action. Unconventional moves serve goals, keeping approaches fresh.",
+      "square": "Your desires and disruptive forces create friction through erratic action or sudden anger. This challenging aspect demands channeling revolutionary energy constructively.",
+      "trine": "Your courage flows naturally toward liberation and authenticity, creating ease in fighting for freedom. Innovation feels instinctive with progressive warrior spirit.",
+      "opposition": "Your assertive impulses and awakening forces face each other in polarity, creating sudden awareness through shocking confrontations. Integration comes through conscious evolution of how you fight."
+    },
+    "Mars-Neptune": {
+      "conjunction": "Your action drive is diffuse and idealistic, oriented toward transcendent pursuits. You may struggle to assert directly, losing energy to fantasy though capable of inspired spiritual action.",
+      "sextile": "Your energy works cooperatively with imagination, creating opportunities to pursue creative visions. Intuition guides initiatives, enhancing both artistic drive and compassionate action.",
+      "square": "Your desires and relationship to truth create friction through confusion about wants or pursuing fantasies. This challenging aspect demands clarity about genuine desires versus escapist wishes.",
+      "trine": "Your passionate nature flows naturally toward compassionate action and spiritual pursuits, creating ease in fighting for transcendent causes. You act fiercely and tenderly for ideals.",
+      "opposition": "Your assertive impulses and forces of dissolution face each other in polarity, creating tension between fighting and surrendering. Integration accepts that strength sometimes means letting go."
+    },
+    "Mars-Pluto": {
+      "conjunction": "Your action drive is volcanic and intense, oriented toward total commitment. You possess tremendous force though may struggle with controlling or being controlled by power.",
+      "sextile": "Your desires work cooperatively with transformative forces, creating opportunities to pursue wants with depth. Action catalyzes change, and passion serves regeneration.",
+      "square": "Your assertive energy and control dynamics create intense friction through power struggles or compulsive action. This challenging aspect demands awareness of how you wield power.",
+      "trine": "Your vital energy flows naturally through cycles of death and rebirth, giving remarkable endurance. You access deep power reserves and transform obstacles into fuel.",
+      "opposition": "Your courage and shadow material face each other in polarity through confrontations revealing relationship with power. Integration requires owning full warrior power, including feared parts."
+    },
+    "Jupiter-Saturn": {
+      "conjunction": "Your expansive impulses and limiting forces meet, creating tension between growth and restriction. You cycle between faith and doubt, learning to integrate possibility with practicality.",
+      "sextile": "Your opportunities work cooperatively with capacity for structure, creating fortunate moments to build lasting success. Expansion serves foundation-building naturally.",
+      "square": "Your optimism and self-discipline create friction, as faith may undermine effort or restriction may block expansion. This challenging aspect teaches balancing enthusiasm with realism.",
+      "trine": "Your capacity for growth flows naturally through patient mastery, creating ease in building expertise that expands. Wisdom and experience work together harmoniously.",
+      "opposition": "Your belief system and relationship to authority face each other in polarity, creating tension between faith and control. Integration develops philosophy including both possibility and responsibility."
+    },
+    "Jupiter-Chiron": {
+      "conjunction": "Your expansive nature carries a wound around faith or belonging. What should bring optimism may trigger pain, yet this becomes your teaching in helping others find meaning.",
+      "sextile": "Your wisdom works cooperatively with healing journey, creating opportunities to grow through addressing vulnerabilities. Expansion serves integration naturally.",
+      "square": "Your belief system and feelings of inadequacy create painful friction through spiritual bypass or compensatory inflation. This challenging aspect demands authentic faith beyond escape from pain.",
+      "trine": "Your capacity for growth flows naturally through wisdom gained from disappointment, allowing authentic expansion because of wounds. Suffering has deepened your faith.",
+      "opposition": "Your optimism and core vulnerability face each other in polarity through experiences testing faith. True belief includes rather than transcends wounded parts."
+    },
+    "Jupiter-Uranus": {
+      "conjunction": "Your expansive nature is electric and oriented toward breakthrough. You seek growth through liberation with sudden opportunities though potentially destabilizing changes.",
+      "sextile": "Your opportunities work cooperatively with innovative impulses, creating fortunate moments for original expansion. Progressive thinking attracts beneficial breakthroughs.",
+      "square": "Your optimism and disruptive forces create friction through unrealistic rebellion or chaotic growth. This challenging aspect demands channeling revolutionary vision constructively.",
+      "trine": "Your capacity for growth flows naturally toward freedom and authenticity, creating ease in expanding independently. Innovation and opportunity align harmoniously.",
+      "opposition": "Your belief system and awakening forces face each other in polarity, creating sudden philosophical shifts. Integration comes through conscious evolution of understanding."
+    },
+    "Jupiter-Neptune": {
+      "conjunction": "Your expansive nature is mystical and idealistic, oriented toward transcendent faith. You seek spiritual growth though may struggle with unrealistic idealism or escapism.",
+      "sextile": "Your wisdom works cooperatively with imagination, creating opportunities for inspired understanding. Spiritual vision enhances meaningful growth naturally.",
+      "square": "Your optimism and relationship to truth create friction through inflated idealism or confusing fantasy with faith. This challenging aspect demands discernment in belief.",
+      "trine": "Your capacity for growth flows naturally toward spiritual connection, creating ease in accessing transcendent understanding. Faith and mysticism merge effortlessly.",
+      "opposition": "Your belief system and forces of dissolution face each other in polarity, creating tension between structure and surrender in faith. Integration honors both philosophy and mystery."
+    },
+    "Jupiter-Pluto": {
+      "conjunction": "Your expansive nature is intense and oriented toward total transformation. You seek growth through power with capacity for extraordinary achievement though potentially obsessive ambition.",
+      "sextile": "Your opportunities work cooperatively with transformative forces, creating fortunate moments for deep growth. Expansion catalyzes regeneration meaningfully.",
+      "square": "Your optimism and control dynamics create friction through power struggles around resources or manipulative ambition. This challenging aspect demands conscious use of expansive power.",
+      "trine": "Your capacity for growth flows naturally through regenerative processes, creating ease in transforming obstacles into opportunities. You expand through depth.",
+      "opposition": "Your belief system and shadow material face each other in polarity through encounters revealing hidden motivations. Integration requires owning full philosophical power."
+    },
+    "Saturn-Chiron": {
+      "conjunction": "Your relationship to structure carries a wound around authority or worthiness of achievement. Building may trigger inadequacy, yet this becomes your teaching in mastery.",
+      "sextile": "Your capacity for discipline works cooperatively with healing journey, creating opportunities for structure to serve integration. Commitment enhances wholeness.",
+      "square": "Your self-discipline and feelings of inadequacy create painful friction through harsh self-judgment or fear of failure. This challenging aspect demands self-compassion in building.",
+      "trine": "Your capacity for mastery flows naturally through wisdom gained from limitation, allowing authentic achievement because of wounds. Restriction has refined your strength.",
+      "opposition": "Your relationship to authority and core vulnerability face each other in polarity through situations testing your boundaries. True strength includes wounded parts."
+    },
+    "Saturn-Uranus": {
+      "conjunction": "Your relationship to structure meets forces of liberation, creating tension between building and breaking. You cycle between order and chaos, learning integration.",
+      "sextile": "Your capacity for discipline works cooperatively with innovative impulses, creating opportunities for structured innovation. Traditional and progressive approaches merge.",
+      "square": "Your need for structure and disruptive forces create friction through sudden changes undermining stability. This challenging aspect demands flexible foundations.",
+      "trine": "Your capacity for mastery flows naturally toward innovation, creating ease in building authentic structures. Discipline serves rather than restricts freedom.",
+      "opposition": "Your relationship to authority and awakening forces face each other in polarity through confrontations between order and liberation. Integration honors both structure and breakthrough."
+    },
+    "Saturn-Neptune": {
+      "conjunction": "Your relationship to structure meets forces of dissolution, creating tension between form and formlessness. You learn to manifest spiritual vision practically.",
+      "sextile": "Your capacity for discipline works cooperatively with imagination, creating opportunities to build dreams into reality. Structure serves spiritual expression.",
+      "square": "Your need for structure and relationship to truth create friction through fear undermining faith or fantasy avoiding responsibility. This challenging aspect demands grounded spirituality.",
+      "trine": "Your capacity for mastery flows naturally toward spiritual manifestation, creating ease in bringing transcendent vision into form. Discipline serves mystical purpose.",
+      "opposition": "Your relationship to authority and forces of dissolution face each other in polarity through tension between control and surrender. Integration finds structure in faith."
+    },
+    "Saturn-Pluto": {
+      "conjunction": "Your relationship to structure is intense and oriented toward total control. You possess tremendous capacity for sustained transformation though potentially rigid or dominating.",
+      "sextile": "Your capacity for discipline works cooperatively with transformative forces, creating opportunities for structured regeneration. Commitment serves deep change.",
+      "square": "Your need for structure and control dynamics create friction through power struggles over authority. This challenging aspect demands conscious use of disciplined power.",
+      "trine": "Your capacity for mastery flows naturally through transformative processes, creating ease in building through crisis. You achieve enduring power through depth.",
+      "opposition": "Your relationship to authority and shadow material face each other in polarity through encounters revealing hidden control. Integration requires owning full structural power."
+    },
+    "Chiron-Uranus": {
+      "conjunction": "Your wound and capacity for breakthrough are fused, making healing come through sudden liberation. Your pain catalyzes awakening for yourself and others.",
+      "sextile": "Your healing journey works cooperatively with innovative impulses, creating opportunities for original integration. Unconventional approaches serve wholeness.",
+      "square": "Your vulnerability and disruptive forces create friction through shocking experiences triggering wounds. This challenging aspect demands conscious liberation through pain.",
+      "trine": "Your wisdom-through-pain flows naturally toward authentic freedom, creating ease in healing through breakthrough. Wounds become gateways to liberation.",
+      "opposition": "Your core vulnerability and awakening forces face each other in polarity through sudden exposure of tender places. Integration comes through conscious evolution including pain."
+    },
+    "Chiron-Neptune": {
+      "conjunction": "Your wound and spiritual sensitivity are fused, making healing come through transcendence. Your pain opens mystical capacity for yourself and others.",
+      "sextile": "Your healing journey works cooperatively with imagination, creating opportunities for spiritual integration. Compassion serves wholeness naturally.",
+      "square": "Your vulnerability and relationship to truth create friction through confusion around wounds or spiritual bypass. This challenging aspect demands grounded healing.",
+      "trine": "Your wisdom-through-pain flows naturally toward spiritual connection, creating ease in healing through transcendence. Wounds become portals to unity.",
+      "opposition": "Your core vulnerability and forces of dissolution face each other in polarity through experiences threatening to overwhelm pain. Integration finds boundaries in spiritual healing."
+    },
+    "Chiron-Pluto": {
+      "conjunction": "Your wound and transformative power are fused, making healing come through intensity. Your pain catalyzes profound regeneration for yourself and others.",
+      "sextile": "Your healing journey works cooperatively with transformative forces, creating opportunities for deep integration. Shadow work serves wholeness.",
+      "square": "Your vulnerability and control dynamics create friction through power struggles around wounds. This challenging aspect demands conscious transformation of pain.",
+      "trine": "Your wisdom-through-pain flows naturally through regenerative processes, creating ease in healing through death-and-rebirth. Wounds become sources of power.",
+      "opposition": "Your core vulnerability and shadow material face each other in polarity through intense encounters exposing deepest pain. Integration requires owning full wounded power."
+    },
+    "Uranus-Neptune": {
+      "conjunction": "Your capacity for breakthrough and spiritual vision are fused, making innovation serve transcendence. You seek liberation through mystical understanding.",
+      "sextile": "Your innovative impulses work cooperatively with imagination, creating opportunities for inspired originality. Progressive vision serves spiritual expression.",
+      "square": "Your disruptive forces and relationship to truth create friction through chaotic idealism or confusing liberation with escape. This challenging aspect demands grounded awakening.",
+      "trine": "Your capacity for innovation flows naturally toward spiritual connection, creating ease in revolutionary mysticism. Freedom and transcendence align harmoniously.",
+      "opposition": "Your awakening forces and forces of dissolution face each other in polarity through tension between clarity and confusion in change. Integration honors both breakthrough and mystery."
+    },
+    "Uranus-Pluto": {
+      "conjunction": "Your capacity for breakthrough and transformative power are fused, making innovation serve regeneration. You catalyze revolutionary change with intensity.",
+      "sextile": "Your innovative impulses work cooperatively with transformative forces, creating opportunities for evolutionary change. Progress serves deep transformation.",
+      "square": "Your disruptive forces and control dynamics create friction through power struggles over change. This challenging aspect demands conscious revolutionary transformation.",
+      "trine": "Your capacity for innovation flows naturally through regenerative processes, creating ease in transformative breakthrough. Liberation and rebirth align powerfully.",
+      "opposition": "Your awakening forces and shadow material face each other in polarity through confrontations revealing hidden revolution. Integration requires owning full liberating power."
+    },
+    "Neptune-Pluto": {
+      "conjunction": "Your spiritual vision and transformative power are fused, making transcendence serve regeneration. You access deep mystical transformation.",
+      "sextile": "Your imagination works cooperatively with transformative forces, creating opportunities for spiritual transformation. Mystical vision serves deep change.",
+      "square": "Your relationship to truth and control dynamics create friction through manipulative spirituality or escapist power. This challenging aspect demands conscious spiritual transformation.",
+      "trine": "Your capacity for spiritual connection flows naturally through regenerative processes, creating ease in transcendent transformation. Mysticism and power align deeply.",
+      "opposition": "Your forces of dissolution and shadow material face each other in polarity through tension between surrender and control in transformation. Integration honors both mystery and power."
+    }
+  }
+}

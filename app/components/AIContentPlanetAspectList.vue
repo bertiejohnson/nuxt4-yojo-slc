@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import { experimental_useObject as useObject } from '@ai-sdk/vue'
+import { phrasesSchema } from '@/../shared/zod-schemas'
 
-const { submit, isLoading, object, stop, error, clear } = useObject({ api:'/api/ai/use-stream-object' })
+const { submit, isLoading, object, stop, error, clear } = useObject({ api: '/api/ai/use-stream-object', schema: phrasesSchema })
 
 const props = defineProps({
   chartAspects: Array as () => unknown[]
@@ -24,7 +25,7 @@ const phrasesContent = async (aspect: object) => {
 
   const prompt = `Generate five short phrases of two to three sentences each for the following astrological aspect: ${aspect.planetOneName} ${aspect.aspectName} ${aspect.planetTwoName}. Do not include the keyword pair itself.`
 
-  submit({ prompt, schema: 'phrasesSchema' })
+  submit({ prompt })
 
   showAspectContent.value = true
 }

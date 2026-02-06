@@ -5,8 +5,6 @@ const { data, error } = await useFetch('/api/generate-chart', {
   }
 })
 
-console.log('Fetched chart data:', data.value)
-
 if (error.value) {
   console.error('Oops! There was an error fetching chart data :(', error.value)
   // log the error - date/time, error message, stack trace etc. Or use a logging service like Sentry

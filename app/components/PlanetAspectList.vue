@@ -20,7 +20,7 @@ const emit = defineEmits(['showKeywords'])
     >
       <div
         class="underline"
-        @click="emit('showKeywords', aspect.planetOneName, aspect.planetTwoName)"
+        @click="emit('showKeywords', aspect.aspectName, aspect.planetOneName, aspect.planetTwoName)"
       >
         {{ aspect.planetOneName }} {{ aspect.aspectName }} {{ aspect.planetTwoName }}
       </div>

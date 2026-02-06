@@ -2,6 +2,7 @@
 const props = defineProps<{
   planetOne: string
   planetTwo: string
+  theAspect: string
 }>()
 
 const emit = defineEmits(['showAspects', 'getTextForPair'])

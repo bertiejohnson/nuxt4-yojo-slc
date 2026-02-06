@@ -15,8 +15,9 @@ const showChart = ref(true)
 
 const showAspectList = ref(false)
 
-const colOnePlanet = ref<string>()
-const colTwoPlanet = ref<string>()
+const colOnePlanet = ref<string>('')
+const colTwoPlanet = ref<string>('')
+const theAspect = ref<string>('')
 
 function isChartAspectArray(data: unknown): data is ChartAspect[] {
   return Array.isArray(data) && data.every(item =>
@@ -36,9 +37,10 @@ function showAspects(planetName: string, fromKeywords = false) {
   }
 }
 
-function showKeywords(planetOne: string, planetTwo: string) {
+function showKeywords(aspect: string, planetOne: string, planetTwo: string) {
   colOnePlanet.value = planetOne
   colTwoPlanet.value = planetTwo
+  theAspect.value = aspect
 
   showAspectList.value = false
   showPlanetButtons.value = false
@@ -130,8 +132,9 @@ onMounted(async () => {
     />
     <PlanetsAspectKeywords
       v-if="!showPlanetButtons && !showAspectList"
-      :planet-one="colOnePlanet || ''"
-      :planet-two="colTwoPlanet || ''"
+      :planet-one="colOnePlanet"
+      :planet-two="colTwoPlanet"
+      :the-aspect="theAspect"
       @show-aspects="showAspects"
     />
   </div>

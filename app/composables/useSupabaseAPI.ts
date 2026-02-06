@@ -14,10 +14,7 @@ export const useSupabaseAPI = () =>{
       return null
     }
 
-    console.log('Fetched chart data from Supabase:', data)
-
     return { data, error }
-    // return data?.[0]?.chart_data ? JSON.parse(data[0].chart_data) : null
   }
 
   return { getChartFromId }

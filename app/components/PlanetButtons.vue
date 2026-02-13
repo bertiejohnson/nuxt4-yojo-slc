@@ -1,19 +1,23 @@
 <script lang="ts" setup>
 const emit = defineEmits(['showAspects'])
 const planets = planetListStandard // from '@/../shared/planetData/planetListStandard'
+
+const planetNames = planets.map((planet) => {
+  return { baseName: planet.name, displayName: capitalize(planet.name) }
+})
 </script>
 
 <template>
   <div>
-    <ul class="flex gap-4 justify-center flex-wrap">
+    <ul class="flex gap-1 justify-center flex-wrap">
       <li
-        v-for="planet in planets"
-        :key="planet.name"
+        v-for="(planet, index) in planetNames"
+        :key="index"
       >
         <UButton
-          :label="planet.name"
+          :label="planet.displayName"
           variant="subtle"
-          @click="emit('showAspects', planet.name)"
+          @click="emit('showAspects', planet.baseName, false)"
         />
       </li>
     </ul>

@@ -12,8 +12,6 @@ export default defineLazyEventHandler(async () => {
 
   return defineEventHandler(async (event) => {
     const context: { request?: string, prompt?: string, schema?: SchemaKeys } = await readBody(event)
-    console.log('Received context:', context)
-
     const prompt = context.prompt ? context.prompt : `Generate a short text based on the request: ${context.request}`
 
     const schemaMap: Record<SchemaKeys, ZodObject> = {

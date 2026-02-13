@@ -55,7 +55,7 @@ async function insertChart(id, chart) {
     .insert({
       profile_id: id,
       chart_type: 'natal',
-      chart_data: chart
+      chart: chart
     })
     .select()
   if (error) console.error(error)

@@ -5,8 +5,6 @@ const { data, error } = await useFetch('/api/generate-chart', {
   }
 })
 
-console.log('Fetched chart data:', data.value)
-
 if (error.value) {
   console.error('Oops! There was an error fetching chart data :(', error.value)
   // log the error - date/time, error message, stack trace etc. Or use a logging service like Sentry
@@ -49,12 +47,7 @@ const links = ref([
       class="min-h-screen"
     >
       <template #body>
-        <div v-if="chartFetchError" class="mb-0 max-w-2xl">
-          <p>
-            {{ chartFetchError }}
-          </p>
-        </div>
-        <div v-else>
+        <div class="mb-4">
           <ChartBuilder
             :chart-data="nowChartData"
           />

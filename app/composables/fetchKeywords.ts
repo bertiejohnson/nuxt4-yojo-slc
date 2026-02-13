@@ -13,7 +13,6 @@ export default async () => {
 
     return data.default
   } catch (error) {
-    console.error('Error fetching keywords:', error)
     return null
   }
 }

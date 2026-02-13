@@ -1,7 +1,8 @@
 <script lang="ts" setup>
-import { experimental_useObject as useObject} from '@ai-sdk/vue'
+import { experimental_useObject as useObject } from '@ai-sdk/vue'
+import { expandedPhraseSchema } from '@/../shared/zod-schemas'
 
-const { submit: newSubmit, isLoading: newIsLoading, object: newObject, stop, error, clear } = useObject({ api:'/api/ai/use-stream-object' })
+const { submit: newSubmit, isLoading: newIsLoading, object: newObject, stop, error, clear } = useObject({ api: '/api/ai/use-stream-object', schema: expandedPhraseSchema })
 
 const props = defineProps({
   planets: Object,
@@ -15,7 +16,7 @@ const showExpandedPhrase = ref(false)
 const getExpandedPhrase = async (phrase, planets) => {
   const prompt = `The following phrase relates to the astrological planetary configuration ${planets.planetOne} ${planets.aspectName} ${planets.planetTwo}: ${phrase}. Please provide a detailed and insightful expansion of this phrase, exploring its deeper meanings and implications in the context of astrology. Your response should be thoughtful and comprehensive, offering valuable perspectives that enhance the understanding of this astrological concept.`
 
-  newSubmit({ prompt, schema: 'expandedPhraseSchema' })
+  newSubmit({ prompt })
 
   showPhrases.value = false
   showExpandedPhrase.value = true

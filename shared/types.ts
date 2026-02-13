@@ -23,3 +23,9 @@ export interface Transits {
   chartId: number
   transitData: object
 }
+
+export interface ChartAspect {
+  planetOneName: string
+  aspectName: string
+  planetTwoName: string
+}

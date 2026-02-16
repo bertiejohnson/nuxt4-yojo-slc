@@ -68,7 +68,7 @@ async function runIndexedDB(chartData) {
   let status = ''
   try {
     const retval = await addDexieChart(chartData, user.value.sub)
-    status = `Chart successfully added (in confirm.vue) to IndexedDB with return val of ${retval}`
+    status = `Chart successfully added (in confirm.vue) to IndexedDB with return val of ${retval} - test`
   } catch (error) {
     status = `Failed to add chart (in confirm.vue) to IndexedDB: ${error}`
   }

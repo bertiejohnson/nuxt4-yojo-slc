@@ -2,6 +2,7 @@
 <script setup>
 const user = useSupabaseUser()
 const client = useSupabaseClient()
+const { addDexieChart, getDexieChart } = useDexie()
 
 const userIsAuthenticated = async (userBirthData) => {
   const chartData = await $fetch('/api/generate-chart', {
@@ -66,17 +67,10 @@ async function insertChart(id, chart) {
 async function runIndexedDB(chartData) {
   let status = ''
   try {
-    const retval = await db.charts.add({
-      chart: chartData.chart
-    })
-    const test = await db.transits.add({
-      chartId: retval,
-      transitData: 'Sample transit data'
-    })
-
-    status = `Chart successfully added to IndexedDB with id ${retval} and transit id ${test}`
+    const retval = await addDexieChart(chartData, user.value.sub)
+    status = `Chart successfully added (in confirm.vue) to IndexedDB with return val of ${retval}`
   } catch (error) {
-    status = `Failed to add chart to IndexedDB: ${error}`
+    status = `Failed to add chart (in confirm.vue) to IndexedDB: ${error}`
   }
 
   console.log(status)

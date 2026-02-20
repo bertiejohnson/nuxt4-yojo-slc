@@ -1,6 +1,10 @@
 <script lang="ts" setup>
 import type { Chart, ChartRow, ChartAspect } from '@/../shared/types'
 
+definePageMeta({
+  middleware: 'auth'
+})
+
 const user = useSupabaseUser()
 const { getChartFromId } = useSupabaseAPI()
 const { addDexieChart, getDexieChart } = useDexie()

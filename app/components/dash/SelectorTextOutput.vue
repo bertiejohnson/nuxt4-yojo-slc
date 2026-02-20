@@ -14,8 +14,6 @@ interface TextData {
 const props = defineProps<{
   text: TextData
 }>()
-
-console.log('Received text prop:', props.text)
 </script>
 
 <template>

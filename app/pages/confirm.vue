@@ -2,7 +2,7 @@
 <script setup>
 const user = useSupabaseUser()
 const client = useSupabaseClient()
-const { addDexieChart, getDexieChart } = useDexie()
+const { addDexieChart } = useDexie()
 
 const userIsAuthenticated = async (userBirthData) => {
   const chartData = await $fetch('/api/generate-chart', {

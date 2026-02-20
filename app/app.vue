@@ -32,12 +32,17 @@ useSeoMeta({
   twitterCard: 'summary_large_image'
 })
 
-const items = computed<NavigationMenuItem[]>(() => [{
-  label: 'Dashboard',
-  to: '/dash',
-  icon: 'i-lucide-book-open',
-  active: route.path.startsWith('/dash')
-}])
+const items = computed<NavigationMenuItem[]>(() => {
+  if (!user.value) {
+    return []
+  }
+
+  return [{
+    label: 'Dashboard',
+    to: '/dash',
+    active: route.path.startsWith('/dash')
+  }]
+})
 
 const signOut = async () => {
   const { error } = await client.auth.signOut()
@@ -53,7 +58,7 @@ const signOut = async () => {
     <UHeader>
       <template #left>
         <NuxtLink to="/">
-          <AppLogo class="w-auto h-5 shrink-0" />
+          <AppLogo class="w-auto h-4 shrink-0" />
         </NuxtLink>
 
         <UNavigationMenu
@@ -78,7 +83,7 @@ const signOut = async () => {
             to="/login"
             class="text-gray-700 hover:bg-gray-400 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
           >
-            Sign in
+            Sign In
           </NuxtLink>
         </div>
       </template>

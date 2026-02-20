@@ -7,8 +7,10 @@ export default defineAppConfig({
     },
     pageHero: {
       slots: {
-        title: 'text-3xl sm:text-5xl font-extrabold',
-        container: 'sm:py-2 py-1'
+        title: 'text-xl sm:text-3xl font-bold',
+        headline: 'mb-2 text-lg font-bold',
+        container: 'sm:py-2 py-1',
+        body: 'mt-0'
       }
     },
     formField: {

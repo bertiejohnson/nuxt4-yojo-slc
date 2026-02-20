@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt'
   ],
 
-  devtools: { enabled: true },
+  devtools: { enabled: false },
 
   css: ['~/assets/css/main.css'],
 

@@ -15,11 +15,11 @@ const userIsAuthenticated = async (userBirthData) => {
     }
   })
 
-  const chartToStore = chartData // this data gets inserted into indexedDB storage
+  const chartToDexie = chartData // this data gets inserted into IndexedDB storage via Dexie - addDexieChart() - and is what the app uses to display the chart and aspects on the dashboard page, so it needs to be in the correct format for that. The chartJSON variable is what gets stored in the Supabase database, and is just a stringified version of the chart data.
   const chartJSON = JSON.stringify(chartData) // this data goes into supabase db chart table - insertChart()
 
   console.log('Generated chart data:', chartData)
-  console.log('Chart to store in IndexedDB:', chartToStore)
+  console.log('Chart to store in IndexedDB:', chartToDexie)
 
   const profileData = await updateProfile(
     userBirthData,
@@ -31,7 +31,7 @@ const userIsAuthenticated = async (userBirthData) => {
   }
 
   if (import.meta.client) {
-    await runIndexedDB(chartToStore)
+    await runIndexedDB(chartToDexie)
   }
 
   await navigateTo('/dash')

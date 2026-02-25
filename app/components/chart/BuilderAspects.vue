@@ -29,14 +29,33 @@ const planetCoordinates = ref([]);
 
 // create Aspect array of objects from original object - maybe sort this in swiss eph
 for (const aspectNo in props.chartAspects[0]) {
+  if (
+    props.chartAspects[0][aspectNo].planetOneName.includes('asc') ||
+    props.chartAspects[0][aspectNo].planetOneName.includes('mc') ||
+    props.chartAspects[0][aspectNo].planetOneName.includes('chiron') ||
+    props.chartAspects[0][aspectNo].planetOneName.includes('true node') ||
+    props.chartAspects[0][aspectNo].planetTwoName.includes('asc') ||
+    props.chartAspects[0][aspectNo].planetTwoName.includes('mc') ||
+    props.chartAspects[0][aspectNo].planetTwoName.includes('chiron') ||
+    props.chartAspects[0][aspectNo].planetTwoName.includes('true node')
+  )
+    continue;
   aspects.push(props.chartAspects[0][aspectNo]);
-  
+
   // DEV: structuredClone test ...
   // aspects.push(structuredClone(props.chartAspects[0][aspectNo]));
 }
 
 // create an Planet array of objects from original object - maybe sort this in swiss eph
 for (const planetNo in props.chartAspects[1]) {
+  if (
+    props.chartAspects[1][planetNo].name.includes('asc') ||
+    props.chartAspects[1][planetNo].name.includes('mc') ||
+    props.chartAspects[1][planetNo].name.includes('chiron') ||
+    props.chartAspects[1][planetNo].name.includes('true node')
+  )
+    continue;
+
   planets.push(props.chartAspects[1][planetNo]);
 }
 
@@ -65,18 +84,8 @@ const getYCoordinates = (degrees) => {
   });
 })();
 
-// console.log('Planet Coordinates:', planetCoordinates.value[0].x);
-
 (() => {
   for (let i = 0; i < aspects.length; i++) {
-    if (
-      aspects[i].planetPair.includes('asc') ||
-      aspects[i].planetPair.includes('mc') ||
-      aspects[i].planetPair.includes('chiron') ||
-      aspects[i].planetPair.includes('true_node')
-    )
-      continue;
-
     let planet1 = aspects[i].planetOneId;
     let planet2 = aspects[i].planetTwoId;
     aspects[i].x1 = planetCoordinates.value[planet1].x;

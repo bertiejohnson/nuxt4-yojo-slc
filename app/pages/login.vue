@@ -1,6 +1,25 @@
 <script lang="ts" setup>
 import * as z from 'zod'
 import type { FormSubmitEvent } from '@nuxt/ui'
+import { useBreakpoints } from '@vueuse/core'
+
+const breakpoints = useBreakpoints({
+  mobile: 0, // optional
+  tablet: 640,
+  laptop: 1024,
+  desktop: 1280,
+})
+
+const activeBreakpoint = breakpoints.active()
+
+const layout = ref(false)
+
+if (activeBreakpoint.value === 'mobile') {
+  console.log(`Current active breakpoint: ${activeBreakpoint.value}`)
+  layout.value = true
+} else {
+  console.log('No active breakpoint detected.')
+}
 
 const client = useSupabaseClient()
 
@@ -35,7 +54,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 </script>
 
 <template>
-  <div class="flex flex-col items-center w-full">
+  <div v-if="layout" class="flex flex-col items-center w-full">
     <h2 class="text-3xl font-bold mt-2">
       Sign in
     </h2>
@@ -75,6 +94,11 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
         </UButton>
       </UForm>
     </div>
+  </div>
+  <div v-else class="flex flex-col items-center w-full">
+    <h2 class="text-center text-3xl font-bold mt-8">
+      Only works on mobile for now - more features coming soon!
+    </h2>
   </div>
 </template>
 

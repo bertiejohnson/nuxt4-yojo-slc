@@ -1,19 +1,3 @@
-<template>
-  <g id="planet-svg-icons">
-    <image
-      v-for="(planet, i) in planets"
-      :key="i"
-      :x="planet.x"
-      :y="planet.y"
-      :transform="planet.transform"
-      :height="planet.height"
-      :width="planet.width"
-      :href="planet.href"
-      :data-name="planet.name"
-    />
-  </g>
-</template>
-
 <script setup>
 import { planetSvgs } from '~/utils/planetsLib'
 
@@ -28,7 +12,7 @@ const planetCoordinates = ref([])
 
 // create an Planet array of objects from original array of objects
 for (const planetIndex in props.chartPlanets[0]) {
-  if (props.chartPlanets[0][planetIndex].name === 'asc' || props.chartPlanets[0][planetIndex].name === 'mc' || props.chartPlanets[0][planetIndex].name === 'true node') continue
+  if (props.chartPlanets[0][planetIndex].name === 'chiron' || props.chartPlanets[0][planetIndex].name === 'asc' || props.chartPlanets[0][planetIndex].name === 'mc' || props.chartPlanets[0][planetIndex].name === 'true node') continue
   planets.push(props.chartPlanets[0][planetIndex])
   orderByDegrees.push({
     degrees: props.chartPlanets[0][planetIndex].dms_degrees,
@@ -104,3 +88,19 @@ if (planets.length > 0) {
   }
 }
 </script>
+
+<template>
+  <g id="planet-svg-icons">
+    <image
+      v-for="(planet, i) in planets"
+      :key="i"
+      :x="planet.x"
+      :y="planet.y"
+      :transform="planet.transform"
+      :height="planet.height"
+      :width="planet.width"
+      :href="planet.href"
+      :data-name="planet.name"
+    />
+  </g>
+</template>

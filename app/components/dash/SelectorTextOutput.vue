@@ -14,16 +14,14 @@ interface TextData {
 const props = defineProps<{
   text: TextData
 }>()
-
-console.log('Received text prop:', props.text)
 </script>
 
 <template>
-  <div class="flex flex-col gap-4 mt-4">
+  <div class="flex flex-col gap-4">
     <div
       v-for="(expPhrase, index) in (props.text?.phrase || [])"
       :key="index"
-      class="flex items-start gap-4 p-4 bg-gray-100 rounded-md dark:bg-gray-800"
+      class="flex items-start gap-4 p-4 bg-green-50 rounded-md dark:bg-gray-800"
     >
       <div class="flex-1 space-y-1">
         <div>

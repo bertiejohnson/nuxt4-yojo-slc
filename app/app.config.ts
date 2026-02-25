@@ -5,10 +5,18 @@ export default defineAppConfig({
       secondary: 'teal',
       neutral: 'stone'
     },
+    header: {
+      slots: {
+        container: 'px-4 py-2 sm:px-6 lg:px-8',
+        title: 'text-lg font-bold'
+      }
+    },
     pageHero: {
       slots: {
-        title: 'text-3xl sm:text-5xl font-extrabold',
-        container: 'sm:py-2 py-1'
+        title: 'text-xl sm:text-3xl font-bold',
+        headline: 'mb-2 text-lg font-bold',
+        container: 'sm:py-2 py-1',
+        body: 'mt-0'
       }
     },
     formField: {

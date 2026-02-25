@@ -1,77 +1,98 @@
 <script setup lang="ts">
-const { data, error } = await useFetch('/api/generate-chart', {
-  query: {
-    type: 'now'
-  }
+import type { Chart } from '@/../shared/types'
+import { useBreakpoints } from '@vueuse/core'
+
+const breakpoints = useBreakpoints({
+  mobile: 0, // optional
+  tablet: 640,
+  laptop: 1024,
+  desktop: 1280,
 })
 
-if (error.value) {
-  console.error('Oops! There was an error fetching chart data :(', error.value)
-  // log the error - date/time, error message, stack trace etc. Or use a logging service like Sentry
+const activeBreakpoint = breakpoints.active()
+
+const layout = ref(false)
+
+if (activeBreakpoint.value === 'mobile') {
+  console.log(`Current active breakpoint: ${activeBreakpoint.value}`)
+  layout.value = true
+} else {
+  console.log('No active breakpoint detected.')
 }
 
-const nowChartData = data.value
+let chartSrc: Chart | null = null
+// dynamically import the JSON file with an explicit type assertion
+const jsonModule = (await import('~/assets/json/example-chart.json')) as unknown as { default: Chart }
+chartSrc = jsonModule.default
 
-const headingString = nowChartData.chart.aspects[0].planetPair
-  .split('_')
-  .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-  .join(` ${nowChartData.chart.aspects[0].aspectName} `)
-
-// Adding 1 to match the planet IDs in the keywords JSON
-// because swisseph_id starts from 0
-// This is a temporary fix until the backend is updated
-const aspectProp = {
-  aspectType: nowChartData.chart.aspects[0].aspectName,
-  planetOne: nowChartData.chart.aspects[0].planetOne_swisseph_id,
-  planetTwo: nowChartData.chart.aspects[0].planetTwo_swisseph_id
+let headingString = ''
+let aspectProp = {
+  aspectType: '',
+  planetOne: 0,
+  planetTwo: 0
 }
+
+const aspect = chartSrc?.chart?.aspects?.[1] // example aspect, you can choose any aspect from the chart - Sun square Jupiter at present
+
+// if (aspect) {
+//   headingString = aspect.planetPair
+//     .split('_')
+//     .map((word: string) => word.charAt(0).toUpperCase() + word.slice(1))
+//     .join(` ${aspect.aspectName} `)
+
+//   aspectProp = {
+//     aspectType: aspect.aspectName,
+//     planetOne: aspect.planetOne_swisseph_id,
+//     planetTwo: aspect.planetTwo_swisseph_id
+//   }
+// }
 
 const links = ref([
   {
-    label: 'Create your chart',
+    label: 'Get your chart',
     to: '/create-chart',
     icon: 'i-lucide-square-play'
-  },
-  {
-    label: 'Learn more',
-    to: '#learn_more'
-  }
+  } // ,
+  // { // a button to a page section that explains the keyword analysis system that this app uses
+  //   label: 'Learn more',
+  //   to: '#learn-more'
+  // }
 ])
+const test = ref('vertical')
 </script>
 
 <template>
-  <div>
+  <div v-if="layout">
     <UPageHero
-      title="A Unique Approach To Your Chart"
+      title="A Unique Approach To Understanding Your Chart"
+      headline="Yojo Astro"
+      :orientation="test"
       :links="links"
       class="min-h-screen"
     >
       <template #body>
-        <div class="mb-4">
+        <div class="mb-3">
           <ChartBuilder
-            :chart-data="nowChartData"
+            :chart-data="chartSrc"
           />
+          <span class="text-xs text-muted-foreground -mt-4 mb-4 block">
+            Example chart
+          </span>
         </div>
         <div>
-          <div class="text-lg font-bold mb-1 -mt-3">
-            {{ headingString }}
+          <div class="text-base font-bold mb-1 -mt-3">
+            <div class="">Sun square Jupiter</div>
           </div>
         </div>
-        <div class="relative -mt-4 h-30 flex items-center justify-center overflow-hidden">
-          <PageHeroKeywords
-            :aspect="aspectProp"
-          />
+        <div>
+          Sun square Jupiter carries a restless friction — identity isn't big enough and must grow. It can demand reckless expansion. The tension is uncomfortable but alive.
         </div>
       </template>
     </UPageHero>
-
-    <USeparator />
-
-    <UPageSection
-      id="#learn_more"
-      class="mt-2 bg-gray-100 min-h-screen"
-    >
-      <div>Learn More</div>
-    </UPageSection>
+  </div>
+  <div v-else class="flex flex-col items-center w-full">
+    <h2 class="text-center text-3xl font-bold mt-8">
+      Only works on mobile for now - more features coming soon!
+    </h2>
   </div>
 </template>

@@ -1,5 +1,24 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from '@nuxt/ui'
+import { useBreakpoints } from '@vueuse/core'
+
+const breakpoints = useBreakpoints({
+  mobile: 0, // optional
+  tablet: 640,
+  laptop: 1024,
+  desktop: 1280,
+})
+
+const activeBreakpoint = breakpoints.active()
+
+const layout = ref(false)
+
+if (activeBreakpoint.value === 'mobile') {
+  console.log(`Current active breakpoint: ${activeBreakpoint.value}`)
+  layout.value = true
+} else {
+  console.log('No active breakpoint detected.')
+}
 
 const route = useRoute()
 const user = useSupabaseUser()
@@ -32,12 +51,17 @@ useSeoMeta({
   twitterCard: 'summary_large_image'
 })
 
-const items = computed<NavigationMenuItem[]>(() => [{
-  label: 'Dashboard',
-  to: '/dash',
-  icon: 'i-lucide-book-open',
-  active: route.path.startsWith('/dash')
-}])
+const items = computed<NavigationMenuItem[]>(() => {
+  if (!user.value) {
+    return []
+  }
+
+  return [{
+    label: 'Dashboard',
+    to: '/dash',
+    active: route.path.startsWith('/dash')
+  }]
+})
 
 const signOut = async () => {
   const { error } = await client.auth.signOut()
@@ -53,10 +77,11 @@ const signOut = async () => {
     <UHeader>
       <template #left>
         <NuxtLink to="/">
-          <AppLogo class="w-auto h-5 shrink-0" />
+          <AppLogo class="w-auto h-3 shrink-0" />
         </NuxtLink>
 
         <UNavigationMenu
+          v-if="layout"
           :items="items"
           variant="link"
           class="hidden lg:block ml-4"
@@ -65,8 +90,11 @@ const signOut = async () => {
         <!-- <TemplateMenu /> -->
       </template>
 
-      <template #right>
-        <div v-if="user" class="flex items-center">
+      <template v-if="layout" #right>
+        <div
+          v-if="user"
+          class="flex items-center"
+        >
           <UIcon
             name="i-lucide-circle-user-round"
             class="size-6"
@@ -78,12 +106,12 @@ const signOut = async () => {
             to="/login"
             class="text-gray-700 hover:bg-gray-400 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
           >
-            Sign in
+            Sign In
           </NuxtLink>
         </div>
       </template>
 
-      <template #body>
+      <template v-if="layout" #body>
         <UNavigationMenu
           :items="items"
           orientation="vertical"

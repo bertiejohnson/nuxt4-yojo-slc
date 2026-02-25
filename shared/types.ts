@@ -2,10 +2,17 @@ export interface Chart {
   chart: ChartObject
 }
 
+type Aspect = {
+  planetPair: string
+  aspectName: string
+  planetOne_swisseph_id: number
+  planetTwo_swisseph_id: number
+}
+
 export interface ChartObject {
-  aspects?: object[]
-  houses?: object
-  planets?: object[]
+  aspects: Aspect[]
+  houses: object
+  planets: object[]
 }
 
 export interface ChartRow {

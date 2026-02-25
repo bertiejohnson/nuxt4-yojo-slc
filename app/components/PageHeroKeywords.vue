@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-// import PlanetPairKeywords from './PlanetPairKeywords.vue'
-
 const keywordStore = useKeywordsStore()
 
 const { getKeywordsForPlanetPair } = useKeywords()

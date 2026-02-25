@@ -6,9 +6,8 @@ async function signUp() {
 </script>
 
 <template>
-  <div class="relative -mt-4 h-30 flex items-center justify-center overflow-hidden">
+  <div class="flex items-center justify-center overflow-hidden">
     <UButton
-      class="mt-8"
       color="success"
       variant="solid"
       @click="signUp"

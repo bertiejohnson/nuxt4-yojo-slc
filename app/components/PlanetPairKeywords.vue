@@ -20,10 +20,14 @@ if (import.meta.client) {
 
 const keywordStrings = ref<string[]>([])
 
-watch(keywordsFetched, () => {
+const stopWatcher = watch(keywordsFetched, () => {
   if (keywordsFetched.value && keywords.value.length > 0) {
     setUpKeywordPhrases()
   }
+})
+
+onBeforeUnmount(() => {
+  stopWatcher()
 })
 
 onMounted(() => {

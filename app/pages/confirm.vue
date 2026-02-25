@@ -76,7 +76,7 @@ async function runIndexedDB(chartData) {
   console.log(status)
 }
 
-watch(
+const stopWatcher = watch(
   user,
   () => {
     if (user.value) {
@@ -84,6 +84,10 @@ watch(
     }
   }
 )
+
+onBeforeUnmount(() => {
+  stopWatcher()
+})
 </script>
 
 <template>
